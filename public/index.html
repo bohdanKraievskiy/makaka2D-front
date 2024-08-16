@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="/telegram-web-app.js"></script>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -25,6 +26,26 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <script>
+      const app = window.Telegram.WebApp;
+      app.ready();
+      app.expand();
+      app.isClosingConfirmationEnabled = false;
+      app.isVerticalSwipesEnabled = false;
+      console.log("Telegram WebApp version: " + app.version);
+
+      Telegram.WebApp.onEvent('viewportChanged', function(event) {
+        if (!Telegram.WebApp.isExpanded) {
+          Telegram.WebApp.expand();
+        }
+      });
+
+      setInterval(function() {
+        if (!Telegram.WebApp.isExpanded) {
+          Telegram.WebApp.expand();
+        }
+      }, 1000);
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

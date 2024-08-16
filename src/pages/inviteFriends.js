@@ -43,16 +43,35 @@ const InvitePage = ({telegramId}) => {
     return (
         <div className="_page_1ulsb_1">
             <div className="_gameView_1cr97_1" id="game-view">
-                <div className="_view_sf2n5_1 _view_1x19s_1" style={{ opacity: 1 }}>
-                    <div className={`_backdrop_wo9zh_1  ${isLoading ? '_opened_wo9zh_16' : ''}`} ></div>
+                <div className="_view_sf2n5_1 _view_1x19s_1" style={{opacity: 1}}>
+                    <div className={`_backdrop_wo9zh_1  ${isLoading ? '_opened_wo9zh_16' : ''}`}></div>
                     <div className={`_content_wo9zh_21 ${isLoading ? '_opened_wo9zh_16' : ''}`}>
-                        <div className={`_cross_wo9zh_61 ${isLoading ? '_opened_wo9zh_16' : ''}`} onClick={handleClose}></div>
+                        <div className={`_cross_wo9zh_61 ${isLoading ? '_opened_wo9zh_16' : ''}`}
+                             onClick={handleClose}></div>
                         <div className={`_contentInner_wo9zh_44 ${isLoading ? '_opened_wo9zh_16' : ''}`}>
-                            <div className="_sheetTitle_1x19s_93">Invite friends</div>
+                            <div className="_sheetTitle_1x19s_93">Referral Rules</div>
                             <div className="_separator_1x19s_86"></div>
                             <div className="_buttons_1x19s_79">
-                                <div className="_root_oar9p_1 _type-white_oar9p_43" onClick={handleCopyInviteLink}>Copy invite link</div>
-                                <div className="_root_oar9p_1 _type-white_oar9p_43" onClick={handleShareInviteLink}>Share invite link</div>
+                                <div className="_body_iud9y_25">
+                                    <div className="_rullers_o1nm32">Invite a Friend
+                                    </div>
+                                    <div className="_footer_ruller_7yda">
+                                        You will both get 2,000    and 1
+                                    </div>
+                                </div>
+                                <div className="_body_iud9y_25">
+                                    <div className="_rullers_o1nm32">Invite a Friend with a Telegram Premium Account
+                                    </div>
+                                    <div className="_footer_ruller_7yda">
+                                        You will both get 20,000    and 5
+                                    </div>
+                                </div>
+                                <div className="_body_iud9y_25">
+                                    <div className="_rullers_o1nm32">Additional Incentives</div>
+                                    <div className="_footer_ruller_7yda">
+                                        Get 10% of Your Fren’s    Yields in Rewards
+                                    </div>
+                                </div>
                             </div>
                             {copyMessage && (
                                 <div className="_widget_8wj">
@@ -61,44 +80,66 @@ const InvitePage = ({telegramId}) => {
                             )}
                         </div>
                     </div>
-                    <div className="_title_1x19s_5">Invite friends<br /> and get more $UP</div>
                     <div className="_mascote_94k9d_1 _centered_94k9d_13">
                         <img
                             id="home-mascote"
-                            src={`${process.env.PUBLIC_URL}/resources_directory/image_2024-08-03_02-24-40.webp`}
+                            src={`${process.env.PUBLIC_URL}/resources_directory/image_2024-08-16_16-03-47.webp`}
                             className="_doggy_94k9d_6 _width-82_94k9d_23 _mascote_1vo1r_60 _isRendered_1vo1r_63"
                             alt="Mascote"
                         />
                     </div>
-                    {friendsArray.length === 0 ? (
-                        <div className="_subtitleEmpty_1x19s_19">Tap on the button to invite your friends</div>
-                    ) : (
-                        <>
-                            <div className="_boardTitle_zhpdf_23">{friendsArray.length} friends</div>
-                            {friendsArray.map((user, index) => (
-                                <div key={index} className="_item_iud9y_1">
-                                    <div className="_media_iud9y_8">
-                                        <img
-                                            className="_avatar_iud9y_19"
-                                            src={`https://ui-avatars.com/api/?name=${user.username}&background=random&color=fff`}
-                                            loading="lazy"
-                                            alt="Avatar"
-                                        />
-                                    </div>
-                                    <div className="_body_iud9y_25">
-                                        <div className="_text_iud9y_47">{user.username}</div>
-                                        <div className="_footer_iud9y_32">{user.score} $UP</div>
-                                    </div>
-                                    <div className="_details_iud9y_56">
-                                        <span className="_medal_iud9y_66" >+250 $UP</span>
-                                    </div>
-                                </div>
-                            ))}
-                        </>
-                    )}
-                    <div className="_buttonWrap_1x19s_70">
-                        <div className="_root_oar9p_1 _type-white_oar9p_43" onClick={handleGoToScore}>Invite friends</div>
+                    <div className="_title_1x19s_5">Invite to Earn $PRIME</div>
+
+                    <div className="box_rectangle10">
+                        <div className="rec_sm541">
+                            <div className="box_text1060">+1</div>
+                        </div>
+                        <div className="box_text970">1</div>
+                        <div className="box_text920">Frens</div>
+                        <div className="box_text860">View referral rules ></div>
                     </div>
+                    <div className="box_rectangle10 slider-bar">
+                        <div className="slider_if819 slider_if819-active">Frens</div>
+                        <div className="slider_if819">$ PRIME</div>
+                    </div>
+                    <div className="_item_iud9y_1">
+                        <div className="_body_iud9y_25">
+                            <div className="_text_iud9y_47">+20</div>
+                            <div className="_footer_iud9y_32">2024.08.14 03:45:24</div>
+                        </div>
+                        <div className="_details_iud9y_56">
+                            <span className="_medal_iud9y_66">by 🍌 Carl</span>
+                            <div className="_footer_iud9y_32">Checking in</div>
+                        </div>
+                    </div>
+                    <div className="_item_iud9y_1">
+                        <div className="_body_iud9y_25">
+                            <div className="_text_iud9y_47">+20</div>
+                            <div className="_footer_iud9y_32">2024.08.14 03:45:24</div>
+                        </div>
+                        <div className="_details_iud9y_56">
+                            <span className="_medal_iud9y_66">by 🍌 Carl</span>
+                            <div className="_footer_iud9y_32">Checking in</div>
+                        </div>
+                    </div>
+
+                    <div className="_buttonWrap_1x19s_70">
+                        <div className="_root_oar9p_1 _type-yellow_oar9p_43" onClick={handleGoToScore}>Invite friends
+                        </div>
+                        <div className="_root_oar9p_1 _type-white_oar9p_43 _copy-white_pa08af"
+                             onClick={handleGoToScore}>
+                            <svg width="16" height="17" viewBox="0 0 16 17" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <rect x="4.94718" y="0.81818" width="10.2346" height="10.885" rx="1.90909"
+                                      fill="#131313" stroke="#F2F2F2" stroke-width="1.63636"/>
+                                <rect x="0.81818" y="4.62897" width="10.2346" height="10.885" rx="1.90909"
+                                      fill="#131313" stroke="#F2F2F2" stroke-width="1.63636"/>
+                            </svg>
+
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>

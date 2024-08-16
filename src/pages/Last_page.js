@@ -68,7 +68,7 @@ const LastPage = () => {
                     ) : state === "amazing" ? (
                         <>
                             <div className="_title_mgd6s_24">You are amazing!</div>
-                            <div className="_subTitle_mgd6s_34">Here is your $UP reward</div>
+                            <div className="_subTitle_mgd6s_34">Here is your APE reward</div>
                             <div className="_valueWrap_mgd6s_42">
                                 <div className="_value_mgd6s_42">
                                     <img
@@ -79,7 +79,7 @@ const LastPage = () => {
                                 <div className="_valueTitle_mgd6s_78">{user?.age}</div>
                             </div>
                             <div className="_valueSubTitle_mgd6s_86">
-                                Welcome to the OnlyUp movement 🤝
+                                Welcome to the  movement 🤝
                             </div>
                         </>
                     ) : state === "premium" && user.is_premium ? (

@@ -9,9 +9,13 @@ const InvitePage = ({telegramId}) => {
     const [copyMessage, setCopyMessage] = useState(false);
     const { friends_stats } = useContext(LeaderboardContext);
     const friendsArray = Array.isArray(friends_stats) ? friends_stats : [];
+    const [activeTab, setActiveTab] = useState('Frens');
     const handleGoToScore = () => {
         window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
         setIsLoading(true);
+    };
+    const handleTabChange = (tab) => {
+        setActiveTab(tab);
     };
 
     const handleClose = () => {
@@ -49,7 +53,7 @@ const InvitePage = ({telegramId}) => {
                         <div className={`_cross_wo9zh_61 ${isLoading ? '_opened_wo9zh_16' : ''}`}
                              onClick={handleClose}></div>
                         <div className={`_contentInner_wo9zh_44 ${isLoading ? '_opened_wo9zh_16' : ''}`}>
-                            <div className="_sheetTitle_1x19s_93">Referral Rules</div>
+                            <div className="_sheetTitle_1x19s_93" >Referral Rules</div>
                             <div className="_separator_1x19s_86"></div>
                             <div className="_buttons_1x19s_79">
                                 <div className="_body_iud9y_25">
@@ -73,11 +77,6 @@ const InvitePage = ({telegramId}) => {
                                     </div>
                                 </div>
                             </div>
-                            {copyMessage && (
-                                <div className="_widget_8wj">
-                                    Link was copied to the clipboard!
-                                </div>
-                            )}
                         </div>
                     </div>
                     <div className="_mascote_94k9d_1 _centered_94k9d_13">
@@ -92,42 +91,70 @@ const InvitePage = ({telegramId}) => {
 
                     <div className="box_rectangle10">
                         <div className="rec_sm541">
-                            <div className="box_text1060">+1</div>
+                            <div className="box_text1060">+{friendsArray.length}</div>
                         </div>
-                        <div className="box_text970">1</div>
+                        <div className="box_text970">{friendsArray.length}</div>
                         <div className="box_text920">Frens</div>
-                        <div className="box_text860">View referral rules ></div>
-                    </div>
-                    <div className="box_rectangle10 slider-bar">
-                        <div className="slider_if819 slider_if819-active">Frens</div>
-                        <div className="slider_if819">$ PRIME</div>
-                    </div>
-                    <div className="_item_iud9y_1">
-                        <div className="_body_iud9y_25">
-                            <div className="_text_iud9y_47">+20</div>
-                            <div className="_footer_iud9y_32">2024.08.14 03:45:24</div>
-                        </div>
-                        <div className="_details_iud9y_56">
-                            <span className="_medal_iud9y_66">by 🍌 Carl</span>
-                            <div className="_footer_iud9y_32">Checking in</div>
-                        </div>
-                    </div>
-                    <div className="_item_iud9y_1">
-                        <div className="_body_iud9y_25">
-                            <div className="_text_iud9y_47">+20</div>
-                            <div className="_footer_iud9y_32">2024.08.14 03:45:24</div>
-                        </div>
-                        <div className="_details_iud9y_56">
-                            <span className="_medal_iud9y_66">by 🍌 Carl</span>
-                            <div className="_footer_iud9y_32">Checking in</div>
-                        </div>
+                        <div className="box_text860" onClick={handleGoToScore}>View referral rules ></div>
                     </div>
 
+                    <div className="box_rectangle10 slider-bar">
+                        <div
+                            className={`slider_if819 ${activeTab === 'Frens' ? 'slider_if819-active' : ''}`}
+                            onClick={() => handleTabChange('Frens')}
+                        >
+                            Frens
+                        </div>
+                        <div
+                            className={`slider_if819 ${activeTab === 'Prime' ? 'slider_if819-active' : ''}`}
+                            onClick={() => handleTabChange('Prime')}
+                        >
+                            $ PRIME
+                        </div>
+                    </div>
+                    {activeTab === 'Frens' ? (
+                        <div>
+                            {friendsArray.map((user, index) => (
+                                <div key={index} className="_item_iud9y_1">
+                                    <div className="_media_iud9y_8">
+                                        <img
+                                            className="_avatar_iud9y_19"
+                                            src={`https://ui-avatars.com/api/?name=${user.username}&background=random&color=fff`}
+                                            loading="lazy"
+                                            alt="Avatar"
+                                        />
+                                    </div>
+                                    <div className="_body_iud9y_25">
+                                        <div className="_text_iud9y_47">{user.username}</div>
+                                        <div className="_footer_iud9y_32">{user.score} $UP</div>
+                                    </div>
+                                    <div className="_details_iud9y_56">
+                                        <span className="_medal_iud9y_66">+250 APE</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div>
+                            {friendsArray.map((user, index) => (
+                                <div key={index} className="_item_iud9y_1">
+                                    <div className="_body_iud9y_25">
+                                        <div className="_text_iud9y_47">+20</div>
+                                        <div className="_footer_iud9y_32">2024.08.14 03:45:24</div>
+                                    </div>
+                                    <div className="_details_iud9y_56">
+                                        <span className="_medal_iud9y_66">by 🍌 {user.username}</span>
+                                        <div className="_footer_iud9y_32">Checking in</div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
                     <div className="_buttonWrap_1x19s_70">
-                        <div className="_root_oar9p_1 _type-yellow_oar9p_43" onClick={handleGoToScore}>Invite friends
+                        <div className="_root_oar9p_1 _type-yellow_oar9p_43" onClick={handleShareInviteLink}>Invite friends
                         </div>
                         <div className="_root_oar9p_1 _type-white_oar9p_43 _copy-white_pa08af"
-                             onClick={handleGoToScore}>
+                             onClick={handleCopyInviteLink}>
                             <svg width="16" height="17" viewBox="0 0 16 17" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <rect x="4.94718" y="0.81818" width="10.2346" height="10.885" rx="1.90909"

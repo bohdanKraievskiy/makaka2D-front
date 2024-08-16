@@ -4,7 +4,7 @@ import { RewardsContext } from "../context/RewardsContext";
 import { TasksContext } from "../context/TasksContext";
 import { LeaderboardContext } from "../context/LeaderboardContext";
 
-export const API_BASE_URL = 'https://only.pp.ua/api';
+export const API_BASE_URL = 'http://127.0.0.1:8000/api';
 export const telegram_id = "874423521"
 export const updateUserBalance = async (telegramId, newBalance) => {
     try {

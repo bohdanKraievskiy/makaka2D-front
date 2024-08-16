@@ -21,24 +21,35 @@ const PreLoad = ({ telegramId }) => {
         if (hasFetchedData.current) return;
         const loadData = async () => {
             try {
-                hasFetchedData.current = true
+                hasFetchedData.current = true;
                 const rewardResult = await fetchDailyReward(telegramId);
                 if (rewardResult) {
                     setRewardData(rewardResult);
-                    setShowRewardPage(true); // Show reward page if a new reward is claimed
-                };
-                await fetchLeaderboard(telegramId);
-                await fetchUser(telegramId);
-                await fetchUserRewards(telegramId);
-                await fetchTasks(telegramId);
+                    setShowRewardPage(true);
+
+                    // Скрыть RewardPage через 5 секунд и загрузить остальные данные
+                    setTimeout(async () => {
+                        setShowRewardPage(false);
+                        await fetchAllData(telegramId);
+                        navigate("/home");
+                    }, 3000);
+
+                } else {
+                    await fetchAllData(telegramId);
+                }
             } catch (error) {
                 console.error("Error loading data", error);
             }
         };
 
         loadData();
-    }, [telegramId, navigate, setUser, setRewards, setTasks, setUserStats, setLeaderboard, setCount]);
-
+    }, [telegramId, navigate]);
+    const fetchAllData = async (telegramId) => {
+        await fetchLeaderboard(telegramId);
+        await fetchUser(telegramId);
+        await fetchUserRewards(telegramId);
+        await fetchTasks(telegramId);
+    };
     const fetchLeaderboard = async (telegramId) => {
         try {
             const response = await axios.get(`${API_BASE_URL}/leaderboard/`, {
@@ -122,24 +133,14 @@ const PreLoad = ({ telegramId }) => {
         }
     };
 
-    const handleRewardClaimed = () => {
-        setRewards(prevRewards => ({
-            ...prevRewards,
-            daily: prevRewards.daily + rewardData.balance,
-            total: prevRewards.total + rewardData.balance
-        }));
-        updateUserBalance(user.balance+rewardData.balance);
-        setShowRewardPage(false);
-        navigate("/home");
-    };
     return (
         <div>
             {showRewardPage ? (
-                <RewardPage rewardData={rewardData} onClaim={handleRewardClaimed} />
+                <RewardPage rewardData={rewardData} />
             ) : (
                 <div className="_view_sf2n5_1 _view_1x19s_1" style={{opacity: 1}}>
                     <div className="_title_1x19s_5">OnlyUP</div>
-                    <div className="_mascote_94k9d_1 _centered_94k9d_13">
+                    <div className="_mascote_94k9d_1 _centered_94k9d_13 _loaded_91hw8">
                         <img
                             id="home-mascote"
                             src={`${process.env.PUBLIC_URL}/resources_directory/image_2024-08-03_02-24-40.webp`}
@@ -147,14 +148,14 @@ const PreLoad = ({ telegramId }) => {
                             alt="Mascote"
                         />
                     </div>
-                    <div class="_subtitleEmpty_1x19s_19">Loading...</div>
+                    <div className="_subtitleEmpty_1x19s_19">Loading...</div>
                 </div>
             )}
         </div>
     );
 };
 
-const RewardPage = ({rewardData, onClaim}) => {
+const RewardPage = ({rewardData}) => {
     const {streak, reward} = rewardData;
 
     return (
@@ -168,15 +169,9 @@ const RewardPage = ({rewardData, onClaim}) => {
                         <div className="_valueTitle_mgd6s_78">daily  streak</div>
                     </div>
                     <div className="_valueSubTitle_mgd6s_86">
-                        +{reward} $UP.<br/>
+                        +{reward} APE.<br/>
                     </div>
-                    <div
-                        className="_root_oar9p_1 _type-white_oar9p_43 _fixedBottom_oar9p_110 _button_mgd6s_141"
-                        onClick={onClaim}
-                        style={{cursor: "pointer"}}
-                    >
-                        Continue
-                    </div>
+
 
                 </div>
             </div>

@@ -9,6 +9,7 @@ import LeaderboardPage from "./pages/leaderboard";
 import InviteFriends from "./pages/inviteFriends";
 import Game from "./doubleJump_Game/game";
 import PreLoad from "./pages/loading_page";
+import Result from "./pages/Result";
 import { UserProvider } from './context/UserContext';
 import { TasksProvider } from './context/TasksContext';
 import { RewardsProvider } from './context/RewardsContext';

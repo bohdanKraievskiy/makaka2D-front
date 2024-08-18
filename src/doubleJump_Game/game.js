@@ -217,6 +217,7 @@ function Game({ telegram_Id }) {
         hasStartedRef.current = true;
         isActiveSessionRef.current = true; // Активируем сессию при старте
         balanceUpdatedRef.current = false;
+        setShowResultPage(false);
         setTimer(30);
         const newPlatforms = createPlatforms();
         setIsGameOver(false);

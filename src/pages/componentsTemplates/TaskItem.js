@@ -63,7 +63,8 @@ const TaskItem = ({ title, footerText, url, index, setAnimated }) => {
             const response = await axios.post(`${API_BASE_URL}/tasks/verify/`, {
                 telegram_id: telegramId,
                 task: taskTitle,
-                reward: rewardValue
+                reward: rewardValue,
+                username:user.username
             }, {
                 headers: {
                     'Content-Type': 'application/json',

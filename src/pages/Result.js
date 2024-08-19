@@ -42,7 +42,7 @@ const Result = ({user,score,onStart}) => {
 
     return (
         <div className="_page_1ulsb_1">
-            <div className="_gameView_1cr97_1" id="game-view">
+            <div className="_gameView_1cr97_1" id="game-view" style={{overflow:"hidden"}}>
                 <div className="_view_sf2n5_1 _view_1x19s_1" style={{opacity: 1}}>
                     <div className={`_backdrop_wo9zh_1  ${isLoading ? '_opened_wo9zh_16' : ''}`}></div>
                     <div className={`_content_wo9zh_21 ${isLoading ? '_opened_wo9zh_16' : ''}`} style={{height:"65%"}}>
@@ -61,6 +61,21 @@ const Result = ({user,score,onStart}) => {
                                 />
                             </div>
                             <div className="_title_zhpdf_5" style={{fontSize: "45px", marginTop: "10%"}}>+{score}🍌</div>
+                            <div className="_subtitleEmpty_1x19s_19 game_sub_title_ms718"
+                                 style={{fontSize: "12px", opacity: 0.8}}> Scored {score}🍌 points in Tomato Game!
+                                dare vou to challende me!
+                            </div>
+                            <div className="_buttonWrap_1x19s_70" style={{position:"initial"}}>
+                                <div className="_root_oar9p_1 _type-white_oar9p_43 _copy-white_pa08af"
+                                     onClick={handleCopyInviteLink} style={{width: "100%",position:"relative"}}>
+                                    Copy Link
+
+                                </div>
+                            </div>
+                            <div className="_root_oar9p_1 _type-white_ip8lu_54" onClick={handleShareInviteLink}
+                                 style={{background: "#1B1B1B",color:"white"}}>
+                                Send
+                            </div>
                         </div>
                     </div>
                     <div className="_mascote_94k9d_1 _centered_94k9d_13" style={{marginTop: "35%"}}>
@@ -72,9 +87,11 @@ const Result = ({user,score,onStart}) => {
                         />
                     </div>
                     <div className="_title_1x19s_5">Congrats!
-                        bountiful harvest</div>
-                    <div className="_title_zhpdf_5" style={{fontSize: "54px",marginTop:"10%"}}>+{score}🍌</div>
-                    <div className="_root_oar9p_1 _type-white_ip8lu_54" style={{background: "#F7C605", gap: 40,marginTop:"20%"}} onClick={handleGoToScore}>
+                        bountiful harvest
+                    </div>
+                    <div className="_title_zhpdf_5" style={{fontSize: "54px", marginTop: "10%"}}>+{score}🍌</div>
+                    <div className="_root_oar9p_1 _type-white_ip8lu_54"
+                         style={{background: "#F7C605", gap: 40, marginTop: "20%"}} onClick={handleGoToScore}>
                         <img style={{width: "50px"}}
                              src={`${process.env.PUBLIC_URL}/resources_directory/image_2024-08-17_17-39-06.webp`}/>
 

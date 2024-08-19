@@ -283,7 +283,7 @@ function Game({ telegram_Id }) {
     };
 
     return (
-        <div className="grid" style={{ background: hasStartedRef.current ? `${_backgroundColor}` : '' }} onKeyDown={handleKeyDown} onTouchStart={handleTouchStart} tabIndex="0">
+        <div className="grid" style={{ background: hasStartedRef.current ? `${_backgroundColor}` : '' }} tabIndex="0">
             {!showResultPage ? (
                 !isGameOver ? (
                     <>
@@ -316,13 +316,13 @@ function Game({ telegram_Id }) {
                         <div className="instructions">
                             {user.username}
                         </div>
-                        <div className="_title_zhpdf_5" style={{ fontSize: "10vw" }}>{user.balance}🍌</div>
+                        <div className="_title_zhpdf_5" style={{ fontSize: "10vw",marginBottom:"0px" }}>{user.balance}🍌</div>
                         <div className="_subtitleEmpty_1x19s_19 game_sub_title_ms718"
                              style={{ fontSize: "12px", opacity: 0.8 }}> Lorem Ipsum is simply dummy text of the printing and
                             typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
                             1500s
                         </div>
-                        <div className="box_rectangle19 " onClick={start} style={{ overflow: "hidden", height: "150px" }}>
+                        <div className="box_rectangle19 " onClick={handleTouchStart} style={{ overflow: "hidden", height: "150px" }}>
                             <img src={`${process.env.PUBLIC_URL}/resources_directory/rectangle-removebg-preview.webp`}
                                  style={{ width: "100%", background: "#BBEBFF" }} />
                             <text className="_game_bananes_781">Drop Game</text>
@@ -332,13 +332,13 @@ function Game({ telegram_Id }) {
                             <text className="_left_game_bananes"
                                   style={{ right: "20px", bottom: 13 }}>{user.attempts_left}</text>
                         </div>
-                        <div className="_root_oar9p_1 _type-white_ip8lu_54" onClick={start} style={{ background: "#F7C605" }}>
+                        <div className="_root_oar9p_1 _type-white_ip8lu_54" onClick={handleTouchStart} style={{ background: "#F7C605" }}>
                             Start Farming
                         </div>
                     </div>
                 )
             ) : (
-                <Result user={user} score={score} onStart={start} />
+                <Result user={user} score={score} onStart={handleTouchStart} />
             )}
         </div>
     );

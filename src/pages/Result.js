@@ -45,42 +45,22 @@ const Result = ({user,score,onStart}) => {
             <div className="_gameView_1cr97_1" id="game-view">
                 <div className="_view_sf2n5_1 _view_1x19s_1" style={{opacity: 1}}>
                     <div className={`_backdrop_wo9zh_1  ${isLoading ? '_opened_wo9zh_16' : ''}`}></div>
-                    <div className={`_content_wo9zh_21 ${isLoading ? '_opened_wo9zh_16' : ''}`}>
+                    <div className={`_content_wo9zh_21 ${isLoading ? '_opened_wo9zh_16' : ''}`} style={{height:"65%"}}>
                         <div className={`_cross_wo9zh_61 ${isLoading ? '_opened_wo9zh_16' : ''}`}
                              onClick={handleClose}></div>
                         <div className={`_contentInner_wo9zh_44 ${isLoading ? '_opened_wo9zh_16' : ''}`}>
                             <div className="_sheetTitle_1x19s_93">Referral Rules</div>
                             <div className="_separator_1x19s_86"></div>
-                            <div className="_mascote_94k9d_1 _centered_94k9d_13" style={{marginTop: "35%"}}>
+                            <div className="_mascote_94k9d_1 _centered_94k9d_13"
+                                 style={{marginLeft: "25%", marginTop: "5%", width: "40vw", height: "auto"}}>
                                 <img
                                     id="home-mascote" style={{width: "60vw"}}
-                                    src={`${process.env.PUBLIC_URL}/resources_directory/image_2024-08-17_19-37-33.webp`}
+                                    src={`${process.env.PUBLIC_URL}/resources_directory/image_2024-08-17_19-39-30.webp`}
                                     className="_doggy_94k9d_6 _width-82_94k9d_23 _mascote_1vo1r_60 _isRendered_1vo1r_63"
                                     alt="Mascote"
                                 />
                             </div>
-                            <div className="_buttons_1x19s_79">
-                                <div className="_body_iud9y_25">
-                                    <div className="_rullers_o1nm32">Invite a Friend
-                                    </div>
-                                    <div className="_footer_ruller_7yda">
-                                        You will both get 2,000 and 1
-                                    </div>
-                                </div>
-                                <div className="_body_iud9y_25">
-                                    <div className="_rullers_o1nm32">Invite a Friend with a Telegram Premium Account
-                                    </div>
-                                    <div className="_footer_ruller_7yda">
-                                        You will both get 20,000 and 5
-                                    </div>
-                                </div>
-                                <div className="_body_iud9y_25">
-                                    <div className="_rullers_o1nm32">Additional Incentives</div>
-                                    <div className="_footer_ruller_7yda">
-                                        Get 10% of Your Fren’s Yields in Rewards
-                                    </div>
-                                </div>
-                            </div>
+                            <div className="_title_zhpdf_5" style={{fontSize: "45px", marginTop: "10%"}}>+{score}🍌</div>
                         </div>
                     </div>
                     <div className="_mascote_94k9d_1 _centered_94k9d_13" style={{marginTop: "35%"}}>
@@ -94,7 +74,7 @@ const Result = ({user,score,onStart}) => {
                     <div className="_title_1x19s_5">Congrats!
                         bountiful harvest</div>
                     <div className="_title_zhpdf_5" style={{fontSize: "54px",marginTop:"10%"}}>+{score}🍌</div>
-                    <div className="_root_oar9p_1 _type-white_ip8lu_54" style={{background: "#F7C605", gap: 40,marginTop:"40%"}} onClick={handleGoToScore}>
+                    <div className="_root_oar9p_1 _type-white_ip8lu_54" style={{background: "#F7C605", gap: 40,marginTop:"20%"}} onClick={handleGoToScore}>
                         <img style={{width: "50px"}}
                              src={`${process.env.PUBLIC_URL}/resources_directory/image_2024-08-17_17-39-06.webp`}/>
 

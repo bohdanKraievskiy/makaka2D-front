@@ -57,7 +57,7 @@ const SecondPage = (userData) => {
                     balance: randomAge,
                     top_group: topGroup,
                     top_percent: percentage,
-                    attempts_left:20
+                    attempts_left:5
                 };
                 setUser(userData);
 
@@ -80,7 +80,7 @@ const SecondPage = (userData) => {
                         "reward": "+1000", "completed": false},
                     {"title": "Invite 5 friends", "url": "", "reward": "+3000", "completed": false,
                     },
-                    {"title": "Invite 5 friends", "url": "", "reward": "+3000", "completed": false,
+                    {"title": "Invite 10 friends", "url": "", "reward": "+3000", "completed": false,
                     },
                     {"title": "Add 🍌in Telegram name", "url": "",
                         "reward": "+1000", "completed": false}

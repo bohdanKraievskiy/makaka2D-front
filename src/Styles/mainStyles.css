@@ -1509,7 +1509,7 @@ button.swiper-pagination-bullet {
 
 ._gameView_1cr97_1 {
     padding-bottom: 82px;
-    overflow-y: auto;
+    overflow-y: hidden;
     height: 100%;
     background: #131313;
 }

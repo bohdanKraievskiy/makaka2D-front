@@ -49,7 +49,7 @@ function Game({ telegram_Id }) {
     const makeOneNewPlatform = useCallback((bottom, score) => {
         const left = Math.random() * (window.innerWidth - 85);
         let type = 1; // Статические платформы по умолчанию
-        let speedMultiplier = Math.random() * 1.5 + 0.5; // Рандомная скорость (от 0.5 до 2)
+        let speedMultiplier = Math.random() * 1.5 + 1; // Рандомная скорость (от 0.5 до 2)
 
         // Проверяем, если тип 3 или тип 4 уже на экране
         if (Math.random() < 0.1) {
@@ -151,10 +151,17 @@ function Game({ telegram_Id }) {
     const onPlatformClick = useCallback((index, type, left, bottom) => {
 
         const pointsToAdd = type === 2 ? (doublePointsMode ? 6 : 3) : (doublePointsMode ? 2 : 1);
-        setPoints((prevPoints) => [
-            ...prevPoints,
-            { id: Date.now(), value: `+${pointsToAdd}`, position: { left, bottom } },
-        ]);
+        if (type === 4) {
+            setPoints((prevPoints) => [
+                ...prevPoints,
+                { id: Date.now(), value: '-100', position: { left, bottom } },
+            ]);
+        } else {
+            setPoints((prevPoints) => [
+                ...prevPoints,
+                { id: Date.now(), value: `+${pointsToAdd}`, position: { left, bottom } },
+            ]);
+        }
 
         if (type === 3) {
             isFrozenRef.current = true;
@@ -309,7 +316,7 @@ function Game({ telegram_Id }) {
                         <div className="instructions">
                             {user.username}
                         </div>
-                        <div className="_title_zhpdf_5" style={{ fontSize: "54px" }}>{user.balance}🍌</div>
+                        <div className="_title_zhpdf_5" style={{ fontSize: "10vw" }}>{user.balance}🍌</div>
                         <div className="_subtitleEmpty_1x19s_19 game_sub_title_ms718"
                              style={{ fontSize: "12px", opacity: 0.8 }}> Lorem Ipsum is simply dummy text of the printing and
                             typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the

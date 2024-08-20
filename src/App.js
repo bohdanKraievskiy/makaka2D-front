@@ -115,7 +115,8 @@ function App() {
     return (
         <div style={{ textAlign: 'center', padding: '20px' }}>
           <h1>Leave to mobile!</h1>
-          <QRCode value={window.location.href} />
+          <img src={`${process.env.PUBLIC_URL}/resources_directory/Untitled 1.webp`} style={{ width: '80%', height: '80%', position: 'static', marginLeft:"10%"}}
+          />
         </div>
     );
   }

@@ -36,7 +36,7 @@ function Game({ telegram_Id }) {
     useEffect(() => {
         // Убедитесь, что элемент доступен и его высота известна
         if (backgroundImgRef.current) {
-            const backgroundHeight = (document.getElementById("navDiv").offsetHeight)+90;
+            const backgroundHeight = (document.getElementById("navDiv").offsetHeight)+100;
             setMarginTop(backgroundHeight);
         }
     }, [background]); // Обновление при изменении background

@@ -33,7 +33,7 @@ function App() {
       if (/android/i.test(userAgent)) {
         setIsMobile(true);
       }
-      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+      if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
         setIsMobile(true);
       }
       setIsMobile(false) ;

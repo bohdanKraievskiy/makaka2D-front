@@ -322,7 +322,9 @@ function Game({ telegram_Id }) {
                                     style={{
                                         position: "absolute",
                                         bottom: "110px",
-                                        width: "100%"
+                                        width: "100%",
+                                        touchAction: "none", // Prevent zooming with touch
+                                        userSelect: "none" // Prevent text selection
                                     }} // Positioning the first image relative to the parent
                                 />
                                 <img
@@ -337,7 +339,9 @@ function Game({ telegram_Id }) {
                                         right: 0, // Ensure it's aligned to the right edge
                                         margin: "0 auto", // Center the image horizontally
                                         width: "100%", // Make the image responsive to screen width
-                                    }}
+                                        touchAction: "none", // Prevent zooming with touch
+                                        userSelect: "none" // Prevent text selection
+                                }}
                                 />
                             </div>
                         ) : (<></>)

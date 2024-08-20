@@ -629,7 +629,7 @@
     bottom: 0;
     z-index: 20001;
     width: 100%;
-    height: 45%;
+    height: 65%;
     -webkit-transform: translate(-50%,100%);
     -moz-transform: translate(-50%,100%);
     -ms-transform: translate(-50%,100%);
@@ -2427,6 +2427,7 @@ button.swiper-pagination-bullet {
     ._view_zhpdf_1{
         gap: 4vw !important;
     }
+
 }
 
 ._body_iud9y_25 {

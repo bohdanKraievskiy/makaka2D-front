@@ -11,7 +11,7 @@ const BottomNavbar = () => {
     const isActive = (path) => location.pathname === path;
 
     return (
-        <div className="_navbar_1cr97_7">
+        <div className="_navbar_1cr97_7" id="navDiv">
             <div
                 className={`_navbarItem_1cr97_20 ${isActive("/home") ? "_isActive_1cr97_41" : ""}`}
                 onClick={() => {

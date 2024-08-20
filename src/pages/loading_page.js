@@ -139,7 +139,7 @@ const PreLoad = ({ telegramId }) => {
                 <RewardPage rewardData={rewardData} />
             ) : (
                 <div className="_view_sf2n5_1 _view_1x19s_1" style={{opacity: 1}}>
-                    <div className="_title_1x19s_5">OnlyUP</div>
+                    <div className="_title_1x19s_5">PRIME</div>
                     <div className="_mascote_94k9d_1 _centered_94k9d_13 _loaded_91hw8">
                         <img
                             id="home-mascote"

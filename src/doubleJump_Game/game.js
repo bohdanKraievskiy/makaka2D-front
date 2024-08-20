@@ -18,6 +18,7 @@ function Game({ telegram_Id }) {
     const [doublePointsMode, setDoublePointsMode] = useState(false);
     const [points, setPoints] = useState([]);
     const [background, setBackground] = useState('');
+    const [background_upper,setBackground_upper] = useState('')
     const scoreRef = useRef(score);
     const type3ExistsRef = useRef(false); // Отслеживаем наличие платформы типа 3
     const type4ExistsRef = useRef(false); // Отслеживаем наличие платформы типа 4
@@ -25,10 +26,21 @@ function Game({ telegram_Id }) {
     const timerRef = useRef(timer);
     const hasStartedRef = useRef(false); // Реф для отслеживания начала игры
     const isActiveSessionRef = useRef(false); // Реф для отслеживания активной сессии
+    const backgroundImgRef = useRef(null);
+    const [marginTop, setMarginTop] = useState(0);
     const location = useLocation(); // Используем для маршрутизации
     const navigate = useNavigate();
     const [_backgroundColor, setBackgroundColor] = useState('#131313');
     const [showResultPage, setShowResultPage] = useState(false);
+
+    useEffect(() => {
+        // Убедитесь, что элемент доступен и его высота известна
+        if (backgroundImgRef.current) {
+            const backgroundHeight = (document.getElementById("navDiv").offsetHeight)+90;
+            setMarginTop(backgroundHeight);
+        }
+    }, [background]); // Обновление при изменении background
+
     useEffect(() => {
         scoreRef.current = score;
     }, [score]);
@@ -40,7 +52,7 @@ function Game({ telegram_Id }) {
             }, 1000);
             return () => clearInterval(countdown);
         } else if (timer <= 0) {
-            gameOver();
+            //gameOver();
         }
     }, [isGameOver, timer, isFrozenRef.current]);
 
@@ -130,7 +142,7 @@ function Game({ telegram_Id }) {
         hasStartedRef.current = false;
         setIsGameOver(true);
         setBackground(''); // Сбрасываем фон игры
-
+        setBackground_upper('')
         if (isActiveSessionRef.current) {
             setShowResultPage(true) // Переход на страницу результатов после завершения игры
         }
@@ -139,6 +151,7 @@ function Game({ telegram_Id }) {
     useEffect(() => {
         if (hasStartedRef.current) {
             setBackground('normal_bg.webp'); // Меняем фон на фон 1 при старте
+            setBackground_upper('normal_uper.webp')
             setBackgroundColor('#BBEBFF');
         }
     }, [hasStartedRef.current]);
@@ -166,9 +179,11 @@ function Game({ telegram_Id }) {
         if (type === 3) {
             isFrozenRef.current = true;
             setBackground('frozen_bg.webp'); // Меняем фон на фон 2 при заморозке
+            setBackground_upper('frozen_uper.webp')
             setTimeout(() => {
                 isFrozenRef.current = false;
                 setBackground('normal_bg.webp'); // Возвращаем фон на фон 1
+                setBackground_upper('normal_uper.webp')
                 setBackgroundColor('#BBEBFF');
             }, 3000);
             setBackgroundColor('#48A7AD');
@@ -177,9 +192,11 @@ function Game({ telegram_Id }) {
         } else if (type === 4) {
             setScore((prevScore) => Math.max(0, prevScore - 100)); // Отнимаем 100 баллов
             setBackground('bomb_bg.webp'); // Меняем фон на фон 3 при активации типа 4
+            setBackground_upper('bomb_uper.webp')
             setBackgroundColor('#9E0000');
             setTimeout(() => {
                 setBackground('normal_bg.webp'); // Возвращаем фон на фон 1
+                setBackground_upper('normal_uper.webp')
                 setBackgroundColor('#BBEBFF');
             }, 2000);
 
@@ -294,10 +311,14 @@ function Game({ telegram_Id }) {
                             ))}
                         </div>
                         {hasStartedRef.current ? (
-                            <img draggable={false}
-                                 src={`${process.env.PUBLIC_URL}/resources_directory/${background}`}
-                                 alt="Background" className="_game_background981"
-                            />
+                                <div className="_game_background980">
+                                    <img draggable={false} id="backgroundItem" ref={backgroundImgRef}
+                                         src={`${process.env.PUBLIC_URL}/resources_directory/${background}`}
+                                         alt="Background" className="_game_background981"
+                                    />
+                                    <img draggable={false}    src={`${process.env.PUBLIC_URL}/resources_directory/${background_upper}`}
+                                    alt="background_uper" className="_game_background982" style={{marginTop:-(marginTop)}}/>
+                                </div>
                         ) : (<></>)
                         }
                         <div className="timer">0:{timer}</div>

@@ -52,7 +52,7 @@ function Game({ telegram_Id }) {
             }, 1000);
             return () => clearInterval(countdown);
         } else if (timer <= 0) {
-            //gameOver();
+            gameOver();
         }
     }, [isGameOver, timer, isFrozenRef.current]);
 

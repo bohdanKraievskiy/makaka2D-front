@@ -60,20 +60,20 @@ const InvitePage = ({telegramId}) => {
                                     <div className="_rullers_o1nm32">Invite a Friend
                                     </div>
                                     <div className="_footer_ruller_7yda">
-                                        You will both get 2,000    and 1
+                                        You will both get 2,000 🍌 and 1
                                     </div>
                                 </div>
                                 <div className="_body_iud9y_25">
                                     <div className="_rullers_o1nm32">Invite a Friend with a Telegram Premium Account
                                     </div>
                                     <div className="_footer_ruller_7yda">
-                                        You will both get 20,000    and 5
+                                        You will both get 20,000 🍌 and 5
                                     </div>
                                 </div>
                                 <div className="_body_iud9y_25">
                                     <div className="_rullers_o1nm32">Additional Incentives</div>
                                     <div className="_footer_ruller_7yda">
-                                        Get 10% of Your Fren’s    Yields in Rewards
+                                        Get 10% of Your Fren’s 🍌 Yields in Rewards
                                     </div>
                                 </div>
                             </div>

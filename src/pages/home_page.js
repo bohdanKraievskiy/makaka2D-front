@@ -195,7 +195,7 @@ const HomePage = () => {
                                                         title="APE Community"
                                                         text="Home for Telegram OGs"
                                                         buttonText="Join"
-                                                        url="https://t.me/OnlyUP_Official_chat"
+                                                        url="https://t.me/WeArePrimeNews"
                                                     />
                                                 </SwiperSlide>
                                             </Swiper>

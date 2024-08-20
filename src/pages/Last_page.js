@@ -79,7 +79,7 @@ const LastPage = () => {
                                 <div className="_valueTitle_mgd6s_78">{user?.age}</div>
                             </div>
                             <div className="_valueSubTitle_mgd6s_86">
-                                Welcome to the  movement 🤝
+                                Welcome to the $PRIME movement 🤝
                             </div>
                         </>
                     ) : state === "premium" && user.is_premium ? (

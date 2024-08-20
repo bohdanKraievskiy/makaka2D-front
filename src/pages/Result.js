@@ -78,7 +78,7 @@ const Result = ({user,score,onStart}) => {
                             </div>
                         </div>
                     </div>
-                    <div className="_mascote_94k9d_1 _centered_94k9d_13" style={{marginTop: "35%"}}>
+                    <div className="_mascote_94k9d_1 _centered_94k9d_13" style={{marginTop: "5%"}}>
                         <img
                             id="home-mascote" style={{width: "60vw"}}
                             src={`${process.env.PUBLIC_URL}/resources_directory/image_2024-08-17_17-32-32.webp`}

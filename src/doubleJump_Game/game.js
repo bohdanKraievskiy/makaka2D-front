@@ -36,7 +36,7 @@ function Game({ telegram_Id }) {
     useEffect(() => {
         // Убедитесь, что элемент доступен и его высота известна
         if (backgroundImgRef.current) {
-            const backgroundHeight = (document.getElementById("navDiv").offsetHeight)+100;
+            const backgroundHeight = (window.innerHeight);
             setMarginTop(backgroundHeight);
         }
     }, [background]); // Обновление при изменении background
@@ -52,7 +52,7 @@ function Game({ telegram_Id }) {
             }, 1000);
             return () => clearInterval(countdown);
         } else if (timer <= 0) {
-            gameOver();
+           gameOver();
         }
     }, [isGameOver, timer, isFrozenRef.current]);
 
@@ -61,7 +61,7 @@ function Game({ telegram_Id }) {
     const makeOneNewPlatform = useCallback((bottom, score) => {
         const left = Math.random() * (window.innerWidth - 85);
         let type = 1; // Статические платформы по умолчанию
-        let speedMultiplier = Math.random() * 1.5 + 1; // Рандомная скорость (от 0.5 до 2)
+        let speedMultiplier = Math.random() * 2 + 1.5; // Рандомная скорость (от 0.5 до 2)
 
         // Проверяем, если тип 3 или тип 4 уже на экране
         if (Math.random() < 0.1) {
@@ -311,21 +311,42 @@ function Game({ telegram_Id }) {
                             ))}
                         </div>
                         {hasStartedRef.current ? (
-                                <div className="_game_background980">
-                                    <img draggable={false} id="backgroundItem" ref={backgroundImgRef}
-                                         src={`${process.env.PUBLIC_URL}/resources_directory/${background}`}
-                                         alt="Background" className="_game_background981"
-                                    />
-                                    <img draggable={false}    src={`${process.env.PUBLIC_URL}/resources_directory/${background_upper}`}
-                                    alt="background_uper" className="_game_background982" style={{marginTop:-(marginTop)}}/>
-                                </div>
+                            <div className="_game_background980">
+                                <img
+                                    draggable={false}
+                                    id="backgroundItem"
+                                    ref={backgroundImgRef}
+                                    src={`${process.env.PUBLIC_URL}/resources_directory/${background}`}
+                                    alt="Background"
+                                    className="_game_background981"
+                                    style={{
+                                        position: "absolute",
+                                        bottom: "110px",
+                                        width: "100%"
+                                    }} // Positioning the first image relative to the parent
+                                />
+                                <img
+                                    draggable={false}
+                                    src={`${process.env.PUBLIC_URL}/resources_directory/${background_upper}`}
+                                    alt="background_uper"
+                                    className="_game_background982"
+                                    style={{
+                                        position: "absolute", // Keeps the image at a fixed position within the parent
+                                        bottom: "82px", // Adjust this value to set the distance from the bottom of the screen
+                                        left: 0, // Ensure it's aligned to the left edge
+                                        right: 0, // Ensure it's aligned to the right edge
+                                        margin: "0 auto", // Center the image horizontally
+                                        width: "100%", // Make the image responsive to screen width
+                                    }}
+                                />
+                            </div>
                         ) : (<></>)
                         }
                         <div className="timer">0:{timer}</div>
                         <div className="score">🍌{score}</div>
                     </>
                 ) : (
-                    <div className="_view_sf2n5_1 _view_zhpdf_1" style={{ opacity: 1, gap: "8vw" }}>
+                    <div className="_view_sf2n5_1 _view_zhpdf_1" style={{opacity: 1, gap: "8vw"}}>
                         <div className="_media_iud9y_8 _game_start87">
                             <img
                                 className="_avatar_iud9y_19"

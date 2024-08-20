@@ -37,6 +37,7 @@ body{
     height: 20px;
     position: absolute;
     border-radius: 1px;
+    z-index: 99;
 }
 .platform img{
     max-width: 90%;

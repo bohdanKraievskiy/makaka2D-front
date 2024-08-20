@@ -30,8 +30,13 @@ function App() {
   useEffect(() => {
     const checkIfMobile = () => {
       const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-      const isMobileDevice = /android|iPad|iPhone|iPod/.test(userAgent.toLowerCase());
-      setIsMobile(isMobileDevice);
+      if (/android/i.test(userAgent)) {
+        setIsMobile(true);
+      }
+      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        setIsMobile(true);
+      }
+      setIsMobile(false) ;
     };
 
     checkIfMobile();

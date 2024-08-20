@@ -129,7 +129,7 @@ const InvitePage = ({telegramId}) => {
                                         <div className="_footer_iud9y_32">{user.score} $UP</div>
                                     </div>
                                     <div className="_details_iud9y_56">
-                                        <span className="_medal_iud9y_66">+250 APE</span>
+                                        <span className="_medal_iud9y_66">{user.position}</span>
                                     </div>
                                 </div>
                             ))}
@@ -139,8 +139,7 @@ const InvitePage = ({telegramId}) => {
                             {friendsArray.map((user, index) => (
                                 <div key={index} className="_item_iud9y_1">
                                     <div className="_body_iud9y_25">
-                                        <div className="_text_iud9y_47">+20</div>
-                                        <div className="_footer_iud9y_32">2024.08.14 03:45:24</div>
+                                        <div className="_text_iud9y_47">+250</div>
                                     </div>
                                     <div className="_details_iud9y_56">
                                         <span className="_medal_iud9y_66">by 🍌 {user.username}</span>

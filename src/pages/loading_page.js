@@ -26,7 +26,7 @@ const PreLoad = ({ telegramId }) => {
                 if (rewardResult) {
                     setRewardData(rewardResult);
                     setShowRewardPage(true);
-
+                    window.Telegram.WebApp.HapticFeedback.impactOccurred('hard');
                     // Скрыть RewardPage через 5 секунд и загрузить остальные данные
                     setTimeout(async () => {
                         setShowRewardPage(false);

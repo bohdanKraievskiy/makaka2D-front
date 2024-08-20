@@ -6,6 +6,7 @@ const WelcomePage = () => {
     const navigate = useNavigate();
     const handleButtonClick = () => {
         navigate("/second");
+        window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
     };
     return (
         <div className="welcome-page">

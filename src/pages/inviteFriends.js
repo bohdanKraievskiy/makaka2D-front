@@ -67,6 +67,7 @@ const InvitePage = ({ telegramId }) => {
     };
 
     const handleTabChange = (tab) => {
+        window.Telegram.WebApp.HapticFeedback.impactOccurred('medium');
         setActiveTab(tab);
     };
 

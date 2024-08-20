@@ -162,7 +162,7 @@ function Game({ telegram_Id }) {
     }, [location]);
 
     const onPlatformClick = useCallback((index, type, left, bottom) => {
-
+        window.Telegram.WebApp.HapticFeedback.impactOccurred('medium');
         const pointsToAdd = type === 2 ? (doublePointsMode ? 6 : 3) : (doublePointsMode ? 2 : 1);
         if (type === 4) {
             setPoints((prevPoints) => [
@@ -271,6 +271,7 @@ function Game({ telegram_Id }) {
     }, [platformCount, createPlatforms]);
 
     const handleTouchStart = useCallback((event) => {
+        window.Telegram.WebApp.HapticFeedback.impactOccurred('hard');
         if (isGameOver && user.attempts_left > 0) {
             fetchUserAttempts(telegram_Id);
             start();

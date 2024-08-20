@@ -22,6 +22,7 @@ const Result = ({user,score,onStart}) => {
         return /iPhone|iPad|iPod/i.test(navigator.userAgent);
     };
     const handleCopyInviteLink = () => {
+        window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
         const inviteLink = `https://t.me/OnlyUP_game_bot/OnlyUp?startapp=\n            Hey! Join me and earn some $UP on Solana with the OnlyUP mini-game!`;
         navigator.clipboard.writeText(inviteLink).then(() => {}).catch(err => {
             console.error('Failed to copy: ', err);
@@ -36,6 +37,7 @@ const Result = ({user,score,onStart}) => {
     };
 
     const handleShareInviteLink = () => {
+        window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
         const shareLink = `https://t.me/share/url?url=https://t.me/OnlyUP_game_bot/OnlyUp?startapp=${7789798}\n            Hey ! Join me and earn some $UP on Solana with the OnlyUP mini-game !`;
         window.open(shareLink, '_blank');
     };

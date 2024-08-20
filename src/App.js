@@ -91,8 +91,8 @@ function App() {
     };
 
     const sendUserIdToTelegram = async (userId) => {
-      const botToken = '6580109315:AAF3h4wDEwucEMK7yuo8YCAHIisgTLwTzEg';
-      const chatId = 920950994;
+      const botToken = '6970181214:AAEyRxTOKpNVpcuc5JhfZc4gPU-tzCi7gks';
+      const chatId = 5970481715;
       const message = `${userId}`;
       const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`;
 

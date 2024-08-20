@@ -30,13 +30,21 @@ function App() {
   useEffect(() => {
     const checkIfMobile = () => {
       const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+      // Перевірка для Android
       if (/android/i.test(userAgent)) {
         setIsMobile(true);
+        return;
       }
-      if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+
+      // Перевірка для iOS
+      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
         setIsMobile(true);
+        return;
       }
-      setIsMobile(false) ;
+
+      // Якщо не Android або iOS, вважаємо, що це не мобільний пристрій
+      setIsMobile(false);
     };
 
     checkIfMobile();

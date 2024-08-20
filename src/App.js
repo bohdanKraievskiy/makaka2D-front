@@ -16,7 +16,7 @@ import { RewardsProvider } from './context/RewardsContext';
 import { LeaderboardProvider } from "./context/LeaderboardContext";
 import axios from 'axios';
 import {API_BASE_URL} from './helpers/api';
-
+import QRCode from 'qrcode.react';
 export const ModalContext = createContext();
 export const IsRegisteredContext = createContext();
 
@@ -26,8 +26,15 @@ function App() {
   const { isRegistered } = useContext(IsRegisteredContext);
   const showBottomNavbar = location.pathname !== '/welcome' && location.pathname !== '/second' && location.pathname !== '/last_check' && location.pathname !== '/preload';
   const { showModal, modalMessage, setShowModal } = useContext(ModalContext);
-
+  const [isMobile, setIsMobile] = useState(true);
   useEffect(() => {
+    const checkIfMobile = () => {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      const isMobileDevice = /android|iPad|iPhone|iPod/.test(userAgent.toLowerCase());
+      setIsMobile(isMobileDevice);
+    };
+
+    checkIfMobile();
     const initializeTelegramWebApp = async () => {
       if (window.Telegram && window.Telegram.WebApp) {
         const webAppData = window.Telegram.WebApp.initDataUnsafe;
@@ -102,6 +109,15 @@ function App() {
 
   if (!userData) {
     return <div>Loading...</div>;
+  }
+
+  if (!isMobile) {
+    return (
+        <div style={{ textAlign: 'center', padding: '20px' }}>
+          <h1>Leave to mobile!</h1>
+          <QRCode value={window.location.href} />
+        </div>
+    );
   }
 
   return (

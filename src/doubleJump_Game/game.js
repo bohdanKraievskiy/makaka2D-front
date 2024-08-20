@@ -372,7 +372,7 @@ function Game({ telegram_Id }) {
                                  src={`${process.env.PUBLIC_URL}/resources_directory/image_2024-08-17_14-50-10.webp`}
                             />
                             <text className="_left_game_bananes"
-                                  style={{ right: "20px", bottom: 13 }}>{user.attempts_left}</text>
+                                  style={{ right: "20px", bottom: 11 }}>{user.attempts_left}</text>
                         </div>
                         <div className="_root_oar9p_1 _type-white_ip8lu_54" onClick={handleTouchStart} style={{ background: "#F7C605" }}>
                             Start Farming

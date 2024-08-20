@@ -2404,6 +2404,31 @@ button.swiper-pagination-bullet {
     width: 100px !important;
     height: auto !important;
 }
+
+@media only screen and (max-height: 787px) {
+    ._game_start87{
+        margin-left: 40%;
+        margin-top: 5%;
+        width: 20vw !important;
+        height: auto !important;
+    }
+
+    .box_rectangle19{
+        height: 35vw !important;
+    }
+
+    .instructions{
+        font-size: 5vw !important;
+    }
+    ._title_zhpdf_5{
+
+    }
+
+    ._view_zhpdf_1{
+        gap: 4vw !important;
+    }
+}
+
 ._body_iud9y_25 {
     display: -webkit-box;
     display: -webkit-flex;

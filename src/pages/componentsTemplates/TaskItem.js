@@ -100,41 +100,18 @@ const TaskItem = ({ title, footerText, url, index, setAnimated }) => {
     const handleButtonClick = () => {
         window.Telegram.WebApp.HapticFeedback.impactOccurred('medium');
 
-        if (timerExpired) {
-            setIsChecked(false);
-            localStorage.removeItem(storageKey);
-            localStorage.removeItem(startTimeKey);
-            handleShowModal();
-            return;
-        }
 
-        if (title === "Invite 3 friends in 24 hours") {
             if (!isChecked) {
-                // Start the task and save the start time
-                axios.post(`${API_BASE_URL}/tasks/start/`, {
-                    telegram_id: user.telegram_id
-                }).then(() => {
-                    setIsChecked(true);
-                    localStorage.setItem(storageKey, true);
-                    localStorage.setItem(startTimeKey, Date.now().toString());
-                }).catch(error => {
-                    console.error("Failed to start task:", error);
-                    handleShowModal();
-                });
-            } else {
-                // Verify task completion
-                verifyTask(user.telegram_id, title, footerText);
-            }
-        } else {
-            if (!isChecked) {
-                window.open(url, '_blank');
+                if(url) {
+                    window.open(url, '_blank');
+                }
                 setIsChecked(true);
                 localStorage.setItem(storageKey, true);
                 localStorage.setItem(startTimeKey, Date.now().toString());
             } else {
                 verifyTask(user.telegram_id, title, footerText);
             }
-        }
+
     };
 
 

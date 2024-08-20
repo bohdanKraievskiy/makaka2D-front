@@ -74,13 +74,13 @@ const SecondPage = (userData) => {
                 setRewards(rewardsData);
 
                 const initialTasks = [
-                    {"title": "Subscribe to PRIME channel", "url": "https://twitter.com/OnlyUP1B", "reward": "+1000",
+                    {"title": "Subscribe to PRIME channel", "url": "https://t.me/WeArePrimeNews", "reward": "+1000",
                         "completed": false},
-                    {"title": "Subscribe to PRIME X", "url": "https://t.me/OnlyUP_Official_chat",
+                    {"title": "Subscribe to PRIME X", "url": "https://x.com/WeArePrimeOnly",
                         "reward": "+1000", "completed": false},
-                    {"title": "Invite 5 friends", "url": "", "reward": "+3000", "completed": false,
+                    {"title": "Invite 5 friends", "url": "", "reward": "+1000", "completed": false,
                     },
-                    {"title": "Invite 10 friends", "url": "", "reward": "+3000", "completed": false,
+                    {"title": "Invite 10 friends", "url": "", "reward": "+1000", "completed": false,
                     },
                     {"title": "Add 🍌in Telegram name", "url": "",
                         "reward": "+1000", "completed": false}

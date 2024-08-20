@@ -343,7 +343,7 @@ function Game({ telegram_Id }) {
                         ) : (<></>)
                         }
                         <div className="timer">0:{timer}</div>
-                        <div className="score">🍌
+                        <div className="score">
                             {score}</div>
                     </>
                 ) : (

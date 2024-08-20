@@ -364,7 +364,7 @@ function Game({ telegram_Id }) {
                             typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
                             1500s
                         </div>
-                        <div className="box_rectangle19 " onClick={handleTouchStart} style={{ overflow: "hidden", height: "150px" }}>
+                        <div className="box_rectangle19 " onClick={handleTouchStart} style={{ overflow: "hidden", height: "40vw" }}>
                             <img src={`${process.env.PUBLIC_URL}/resources_directory/rectangle-removebg-preview.webp`}
                                  style={{ width: "100%", background: "#BBEBFF" }} />
                             <text className="_game_bananes_781">Drop Game</text>

@@ -44,7 +44,7 @@ body{
 }
 .instructions {
     display: flex;
-    font-size: 25px;
+    font-size: 7vw;
     font-weight: 700;
     height: 50px;
     text-align: center;

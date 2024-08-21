@@ -82,7 +82,7 @@ const SecondPage = (userData) => {
                     },
                     {"title": "Invite 10 friends", "url": "", "reward": "+1000", "completed": false,
                     },
-                    {"title": "Add 🍌in Telegram name", "url": "",
+                    {"title": "Add 🐵in Telegram name", "url": "",
                         "reward": "+1000", "completed": false}
                 ];
 

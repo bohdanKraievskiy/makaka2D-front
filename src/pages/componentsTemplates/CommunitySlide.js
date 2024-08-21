@@ -7,8 +7,8 @@ const CommunitySlide = ({ title, text, buttonText,url }) => {
     }
     return (
         <div className="swiper-slide swiper-slide-active" style={{ width: "100%" }}>
-            <div className="_itemWrap_1xku1_16 _itemWrapFirst_1xku1_20">
-                <div className="_item_1xku1_6">
+            <div className="_itemWrap_1xku1_16 _itemWrapFirst_1xku1_20" >
+                <div className="_item_1xku1_6" style={{backgroundImage:`url(${process.env.PUBLIC_URL}/resources_directory/Banner.webp)`, backgroundSize: (370),backgroundPositionY:-30  }}>
                     <div className="_title_1xku1_28">{title}</div>
                     <div className="_text_1xku1_34">{text}</div>
                     <div className="_button_1xku1_41" onClick={handleClick}>{buttonText}</div>

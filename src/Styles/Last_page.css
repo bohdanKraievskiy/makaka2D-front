@@ -25,14 +25,13 @@
 }
 
 
-._view_mgd6s_11:before {
+._view_mgd6s_11  {
     left: 0;
     top: 0;
     right: 0;
     bottom: 0;
     position: absolute;
     content: "";
-    background-image: url(https://cdn.onetime.dog/public/stars.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

@@ -143,7 +143,7 @@ const PreLoad = ({ telegramId }) => {
                     <div className="_mascote_94k9d_1 _centered_94k9d_13 _loaded_91hw8">
                         <img
                             id="home-mascote"
-                            src={`${process.env.PUBLIC_URL}/resources_directory/image_2024-08-03_02-24-40.webp`}
+                            src={`${process.env.PUBLIC_URL}/resources_directory/animation.gif`}
                             className="_doggy_94k9d_6 louve_t09 _width-82_94k9d_23 _mascote_1vo1r_60 _isRendered_1vo1r_63"
                             alt="Mascote"
                         />
@@ -169,7 +169,7 @@ const RewardPage = ({rewardData}) => {
                         <div className="_valueTitle_mgd6s_78">daily  streak</div>
                     </div>
                     <div className="_valueSubTitle_mgd6s_86">
-                        +{reward} APE.<br/>
+                        +{reward} WAP.<br/>
                     </div>
 
 

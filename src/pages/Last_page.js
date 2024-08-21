@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, {useState, useContext, useEffect} from "react";
 import "../Styles/Last_page.css"; // Додайте CSS для стилізації
 import { useNavigate } from "react-router-dom";
 import { UserContext } from '../context/UserContext';
@@ -7,7 +7,7 @@ const LastPage = () => {
     const { user } = useContext(UserContext);
     const [state, setState] = useState("initial"); // Текущее состояние страницы
     const navigate = useNavigate();
-
+    const [background,setBackground] = useState("75007500 (6)");
     const handleContinue = () => {
         window.Telegram.WebApp.HapticFeedback.impactOccurred('medium');
         if (state === "initial") {
@@ -33,9 +33,23 @@ const LastPage = () => {
         });
     };
 
+    useEffect(() => {
+        if(state === "initial") {
+            setBackground("75007500")
+        }
+
+        if(state === "amazing") {
+            setBackground("75007501")
+        }
+
+        if(state === "premium") {
+            setBackground("75007502")
+        }
+    },[state])
+
     return (
         <div className="_page_1ulsb_1">
-            <div className="_view_sf2n5_1 _view_mgd6s_11" style={{ opacity: 1 }}>
+            <div className="_view_sf2n5_1 _view_mgd6s_11" style={{ opacity: 1,backgroundImage: `url(${process.env.PUBLIC_URL}/resources_directory/${background}.webp)`  }}>
                 <div className="_inner_mgd6s_1">
                     <div className="_left_mgd6s_121" onClick={handleSwitch}></div>
                     <div className="_right_mgd6s_131" onClick={handleSwitch}></div>
@@ -68,18 +82,18 @@ const LastPage = () => {
                     ) : state === "amazing" ? (
                         <>
                             <div className="_title_mgd6s_24">You are amazing!</div>
-                            <div className="_subTitle_mgd6s_34">Here is your APE reward</div>
+                            <div className="_subTitle_mgd6s_34">Here is your WAP reward</div>
                             <div className="_valueWrap_mgd6s_42">
                                 <div className="_value_mgd6s_42">
                                     <img
-                                        src={`${process.env.PUBLIC_URL}/resources_directory/13A8E8C5-B501-4EA6-B4AC-6BD22BD7A9BA.webp`}
+                                        src={`${process.env.PUBLIC_URL}/resources_directory/animation.gif`}
                                         width="237" height="242"
                                     />
                                 </div>
                                 <div className="_valueTitle_mgd6s_78">{user?.age}</div>
                             </div>
                             <div className="_valueSubTitle_mgd6s_86">
-                                Welcome to the $PRIME movement 🤝
+                                Welcome to the PRIME movement 🤝
                             </div>
                         </>
                     ) : state === "premium" && user.is_premium ? (

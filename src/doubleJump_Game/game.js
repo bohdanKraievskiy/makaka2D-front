@@ -271,7 +271,7 @@ function Game({ telegram_Id }) {
     }, [platformCount, createPlatforms]);
 
     const handleTouchStart = useCallback((event) => {
-        window.Telegram.WebApp.HapticFeedback.impactOccurred('hard');
+        window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
         if (isGameOver && user.attempts_left > 0) {
             fetchUserAttempts(telegram_Id);
             start();

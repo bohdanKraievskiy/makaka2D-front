@@ -2,7 +2,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif,'AlphabetSoup';
+    sans-serif,'AlphabetSoup',sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -10,4 +10,13 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+@font-face {
+  font-family: "Alphabet Soup";
+  src: url("https://db.onlinewebfonts.com/t/ceded02f923d0bae9173c718a228a064.eot");
+  src: url("https://db.onlinewebfonts.com/t/ceded02f923d0bae9173c718a228a064.eot?#iefix")format("embedded-opentype"),
+  url("https://db.onlinewebfonts.com/t/ceded02f923d0bae9173c718a228a064.woff2")format("woff2"),
+  url("https://db.onlinewebfonts.com/t/ceded02f923d0bae9173c718a228a064.woff")format("woff"),
+  url("https://db.onlinewebfonts.com/t/ceded02f923d0bae9173c718a228a064.ttf")format("truetype"),
+  url("https://db.onlinewebfonts.com/t/ceded02f923d0bae9173c718a228a064.svg#Alphabet Soup")format("svg");
 }

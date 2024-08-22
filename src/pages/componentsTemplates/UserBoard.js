@@ -1,13 +1,15 @@
 // src/components/UserBoard.js
-import React, { useContext } from 'react';
+import React, {useContext, useEffect} from 'react';
 import { LeaderboardContext } from '../../context/LeaderboardContext';
 import {UserContext} from "../../context/UserContext";
 
-const UserBoard = () => {
+const UserBoard = ({telegramId}) => {
     const { userStats } = useContext(LeaderboardContext);
-    const { user } = useContext(UserContext);
-    console.log(user);
-    console.log(userStats);
+    const { user, setUser, fetchUser } = useContext(UserContext);
+
+    useEffect(() => {
+        fetchUser(telegramId)
+    }, [telegramId]);
     if (!userStats) return null;
 
     return (

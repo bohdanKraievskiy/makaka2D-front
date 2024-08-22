@@ -120,7 +120,7 @@ const HomePage = ({telegramId}) => {
                     <div className="_title_1vo1r_5">
                         <div style={{flexDirection:"row "}}
                           className={`_balance_eubs4_1 balance-text _exclusive_font ${animated ? 'balance-animated' : ''}`}>
-                            <span   style={{fontSize:"12vw",color:"white"}}>{user.balance} </span>
+                            <span   style={{fontSize:"12vw",color:"white"}}>{user?.balance} </span>
                             &nbsp;
                             <span style={{fontSize:"12vw"}}> WAP</span>
                         </div>

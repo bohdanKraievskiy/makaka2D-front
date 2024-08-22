@@ -80,7 +80,7 @@ const LastPage = ({telegramId}) => {
                             <div className="_title_mgd6s_24 _exclusive_font" style={{fontSize:"12vw"}}>ELITE NUMBER</div>
                             <div className="_subTitle_mgd6s_34">You've joined Telegram</div>
                             <div className="_valueWrap_mgd6s_42">
-                                <div className="_value_mgd6s_42 _exclusive_font">{Math.round(user ? user.top_group : "...")}</div>
+                                <div className="_value_mgd6s_42 _exclusive_font">{Math.round(user ? user?.top_group : "...")}</div>
                                 <div className="_valueTitle_mgd6s_78 _exclusive_font" style={{fontSize:"12vw"}}>YEARS AGO</div>
                             </div>
                             <div className="_valueSubTitle_mgd6s_86">

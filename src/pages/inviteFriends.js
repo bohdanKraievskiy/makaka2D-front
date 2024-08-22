@@ -26,7 +26,7 @@ const InvitePage = ({ telegramId }) => {
     };
 
     const handleCopyInviteLink = () => {
-        const inviteLink = `https://t.me/OnlyUP_game_bot/OnlyUp?startapp=${telegramId}\nHey! Join me and earn some $UP on Solana with the OnlyUP mini-game!`;
+        const inviteLink = `https://t.me/WeArePrime_Bot/app?startapp=${telegramId}`;
         navigator.clipboard.writeText(inviteLink).then(() => {
             if (isIPhone()) {
                 alert('Link was copied to the clipboard!!');
@@ -40,7 +40,7 @@ const InvitePage = ({ telegramId }) => {
     };
 
     const handleShareInviteLink = () => {
-        const shareLink = `https://t.me/share/url?url=https://t.me/OnlyUP_game_bot/OnlyUp?startapp=${telegramId}\nHey! Join me and earn some $UP on Solana with the OnlyUP mini-game!`;
+        const shareLink = `https://t.me/WeArePrime_Bot/app?startapp=${telegramId}`;
         window.open(shareLink, '_blank');
     };
 

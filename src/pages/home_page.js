@@ -35,7 +35,8 @@ const HomePage = ({telegramId}) => {
             if (!tasks || tasks.length === 0) {
                 await fetchTasks(telegramId);
             }
-            setLoading(false); // Данные загружены, скрыть загрузочный экран
+            await new Promise(resolve => setTimeout(resolve, 2000)); // 5 секундная задержка
+            setLoading(false);
         };
 
         loadData();

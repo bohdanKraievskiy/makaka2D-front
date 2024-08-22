@@ -4,11 +4,9 @@ import "../Styles/mainStyles.css"; // Додайте CSS для стилізац
 import UserBoard from "./componentsTemplates/UserBoard";
 import Leaderboard from "./componentsTemplates/Leaderboard";
 import {LeaderboardContext} from "../context/LeaderboardContext";
-import {UserContext} from "../context/UserContext";
 
 const LeaderboardPage = ({telegramId}) => {
     const { count,fetchLeaderboard } = useContext(LeaderboardContext);
-    const { user, setUser, fetchUser } = useContext(UserContext);
 
     useEffect(() => {
         fetchLeaderboard(telegramId)

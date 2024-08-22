@@ -69,7 +69,7 @@ const LastPage = () => {
                     </div>
                     {state === "initial" ? (
                         <>
-                            <div className="_title_mgd6s_24">Elite member!</div>
+                            <div className="_title_mgd6s_24 _exclusive_font" style={{fontSize:"12vw"}}>ELITE NUMBER</div>
                             <div className="_subTitle_mgd6s_34">You've joined Telegram</div>
                             <div className="_valueWrap_mgd6s_42">
                                 <div className="_value_mgd6s_42 _exclusive_font">{Math.round(user ? user.top_group : "...")}</div>

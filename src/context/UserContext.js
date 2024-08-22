@@ -35,9 +35,16 @@ export const UserProvider = ({ children, userData }) => {
             console.error("Error updating balance on server:", error);
         }
     };
-    // Provide the user data and a setter function
+
+    const loadFromLocalStorage = () => {
+        const storedData = localStorage.getItem('user');
+        if (storedData) {
+            setUser(JSON.parse(storedData)); // Преобразуем строку JSON в объект
+        }
+    };
+
     return (
-        <UserContext.Provider value={{ user, setUser, updateUserBalance  }}>
+        <UserContext.Provider value={{ user, setUser, updateUserBalance, loadFromLocalStorage  }}>
             {children}
         </UserContext.Provider>
     );

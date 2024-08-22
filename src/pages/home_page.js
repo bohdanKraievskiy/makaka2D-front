@@ -86,8 +86,11 @@ const HomePage = () => {
                         </img>
                     </div>
                     <div className="_title_1vo1r_5">
-                        <div className={`_balance_eubs4_1 balance-text ${animated ? 'balance-animated' : ''}`}>
-                            <span>{user.balance} WAP</span>
+                        <div style={{flexDirection:"row "}}
+                          className={`_balance_eubs4_1 balance-text _exclusive_font ${animated ? 'balance-animated' : ''}`}>
+                            <span   style={{fontSize:"12vw",color:"white"}}>{user.balance} </span>
+                            &nbsp;
+                            <span style={{fontSize:"12vw"}}> WAP</span>
                         </div>
                     </div>
                     <div className="_socialCarousel_1xku1_1">

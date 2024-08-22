@@ -267,8 +267,9 @@ const InvitePage = ({ telegramId }) => {
                             alt="Mascote"
                         />
                     </div>
-                    <div className="_title_1x19s_5" style={{marginTop:"5%"}}>Invite to Earn $PRIME</div>
-
+                    <div className="_title_1x19s_5 _exclusive_font" style={{display:"flex",flexDirection:"row",marginTop:"5%", textAlign:"center",alignItems:"center",fontSize:"8vw"}}>
+                    <div  >INVITE FRENS TO EARN</div>&nbsp;<div className="_title_1x19s_5" style={{color:"#F7C605",fontSize:"8vw"}}> $WAP</div>
+                    </div>
                     <div className="box_rectangle10">
 
                         <div className="box_text970">{friends_stats.length}</div>

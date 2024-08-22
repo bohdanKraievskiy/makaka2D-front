@@ -11,7 +11,7 @@ const LeaderboardPage = () => {
         <div class="_page_1ulsb_1">
             <div className="_gameView_1cr97_1" id="game-view">
                 <div className="_view_sf2n5_1 _view_zhpdf_1" style={{opacity: 1}}>
-                    <div className="_title_zhpdf_5">WAP of Fame</div>
+                    <div className="_title_zhpdf_5 _exclusive_font" style={{fontSize:"11vw"}}>WAP OF FAME</div>
                     <UserBoard/>
                     <div className="_boardTitle_zhpdf_23">{count?.toString()} holders</div>
                     <Leaderboard/>

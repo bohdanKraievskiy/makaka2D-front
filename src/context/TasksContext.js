@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState,useEffect } from 'react';
 
 export const TasksContext = createContext();
 
@@ -15,8 +15,17 @@ export const TasksProvider = ({ children }) => {
         setTasks(tasks.map((task, i) => i === index ? { ...task, completed: true } : task));
     };
 
+    const loadFromLocalStorageTask = () => {
+        const storedData = localStorage.getItem('tasks');
+        if (storedData) {
+           setTasks(JSON.parse(storedData))
+        }
+    };
+
+
+
     return (
-        <TasksContext.Provider value={{ tasks, setTasks, completeTask }}>
+        <TasksContext.Provider value={{ tasks, setTasks, completeTask,loadFromLocalStorageTask }}>
             {children}
         </TasksContext.Provider>
     );

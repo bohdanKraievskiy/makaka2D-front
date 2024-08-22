@@ -72,8 +72,8 @@ const LastPage = () => {
                             <div className="_title_mgd6s_24">Elite member!</div>
                             <div className="_subTitle_mgd6s_34">You've joined Telegram</div>
                             <div className="_valueWrap_mgd6s_42">
-                                <div className="_value_mgd6s_42">{Math.round(user ? user.top_group : "...")}</div>
-                                <div className="_valueTitle_mgd6s_78">years ago</div>
+                                <div className="_value_mgd6s_42 _exclusive_font">{Math.round(user ? user.top_group : "...")}</div>
+                                <div className="_valueTitle_mgd6s_78 _exclusive_font" style={{fontSize:"12vw"}}>YEARS AGO</div>
                             </div>
                             <div className="_valueSubTitle_mgd6s_86">
                                 Your account number is #{user?.telegram_id}.<br />  You're in the Top {user ? Math.round(user.top_percent) : "..."}% Telegram users 🔥
@@ -81,7 +81,7 @@ const LastPage = () => {
                         </>
                     ) : state === "amazing" ? (
                         <>
-                            <div className="_title_mgd6s_24">You are amazing!</div>
+                            <div className="_title_mgd6s_24 _exclusive_font" style={{fontSize:"13vw"}}>YOU’RE AMAZING</div>
                             <div className="_subTitle_mgd6s_34">Here is your WAP reward</div>
                             <div className="_valueWrap_mgd6s_42">
                                 <div className="_value_mgd6s_42">
@@ -90,7 +90,14 @@ const LastPage = () => {
                                         width="237" height="242"
                                     />
                                 </div>
-                                <div className="_valueTitle_mgd6s_78">{user?.age}</div>
+                                <div className="_title_1vo1r_5" style={{marginTop:0}}>
+                                    <div style={{flexDirection: "row "}}
+                                         className={`_balance_eubs4_1 balance-text _exclusive_font `}>
+                                        <span style={{fontSize: "12vw", color: "white"}}>{user?.age} </span>
+                                        &nbsp;
+                                        <span style={{fontSize: "12vw"}}> WAP</span>
+                                    </div>
+                                </div>
                             </div>
                             <div className="_valueSubTitle_mgd6s_86">
                                 Welcome to the PRIME movement 🤝
@@ -98,7 +105,7 @@ const LastPage = () => {
                         </>
                     ) : state === "premium" && user.is_premium ? (
                         <>
-                            <div className="_title_mgd6s_24">Premium User!</div>
+                            <div className="_title_mgd6s_24 _exclusive_font" style={{fontSize:"12vw"}}>PREMIUM USER!</div>
                             <div className="_subTitle_mgd6s_34">Exclusive Benefits Await</div>
                             <div className="_valueWrap_mgd6s_42">
                                 <div className="_value_mgd6s_42">

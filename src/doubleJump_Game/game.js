@@ -8,7 +8,7 @@ import { RewardsContext } from "../context/RewardsContext";
 import { Platforms, Points } from './Platforms';
 import Result from "../pages/Result";
 function Game({ telegram_Id }) {
-    const { user, setUser } = useContext(UserContext);
+    const { user, setUser, loadFromLocalStorage } = useContext(UserContext);
     const { rewards, setRewards } = useContext(RewardsContext);
     const [isGameOver, setIsGameOver] = useState(true);
     const [platforms, setPlatforms] = useState([]);
@@ -32,6 +32,10 @@ function Game({ telegram_Id }) {
     const navigate = useNavigate();
     const [_backgroundColor, setBackgroundColor] = useState('#131313');
     const [showResultPage, setShowResultPage] = useState(false);
+
+    useEffect(() => {
+        loadFromLocalStorage();
+    }, []);
 
     useEffect(() => {
         // Убедитесь, что элемент доступен и его высота известна
@@ -364,7 +368,13 @@ function Game({ telegram_Id }) {
                         <div className="instructions">
                             {user.username}
                         </div>
-                        <div className="_title_zhpdf_5" style={{fontSize: "10vw", marginBottom: "0px"}}>{user.balance} WAP
+                        <div className="_title_1vo1r_5">
+                            <div style={{flexDirection: "row "}}
+                                 className={`_balance_eubs4_1 balance-text _exclusive_font`}>
+                                <span style={{fontSize: "12vw", color: "white"}}>{user.balance} </span>
+                                &nbsp;
+                                <span style={{fontSize: "12vw"}}> WAP</span>
+                            </div>
                         </div>
                         <div className="_subtitleEmpty_1x19s_19 game_sub_title_ms718"
                              style={{fontSize: "12px", opacity: 1, display: "flex", flexDirection: "column"}}>

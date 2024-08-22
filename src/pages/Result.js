@@ -126,8 +126,8 @@ const Result = ({user,score,onStart}) => {
                     </div>
                     <div className="_mascote_94k9d_1 _centered_94k9d_13" style={{marginTop: "5%"}}>
                         <img
-                            id="home-mascote" style={{width: "60vw"}}
-                            src={`${process.env.PUBLIC_URL}/resources_directory/image_2024-08-17_17-32-32.webp`}
+                            id="home-mascote" style={{width: "60vw", marginTop:-30}}
+                            src={`${process.env.PUBLIC_URL}/resources_directory/animation_mascoe.gif`}
                             className="_doggy_94k9d_6 _width-82_94k9d_23 _mascote_1vo1r_60 _isRendered_1vo1r_63"
                             alt="Mascote"
                         />
@@ -135,8 +135,8 @@ const Result = ({user,score,onStart}) => {
                     <div className="_title_1x19s_5">Congrats!
                         bountiful harvest
                     </div>
-                    <div className="_title_zhpdf_5" style={{fontSize: "54px", marginTop: "10%"}}>+{score} WAP
-                    </div>
+                    <div className="_title_zhpdf_5 _exclusive_font" style={{fontSize: "54px", marginTop: "10%",display:"flex",flexDirection:"row",textAlign:"center",alignItems:"center",flex: "auto",placeContent:"center"}}><div style={{alignItems:"center",textAlign:"center",placeItems:"center"}}>+ {score}</div>&nbsp;<div  style={{color:"#F7C605",alignItems:"center",textAlign:"center"}}> WAP
+                    </div></div>
                     <div className="_root_oar9p_1 _type-white_ip8lu_54"
                          style={{background: "#F7C605", gap: 40, marginTop: "20%"}} onClick={handleGoToScore}>
                         <img style={{width: "90px",marginTop:-50,marginRight:-40,marginLeft:-40}}
@@ -152,7 +152,7 @@ const Result = ({user,score,onStart}) => {
 
                     </div>
                     <div className="_root_oar9p_1 _type-white_ip8lu_54" onClick={onStart}
-                         style={{background: "#1B1B1B", marginTop: "5%"}}>
+                         style={{background: "white", marginTop: "5%"}}>
                         Play ({user.attempts_left} Attempts Left)
                     </div>
                 </div>

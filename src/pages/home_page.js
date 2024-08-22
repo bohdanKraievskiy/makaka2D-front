@@ -23,20 +23,18 @@ const HomePage = ({telegramId}) => {
         navigate("/last_check");
     };
     const [animated, setAnimated] = useState(false);
-    const [loading, setLoading] = useState(true);
     useEffect(() => {
         const loadData = async () => {
             if (!user || Object.keys(user).length === 0) {
-                await fetchUser(telegramId);
+                navigate("/preload")
             }
             if (!rewards || Object.keys(rewards).length === 0) {
-                await fetchUserRewards(telegramId);
+                navigate("/preload")
             }
             if (!tasks || tasks.length === 0) {
-                await fetchTasks(telegramId);
+                navigate("/preload")
             }
-            await new Promise(resolve => setTimeout(resolve, 2000)); // 5 секундная задержка
-            setLoading(false);
+
         };
 
         loadData();
@@ -53,22 +51,7 @@ const HomePage = ({telegramId}) => {
     const imageSrc = animated
         ? `${process.env.PUBLIC_URL}/resources_directory/Frame7.webp`
         : `${process.env.PUBLIC_URL}/resources_directory/animation.gif`;
-    if (loading) {
-        return (
-            <div className="_view_sf2n5_1 _view_1x19s_1" style={{ opacity: 1 }}>
-                <div className="_title_1x19s_5">PRIME</div>
-                <div className="_mascote_94k9d_1 _centered_94k9d_13 _loaded_91hw8">
-                    <img
-                        id="home-mascote"
-                        src={`${process.env.PUBLIC_URL}/resources_directory/IMG_2429.webp`}
-                        className="_doggy_94k9d_6 louve_t09 _width-82_94k9d_23 _mascote_1vo1r_60 _isRendered_1vo1r_63"
-                        alt="Mascote"
-                    />
-                </div>
-                <div className="_subtitleEmpty_1x19s_19">Loading...</div>
-            </div>
-        );
-    }
+
     return (
         <div class="_page_1ulsb_1" style={{zIndex:100000}}>
             <div className="_gameView_1cr97_1" id="game-view">

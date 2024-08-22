@@ -2,14 +2,17 @@
 import React, {useContext, useEffect} from 'react';
 import { LeaderboardContext } from '../../context/LeaderboardContext';
 import {UserContext} from "../../context/UserContext";
+import {useNavigate} from "react-router-dom";
 
 const UserBoard = ({telegramId}) => {
     const { userStats } = useContext(LeaderboardContext);
     const { user, setUser, fetchUser } = useContext(UserContext);
-
+    const navigate = useNavigate();
     useEffect(() => {
-        fetchUser(telegramId)
-    }, [telegramId]);
+        if (!userStats || Object.keys(userStats).length === 0) {
+            navigate("/preload")
+        }
+    }, [telegramId,userStats]);
     if (!userStats) return null;
 
     return (

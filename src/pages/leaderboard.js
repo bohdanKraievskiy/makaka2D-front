@@ -4,13 +4,12 @@ import "../Styles/mainStyles.css"; // Додайте CSS для стилізац
 import UserBoard from "./componentsTemplates/UserBoard";
 import Leaderboard from "./componentsTemplates/Leaderboard";
 import {LeaderboardContext} from "../context/LeaderboardContext";
+import {useNavigate} from "react-router-dom";
 
 const LeaderboardPage = ({telegramId}) => {
     const { count,fetchLeaderboard } = useContext(LeaderboardContext);
 
-    useEffect(() => {
-        fetchLeaderboard(telegramId)
-    }, [telegramId]);
+
     return (
         <div class="_page_1ulsb_1">
             <div className="_gameView_1cr97_1" id="game-view">

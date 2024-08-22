@@ -8,8 +8,8 @@ import { RewardsContext } from "../context/RewardsContext";
 import { Platforms, Points } from './Platforms';
 import Result from "../pages/Result";
 function Game({ telegram_Id }) {
-    const { user, setUser, loadFromLocalStorage } = useContext(UserContext);
-    const { rewards, setRewards } = useContext(RewardsContext);
+    const { user, setUser, fetchUser } = useContext(UserContext);
+    const { rewards, setRewards,fetchUserRewards } = useContext(RewardsContext);
     const [isGameOver, setIsGameOver] = useState(true);
     const [platforms, setPlatforms] = useState([]);
     const [score, setScore] = useState(0);
@@ -34,9 +34,18 @@ function Game({ telegram_Id }) {
     const [showResultPage, setShowResultPage] = useState(false);
 
     useEffect(() => {
-        loadFromLocalStorage();
-    }, []);
 
+        const loadData = async () => {
+            if (!user || Object.keys(user).length === 0) {
+                await fetchUser(telegram_Id);
+            }
+            if (!rewards || Object.keys(rewards).length === 0) {
+                await fetchUserRewards(telegram_Id);
+            }
+        };
+
+        loadData();
+    }, [telegram_Id, user,rewards]);
     useEffect(() => {
         // Убедитесь, что элемент доступен и его высота известна
         if (backgroundImgRef.current) {
@@ -275,15 +284,16 @@ function Game({ telegram_Id }) {
     }, [platformCount, createPlatforms]);
 
     const handleTouchStart = useCallback((event) => {
+        console.log(user.attempts_left)
         window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
-        if (isGameOver && user.attempts_left > 0) {
+        if (isGameOver && user?.attempts_left > 0) {
             fetchUserAttempts(telegram_Id);
             start();
         }
     }, [isGameOver, start]);
 
     const handleKeyDown = useCallback((event) => {
-        if (event.key === 'Enter' && isGameOver && user.attempts_left > 0) {
+        if (event.key === 'Enter' && isGameOver && user?.attempts_left > 0) {
             fetchUserAttempts(telegram_Id);
             start();
         }
@@ -296,7 +306,7 @@ function Game({ telegram_Id }) {
             if (response.status === 200) {
                 setUser((prevUser) => ({
                     ...prevUser,
-                    attempts_left: response.data.attempts_left
+                    attempts_left: response.data?.attempts_left
                 }));
             }
         } catch (error) {
@@ -462,7 +472,7 @@ function Game({ telegram_Id }) {
                                  src={`${process.env.PUBLIC_URL}/resources_directory/image_2024-08-17_14-50-10.webp`}
                             />
                             <text className="_left_game_bananes"
-                                  style={{right: "20px", bottom: 11}}>{user.attempts_left}</text>
+                                  style={{right: "20px", bottom: 11}}>{user?.attempts_left}</text>
                         </div>
                         <div className="_root_oar9p_1 _type-white_ip8lu_54" onClick={handleTouchStart}
                              style={{background: "#F7C605"}}>

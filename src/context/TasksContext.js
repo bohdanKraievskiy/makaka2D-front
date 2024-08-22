@@ -1,4 +1,6 @@
 import React, { createContext, useState,useEffect } from 'react';
+import axios from "axios";
+import {API_BASE_URL} from "../helpers/api";
 
 export const TasksContext = createContext();
 
@@ -15,17 +17,25 @@ export const TasksProvider = ({ children }) => {
         setTasks(tasks.map((task, i) => i === index ? { ...task, completed: true } : task));
     };
 
-    const loadFromLocalStorageTask = () => {
-        const storedData = localStorage.getItem('tasks');
-        if (storedData) {
-           setTasks(JSON.parse(storedData))
+    const fetchTasks = async (telegramId) => {
+        try {
+            const response = await axios.get(`${API_BASE_URL}/users/${telegramId}/tasks/`);
+            if (response.status === 200 && response.data.status === "success") {
+                setTasks(response.data.tasks);
+                window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
+                localStorage.setItem("tasks", JSON.stringify(response.data.tasks));
+
+            } else {
+                console.error('Error fetching tasks:', response.data.message);
+            }
+        } catch (error) {
+            console.error("Failed to fetch tasks:", error);
         }
     };
 
 
-
     return (
-        <TasksContext.Provider value={{ tasks, setTasks, completeTask,loadFromLocalStorageTask }}>
+        <TasksContext.Provider value={{ tasks, setTasks, completeTask,fetchTasks }}>
             {children}
         </TasksContext.Provider>
     );

@@ -1,12 +1,19 @@
 // src/components/LastPage.js
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import "../Styles/mainStyles.css"; // Додайте CSS для стилізації
 import UserBoard from "./componentsTemplates/UserBoard";
 import Leaderboard from "./componentsTemplates/Leaderboard";
 import {LeaderboardContext} from "../context/LeaderboardContext";
+import {UserContext} from "../context/UserContext";
 
-const LeaderboardPage = () => {
-    const { count } = useContext(LeaderboardContext);
+const LeaderboardPage = ({telegramId}) => {
+    const { count,fetchLeaderboard } = useContext(LeaderboardContext);
+    const { user, setUser, fetchUser } = useContext(UserContext);
+
+    useEffect(() => {
+        fetchLeaderboard(telegramId)
+        fetchUser(telegramId)
+    }, [telegramId]);
     return (
         <div class="_page_1ulsb_1">
             <div className="_gameView_1cr97_1" id="game-view">

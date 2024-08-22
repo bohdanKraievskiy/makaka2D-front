@@ -7,8 +7,6 @@ const Result = ({user,score,onStart}) => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const [copyMessage, setCopyMessage] = useState(false);
-    const { friends_stats } = useContext(LeaderboardContext);
-    const friendsArray = Array.isArray(friends_stats) ? friends_stats : [];
     const handleGoToScore = () => {
         window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
         setIsLoading(true);

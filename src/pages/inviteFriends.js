@@ -1,16 +1,24 @@
 import React, { useState, useContext, useEffect } from "react";
 import "../Styles/mainStyles.css";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from '../context/UserContext';
 import { LeaderboardContext } from "../context/LeaderboardContext";
 
 const InvitePage = ({ telegramId }) => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const [copyMessage, setCopyMessage] = useState(false);
-    const { friends_stats } = useContext(LeaderboardContext);
+    const { friends_stats,fetchLeaderboard } = useContext(LeaderboardContext);
     const [activeTab, setActiveTab] = useState('Frens');
+    useEffect(() => {
+        const loadData = async () => {
+            if (!friends_stats || friends_stats.length === 0) {
+                await fetchLeaderboard(telegramId);
+            }
 
+        };
+
+        loadData();
+    }, [telegramId, friends_stats]);
     // Determine if the device is an iPhone
     const isIPhone = () => /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
@@ -45,7 +53,7 @@ const InvitePage = ({ telegramId }) => {
     };
 
     const renderFriendsList = () => {
-        return friends_stats.map((friend, index) => (
+        return friends_stats?.map((friend, index) => (
             <div key={index} className="_item_iud9y_1">
                 <div className="_media_iud9y_8">
                     <img
@@ -272,7 +280,7 @@ const InvitePage = ({ telegramId }) => {
                     </div>
                     <div className="box_rectangle10">
 
-                        <div className="box_text970">{friends_stats.length}</div>
+                        <div className="box_text970">{friends_stats?.length}</div>
                         <div className="box_text920">Frens</div>
                         <div className="box_text860" onClick={handleGoToScore}>View referral rules ></div>
                     </div>

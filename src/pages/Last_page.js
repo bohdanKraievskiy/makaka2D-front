@@ -3,8 +3,8 @@ import "../Styles/Last_page.css"; // Додайте CSS для стилізац�
 import { useNavigate } from "react-router-dom";
 import { UserContext } from '../context/UserContext';
 
-const LastPage = () => {
-    const { user } = useContext(UserContext);
+const LastPage = ({telegramId}) => {
+    const { user,fetchUser } = useContext(UserContext);
     const [state, setState] = useState("initial"); // Текущее состояние страницы
     const navigate = useNavigate();
     const [background,setBackground] = useState("75007500 (6)");
@@ -18,7 +18,15 @@ const LastPage = () => {
             navigate("/home");
         }
     };
+    useEffect(() => {
+        const loadData = async () => {
+            if (!user || Object.keys(user).length === 0) {
+                await fetchUser(telegramId);
+            }
+        };
 
+        loadData();
+    }, [telegramId, user]);
     const handleSwitch = () => {
         window.Telegram.WebApp.HapticFeedback.impactOccurred('soft');
         // Переключаем состояние между "initial", "amazing" и "premium"

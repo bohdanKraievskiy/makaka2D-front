@@ -64,7 +64,6 @@ const PreLoad = ({ telegramId }) => {
                 setUserStats(leaderboardData.me);
                 setFriendsStats(leaderboardData.friends_stats)
                 console.log(leaderboardData.friends_stats)
-                localStorage.setItem("leaderboard", JSON.stringify(leaderboardData));
 
             }
         } catch (error) {
@@ -79,8 +78,6 @@ const PreLoad = ({ telegramId }) => {
 
             if (response.status === 200 && response.data.status === "success") {
                 setUser(response.data.user);
-                localStorage.setItem("user", JSON.stringify(response.data.user));
-
             } else {
                 console.error("Error fetching user:", response.data.message);
             }
@@ -99,7 +96,6 @@ const PreLoad = ({ telegramId }) => {
             const response = await axios.get(`${API_BASE_URL}/users/${telegramId}/rewards/`);
             if (response.status === 200 && response.data.status === "success") {
                 setRewards(response.data.reward);
-                localStorage.setItem("rewards", JSON.stringify(response.data.reward));
 
             }
         } catch (error) {
@@ -112,7 +108,6 @@ const PreLoad = ({ telegramId }) => {
             if (response.status === 200 && response.data.status === "success") {
                 setTasks(response.data.tasks);
                 window.Telegram.WebApp.HapticFeedback.impactOccurred('heavy');
-                localStorage.setItem("tasks", JSON.stringify(response.data.tasks));
 
                 if(!showRewardPage) {
                  navigate("/home");

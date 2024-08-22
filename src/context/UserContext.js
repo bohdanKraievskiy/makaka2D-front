@@ -36,15 +36,24 @@ export const UserProvider = ({ children, userData }) => {
         }
     };
 
-    const loadFromLocalStorage = () => {
-        const storedData = localStorage.getItem('user');
-        if (storedData) {
-            setUser(JSON.parse(storedData)); // Преобразуем строку JSON в объект
+    const fetchUser = async (telegramId) => {
+        try {
+            const response = await axios.post(`${API_BASE_URL}/users/join/`, {
+                user_id: telegramId
+            });
+
+            if (response.status === 200 && response.data.status === "success") {
+                setUser(response.data.user);
+            } else {
+                console.error("Error fetching user:", response.data.message);
+            }
+        } catch (error) {
+                console.error("Failed to fetch user:", error);
         }
     };
 
     return (
-        <UserContext.Provider value={{ user, setUser, updateUserBalance, loadFromLocalStorage  }}>
+        <UserContext.Provider value={{ user, setUser, updateUserBalance, fetchUser  }}>
             {children}
         </UserContext.Provider>
     );

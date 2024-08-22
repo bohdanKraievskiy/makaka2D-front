@@ -37,10 +37,10 @@ function Game({ telegram_Id }) {
 
         const loadData = async () => {
             if (!user || Object.keys(user).length === 0) {
-                await fetchUser(telegram_Id);
+                navigate("/preload")
             }
             if (!rewards || Object.keys(rewards).length === 0) {
-                await fetchUserRewards(telegram_Id);
+                navigate("/preload")
             }
         };
 

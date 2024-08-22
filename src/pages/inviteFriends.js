@@ -12,7 +12,7 @@ const InvitePage = ({ telegramId }) => {
     useEffect(() => {
         const loadData = async () => {
             if (!friends_stats || friends_stats.length === 0) {
-                await fetchLeaderboard(telegramId);
+                navigate("/preload")
             }
 
         };

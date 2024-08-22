@@ -21,7 +21,7 @@ const LastPage = ({telegramId}) => {
     useEffect(() => {
         const loadData = async () => {
             if (!user || Object.keys(user).length === 0) {
-                await fetchUser(telegramId);
+                navigate("/preload")
             }
         };
 

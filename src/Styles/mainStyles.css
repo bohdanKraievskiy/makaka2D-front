@@ -2541,9 +2541,15 @@ button.swiper-pagination-bullet {
     flex-direction: column;
 }
 
+._frends_boxed{
+    overflow-y: auto;
+    overflow-x:hidden;
+    height: 100%;
+    margin-bottom: 25%;
+}
+
 ._medal_iud9y_66 {
     font-size: 5vw;
-    margin-right: -4px;
 }
 
 ._skeleton_cicez_1 {

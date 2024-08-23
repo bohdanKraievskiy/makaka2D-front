@@ -1,4 +1,4 @@
-import React, { useContext, useEffect,useState } from "react";
+import React, { useContext, useEffect,useState,useRef } from "react";
 import "../Styles/mainStyles.css";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from '../context/UserContext';
@@ -18,6 +18,11 @@ const HomePage = ({telegramId}) => {
     const { user,fetchUser,updateUserBalance} = useContext(UserContext);
     const { rewards,fetchUserRewards } = useContext(RewardsContext);
     const {tasks,fetchTasks} = useContext(TasksContext);
+
+    const userFetchedRef = useRef(false);
+    const rewardsFetchedRef = useRef(false);
+    const tasksFetchedRef = useRef(false);
+
     const handleGoToScore = () => {
         window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
         navigate("/last_check");
@@ -25,19 +30,34 @@ const HomePage = ({telegramId}) => {
     const [animated, setAnimated] = useState(false);
     useEffect(() => {
         const loadData = async () => {
-            fetchUser(telegramId)
-            updateUserBalance(user.balance)
-            if (!rewards || Object.keys(rewards).length === 0) {
-                navigate("/preload")
-            }
-            if (!tasks || tasks.length === 0) {
-                navigate("/preload")
+            // Check if user data is already fetched
+            if (!userFetchedRef.current) {
+                await fetchUser(telegramId);
+                updateUserBalance(user.balance);
+                userFetchedRef.current = true;
             }
 
+            // Check if rewards data is already fetched
+            if (!rewardsFetchedRef.current) {
+                if (!rewards || Object.keys(rewards).length === 0) {
+                    navigate("/preload");
+                } else {
+                    rewardsFetchedRef.current = true;
+                }
+            }
+
+            // Check if tasks data is already fetched
+            if (!tasksFetchedRef.current) {
+                if (!tasks || tasks.length === 0) {
+                    navigate("/preload");
+                } else {
+                    tasksFetchedRef.current = true;
+                }
+            }
         };
 
         loadData();
-    }, []);
+    }, []); // Ensure the effect runs only once
 
     useEffect(() => {
         if (animated) {

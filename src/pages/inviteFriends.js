@@ -46,7 +46,7 @@ const InvitePage = ({ telegramId }) => {
     };
 
     const handleShareInviteLink = () => {
-        const shareLink = `https://t.me/WeArePrime_Bot/app?startapp=${telegramId}`;
+        const shareLink = `https://t.me/share/url?url=https://t.me/WeArePrime_Bot/app?startapp=${telegramId}\n`;
         window.open(shareLink, '_blank');
     };
 

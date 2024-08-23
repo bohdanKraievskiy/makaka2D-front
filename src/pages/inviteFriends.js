@@ -66,10 +66,7 @@ const InvitePage = ({ telegramId }) => {
                     <div className="_text_iud9y_47">{friend.username}</div>
                     <div className="_footer_iud9y_32">{friend.score} $WAP</div>
                 </div>
-                <div className="_details_iud9y_56">
-                  <span className="_medal_iud9y_66"> + {friend?.friend_bonus ?? 0}
-</span>
-                </div>
+
             </div>
 
         ));
@@ -89,7 +86,19 @@ const InvitePage = ({ telegramId }) => {
             return (
                 <div key={index} className="_item_iud9y_1">
                     <div className="_body_iud9y_25">
-                        <div className="_text_iud9y_47">+{friend.balance_increment}</div>
+                        <div className="_text_iud9y_47 " style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            textAlign: "start",
+                            alignItems: "start",
+                            placeItems: "start",
+                            justifyContent: "start"
+                        }}>
+                            <div style={{color: "white"}}>+ {friend?.friend_bonus ?? 0}</div>
+                            &nbsp;
+                            <div  style={{color: "#F7C605"}}> $WAP</div>
+                        </div>
+
                         <div className="_footer_iud9y_32">{formattedDate}</div>
                     </div>
                     <div className="_details_iud9y_56">

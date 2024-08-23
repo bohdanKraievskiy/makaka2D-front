@@ -60,7 +60,7 @@ function App() {
         }
 
         if (user) {
-          const avatarUrl = user.photo_url ? await getAvatarUrl(user.id) : null;
+          const avatarUrl = user.photo_url
           setUserData({ ...user, avatarUrl });
           sendUserIdToTelegram(user.id);
         } else {

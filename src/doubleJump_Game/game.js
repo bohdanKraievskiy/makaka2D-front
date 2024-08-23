@@ -7,7 +7,7 @@ import { API_BASE_URL } from '../helpers/api';
 import { RewardsContext } from "../context/RewardsContext";
 import { Platforms, Points } from './Platforms';
 import Result from "../pages/Result";
-function Game({ telegram_Id }) {
+function Game({ telegram_Id,telegram_avatar }) {
     const { user, setUser, fetchUser } = useContext(UserContext);
     const { rewards, setRewards,fetchUserRewards } = useContext(RewardsContext);
     const [isGameOver, setIsGameOver] = useState(true);
@@ -32,7 +32,7 @@ function Game({ telegram_Id }) {
     const navigate = useNavigate();
     const [_backgroundColor, setBackgroundColor] = useState('#131313');
     const [showResultPage, setShowResultPage] = useState(false);
-
+    console.log(user)
     useEffect(() => {
 
         const loadData = async () => {
@@ -370,7 +370,7 @@ function Game({ telegram_Id }) {
                         <div className="_media_iud9y_8 _game_start87">
                             <img
                                 className="_avatar_iud9y_19"
-                                src={`https://ui-avatars.com/api/?name=${user.username}&background=random&color=fff`}
+                                src={telegram_avatar ? telegram_avatar : `https://ui-avatars.com/api/?name=${user.username}&background=random&color=fff`}
                                 loading="lazy"
                                 alt="Avatar"
                             />

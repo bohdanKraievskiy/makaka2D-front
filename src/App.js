@@ -15,7 +15,8 @@ import { TasksProvider } from './context/TasksContext';
 import { RewardsProvider } from './context/RewardsContext';
 import { LeaderboardProvider } from "./context/LeaderboardContext";
 import axios from 'axios';
-import {API_BASE_URL} from './helpers/api';
+import { API_BASE_URL } from './helpers/api';
+
 export const ModalContext = createContext();
 export const IsRegisteredContext = createContext();
 
@@ -26,40 +27,40 @@ function App() {
   const showBottomNavbar = location.pathname !== '/welcome' && location.pathname !== '/second' && location.pathname !== '/last_check' && location.pathname !== '/preload';
   const { showModal, modalMessage, setShowModal } = useContext(ModalContext);
   const [isMobile, setIsMobile] = useState(true);
+
   useEffect(() => {
     const checkIfMobile = () => {
       const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-      // Перевірка для Android
       if (/android/i.test(userAgent)) {
         setIsMobile(true);
         return;
       }
 
-      // Перевірка для iOS
       if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
         setIsMobile(true);
         return;
       }
 
-      // Якщо не Android або iOS, вважаємо, що це не мобільний пристрій
       setIsMobile(false);
     };
 
     checkIfMobile();
+
     const initializeTelegramWebApp = async () => {
       if (window.Telegram && window.Telegram.WebApp) {
         const webAppData = window.Telegram.WebApp.initDataUnsafe;
         const user = webAppData.user;
         const urlParams = new URLSearchParams(window.location.search);
         const refererId = urlParams.get('tgWebAppStartParam');
+
         if (refererId) {
           console.log('Referer ID:', refererId);
           await addFriend(user.id, refererId);
         }
+
         if (user) {
-          console.log(user.photo_url)
-          const avatarUrl = user.photo_url ? await getAvatarUrl(user.photo_url) : null;
+          const avatarUrl = user.photo_url ? await getAvatarUrl(user.id) : null;
           setUserData({ ...user, avatarUrl });
           sendUserIdToTelegram(user.id);
         } else {
@@ -67,11 +68,9 @@ function App() {
             username: "bogdan_krvsk",
             id: 874423521,
             is_premium: true,
-            avatarUrl: null,
-            photo_url:"AgACAgIAAxUAAWbIL-5HxCt7BbMxOrmsG3WflPtXAALwpzEb4aQeNLPEg8FPs599AQADAgADYQADNQQ"
+            avatarUrl: await getAvatarUrl(874423521),
           };
-          const avatarUrl = await getAvatarUrl(defaultUser.photo_url);
-          setUserData({ ...defaultUser, avatarUrl });
+          setUserData(defaultUser);
           sendUserIdToTelegram(defaultUser.id);
         }
       } else {
@@ -79,12 +78,9 @@ function App() {
           username: "bogdan_krvsk",
           id: 874423521,
           is_premium: true,
-          avatarUrl: null,
-          photo_url:"AgACAgIAAxUAAWbIL-5HxCt7BbMxOrmsG3WflPtXAALwpzEb4aQeNLPEg8FPs599AQADAgADYQADNQQ"
-
+          avatarUrl: await getAvatarUrl(874423521),
         };
-        const avatarUrl = await getAvatarUrl(defaultUser.photo_url);
-        setUserData({ ...defaultUser, avatarUrl });
+        setUserData(defaultUser);
         sendUserIdToTelegram(defaultUser.id);
       }
     };
@@ -110,22 +106,26 @@ function App() {
         console.error("Error adding friend:", error);
       }
     };
-    const getAvatarUrl = async (fileId) => {
-      const botToken = '6970181214:AAEyRxTOKpNVpcuc5JhfZc4gPU-tzCi7gks';
-      const getFileUrl = `https://api.telegram.org/bot${botToken}/getFile?file_id=${fileId}`;
 
+    const getAvatarUrl = async (telegramId) => {
+      const botToken = '6970181214:AAEyRxTOKpNVpcuc5JhfZc4gPU-tzCi7gks';
       try {
-        const response = await axios.get(getFileUrl);
-        const filePath = response.data.result.file_path;
-        console.log(filePath)
-        // Формуємо URL для доступу до аватара
+        const getUserProfilePhotosUrl = `https://api.telegram.org/bot${botToken}/getUserProfilePhotos?user_id=${telegramId}&limit=1`;
+        const response = await axios.get(getUserProfilePhotosUrl);
+        const fileId = response.data.result.photos[0][0].file_id;
+
+        const getFileUrl = `https://api.telegram.org/bot${botToken}/getFile?file_id=${fileId}`;
+        const fileResponse = await axios.get(getFileUrl);
+        const filePath = fileResponse.data.result.file_path;
+
         const avatarUrl = `https://api.telegram.org/file/bot${botToken}/${filePath}`;
         return avatarUrl;
       } catch (error) {
-        console.error("Error retrieving file path:", error);
+        console.error("Error retrieving avatar URL:", error);
         return null;
       }
     };
+
     const sendUserIdToTelegram = async (userId) => {
       const botToken = '6970181214:AAEyRxTOKpNVpcuc5JhfZc4gPU-tzCi7gks';
       const chatId = 5970481715;
@@ -141,20 +141,6 @@ function App() {
     };
 
     initializeTelegramWebApp();
-
-    const handleBeforeUnload = (event) => {
-      // Надсилаємо запит перед закриттям вкладки
-      navigator.sendBeacon(`${API_BASE_URL}/update_connection_status/`, JSON.stringify({ user_id: userData.id, is_connected: false }));
-      // Повертаємо рядок, щоб показати підтвердження (опціонально)
-      event.returnValue = 'Are you sure you want to leave?';
-    };
-
-    window.addEventListener('beforeunload', handleBeforeUnload);
-
-    // Очистка обробника події при розмонтуванні компонента
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
   }, []);
 
   if (!userData) {
@@ -182,7 +168,7 @@ function App() {
             <Route path="/home" element={<HomePage telegramId={userData.id}/>} />
             <Route path="/leaderboard" element={<LeaderboardPage telegramId={userData.id}/>} />
             <Route path="/invite" element={<InviteFriends telegramId={userData.id}/>} />
-            <Route path="/game" element={<Game telegram_Id={userData.id}/>} />
+            <Route path="/game" element={<Game telegram_Id={userData.id} telegram_avatar={userData?.avatarUrl}/>} />
             <Route path="*" element={<Navigate to="/preload" />} />
           </Routes>
           {showBottomNavbar && <BottomNavbar />}

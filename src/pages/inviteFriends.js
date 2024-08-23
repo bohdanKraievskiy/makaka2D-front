@@ -93,16 +93,19 @@ const InvitePage = ({ telegramId }) => {
                             placeItems: "start",
                             justifyContent: "start"
                         }}>
-                            <div style={{color: "white"}}>+ {(friend?.friend_bonus ?? 0)+(friend?.balance_increment ?? 0)}</div>
+                            <div
+                                style={{color: "white"}}>+ {(friend?.friend_bonus ?? 0) + (friend?.balance_increment ?? 0)}</div>
                             &nbsp;
-                            <div  style={{color: "#F7C605"}}> $WAP</div>
+                            <div style={{color: "#F7C605"}}> $WAP</div>
                         </div>
 
                         <div className="_footer_iud9y_32">{formattedDate}</div>
                     </div>
                     <div className="_details_iud9y_56">
                         <span className="_medal_iud9y_66">by 🐵 {friend.username}</span>
-                        <div className="_footer_iud9y_32">Checking in</div>
+                        <div className="_footer_iud9y_32">
+                            {friend.checked_id ? 'Authorized' : 'Checking in'}
+                        </div>
                     </div>
                 </div>
             );

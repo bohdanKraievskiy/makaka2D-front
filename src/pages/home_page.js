@@ -33,7 +33,6 @@ const HomePage = ({telegramId}) => {
             // Check if user data is already fetched
             if (!userFetchedRef.current) {
                 await fetchUser(telegramId);
-                updateUserBalance(user.balance);
                 userFetchedRef.current = true;
             }
 
@@ -54,6 +53,10 @@ const HomePage = ({telegramId}) => {
                     tasksFetchedRef.current = true;
                 }
             }
+            setTimeout(() => {
+                    updateUserBalance(user.balance);
+            }, 2000); // 2000 milliseconds = 2 seconds
+
         };
 
         loadData();

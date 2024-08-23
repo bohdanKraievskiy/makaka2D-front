@@ -16,7 +16,7 @@ const WelcomePage = () => {
                 className="welcome-image"
             />
             <h1 className="welcome-text">👋Hey!</h1>
-            <p className="welcome-subtext">Lets go $PRIDE together!</p>
+            <p className="welcome-subtext">Lets go $PRIME together!</p>
             <div className="_root_oar9p_1 _type-blue_oar9p_88 _fixedBottom_oar9p_110" onClick={handleButtonClick}>Wow, let's go!</div>
         </div>
     );

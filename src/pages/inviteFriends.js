@@ -11,13 +11,12 @@ const InvitePage = ({ telegramId }) => {
     const [activeTab, setActiveTab] = useState('Frens');
     useEffect(() => {
         const loadData = async () => {
-            if (!friends_stats || friends_stats.length === 0) {
+
                 fetchLeaderboard(telegramId)
-            }
         };
 
         loadData();
-    }, [telegramId, friends_stats]);
+    }, []);
     // Determine if the device is an iPhone
     const isIPhone = () => /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
@@ -64,10 +63,11 @@ const InvitePage = ({ telegramId }) => {
                 </div>
                 <div className="_body_iud9y_25">
                     <div className="_text_iud9y_47">{friend.username}</div>
-                    <div className="_footer_iud9y_32">{friend.score} $UP</div>
+                    <div className="_footer_iud9y_32">{friend.score} $WAP</div>
                 </div>
                 <div className="_details_iud9y_56">
-                    <span className="_medal_iud9y_66">{friend.position}</span>
+                  <span className="_medal_iud9y_66"> + {friend?.friend_bonus ?? 0}
+</span>
                 </div>
             </div>
         ));

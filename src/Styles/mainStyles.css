@@ -1047,7 +1047,7 @@ body {
 }
 
 ._checkmark_jzemx_23._isCompleted_jzemx_26 path {
-    stroke: #007aff
+    stroke: #f7dc02;
 }
 
 ._checkmark_jzemx_23 path {
@@ -1288,7 +1288,7 @@ button.swiper-pagination-bullet {
 
 
 ._loaderProgress_jzemx_51 {
-    background-color: #007aff;
+    background-color: #f7dc02;;
     width: 0%;
     height: 8px;
     -webkit-transition-property: width;

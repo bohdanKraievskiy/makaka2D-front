@@ -10,14 +10,12 @@ const UserBoard = ({telegramId}) => {
     const { user, setUser, fetchUser } = useContext(UserContext);
     const navigate = useNavigate();
     useEffect(() => {
-        if (!leaderboard || Object.keys(leaderboard).length === 0) {
             fetchLeaderboard(telegramId)
-        }
         if(!user || Object.keys(user).length === 0) {
             navigate("/preload")
         }
 
-    }, [telegramId,leaderboard]);
+    }, []);
 
     if (!userStats) return null;
     const userPosition = leaderboard.findIndex(leaderboardUser => leaderboardUser.username === user.username) + 1;

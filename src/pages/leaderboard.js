@@ -24,7 +24,7 @@ const LeaderboardPage = ({telegramId}) => {
         };
 
         loadData();
-    }, [telegramId, count,userStats,leaderboard]);
+    }, []);
 
     return (
         <div class="_page_1ulsb_1">

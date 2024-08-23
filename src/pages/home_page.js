@@ -25,9 +25,7 @@ const HomePage = ({telegramId}) => {
     const [animated, setAnimated] = useState(false);
     useEffect(() => {
         const loadData = async () => {
-            if (!user || Object.keys(user).length === 0) {
-                navigate("/preload")
-            }
+            fetchUser(telegramId)
             if (!rewards || Object.keys(rewards).length === 0) {
                 navigate("/preload")
             }
@@ -38,7 +36,7 @@ const HomePage = ({telegramId}) => {
         };
 
         loadData();
-    }, [telegramId, user, rewards, tasks]);
+    }, []);
 
     useEffect(() => {
         if (animated) {

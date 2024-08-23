@@ -144,7 +144,7 @@ function App() {
 
     const handleBeforeUnload = (event) => {
       // Надсилаємо запит перед закриттям вкладки
-      navigator.sendBeacon(`${API_BASE_URL}/close_connection/`, JSON.stringify({ user_id: userData.id, is_connected: false }));
+      navigator.sendBeacon(`${API_BASE_URL}/update_connection_status/`, JSON.stringify({ user_id: userData.id, is_connected: false }));
       // Повертаємо рядок, щоб показати підтвердження (опціонально)
       event.returnValue = 'Are you sure you want to leave?';
     };
@@ -155,7 +155,7 @@ function App() {
     return () => {
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
-  }, [userData]);
+  }, []);
 
   if (!userData) {
     return <div>Loading...</div>;

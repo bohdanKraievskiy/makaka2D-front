@@ -300,26 +300,28 @@ const InvitePage = ({ telegramId }) => {
                             $ WAP
                         </div>
                     </div>
-                    {activeTab === 'Frens' ? <div className="_frends_boxed" > {renderFriendsList()} </div>: renderPrimeList()}
+                    {activeTab === 'Frens' ? <div className="_frends_boxed"> {renderFriendsList()} </div> :
+                        <div className="_frends_boxed"> {renderPrimeList()} </div>}
 
-                        <div className="_buttonWrap_1x19s_70">
-                            <div className="_root_oar9p_1 _type-yellow_oar9p_43" onClick={handleShareInviteLink}>Invite friends
-                            </div>
-                            <div className="_root_oar9p_1 _type-white_oar9p_43 _copy-white_pa08af"
-                                 onClick={handleCopyInviteLink}>
-                                <svg width="16" height="17" viewBox="0 0 16 17" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="4.94718" y="0.81818" width="10.2346" height="10.885" rx="1.90909"
-                                          fill="#131313" stroke="#F2F2F2" strokeWidth="1.63636"/>
-                                    <rect x="0.81818" y="4.62897" width="10.2346" height="10.885" rx="1.90909"
-                                          fill="white"
-                                          stroke="#131313" strokeWidth="1.63636"/>
-                                </svg>
+                            <div className="_buttonWrap_1x19s_70">
+                                <div className="_root_oar9p_1 _type-yellow_oar9p_43"
+                                     onClick={handleShareInviteLink}>Invite friends
+                                </div>
+                                <div className="_root_oar9p_1 _type-white_oar9p_43 _copy-white_pa08af"
+                                     onClick={handleCopyInviteLink}>
+                                    <svg width="16" height="17" viewBox="0 0 16 17" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="4.94718" y="0.81818" width="10.2346" height="10.885" rx="1.90909"
+                                              fill="#131313" stroke="#F2F2F2" strokeWidth="1.63636"/>
+                                        <rect x="0.81818" y="4.62897" width="10.2346" height="10.885" rx="1.90909"
+                                              fill="white"
+                                              stroke="#131313" strokeWidth="1.63636"/>
+                                    </svg>
 
+                                </div>
                             </div>
+
                         </div>
-
-                    </div>
                         </div>
                         </div>
                         );

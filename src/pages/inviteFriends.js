@@ -94,7 +94,7 @@ const InvitePage = ({ telegramId }) => {
                             placeItems: "start",
                             justifyContent: "start"
                         }}>
-                            <div style={{color: "white"}}>+ {friend?.friend_bonus ?? 0}</div>
+                            <div style={{color: "white"}}>+ {(friend?.friend_bonus ?? 0)+(friend?.balance_increment ?? 0)}</div>
                             &nbsp;
                             <div  style={{color: "#F7C605"}}> $WAP</div>
                         </div>

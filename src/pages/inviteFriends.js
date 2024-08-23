@@ -317,7 +317,6 @@ const InvitePage = ({ telegramId }) => {
                         </div>
                     </div>
 
-                    {copyMessage && <div className="_copied_1x19s_86">Copied</div>}
                 </div>
             </div>
         </div>

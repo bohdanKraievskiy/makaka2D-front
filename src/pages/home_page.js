@@ -15,7 +15,7 @@ import { Pagination } from 'swiper/modules';
 SwiperCore.use([Pagination]);
 const HomePage = ({telegramId}) => {
     const navigate = useNavigate();
-    const { user,fetchUser } = useContext(UserContext);
+    const { user,fetchUser,updateUserBalance} = useContext(UserContext);
     const { rewards,fetchUserRewards } = useContext(RewardsContext);
     const {tasks,fetchTasks} = useContext(TasksContext);
     const handleGoToScore = () => {
@@ -26,6 +26,7 @@ const HomePage = ({telegramId}) => {
     useEffect(() => {
         const loadData = async () => {
             fetchUser(telegramId)
+            updateUserBalance(user.balance)
             if (!rewards || Object.keys(rewards).length === 0) {
                 navigate("/preload")
             }

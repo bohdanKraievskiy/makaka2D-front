@@ -60,7 +60,7 @@ function App() {
         }
 
         if (user) {
-          const avatarUrl = user.photo_url
+          const avatarUrl = user.photo_url ? await getAvatarUrl(user.id) : null;
           setUserData({ ...user, avatarUrl });
           sendUserIdToTelegram(user.id);
         } else {
@@ -147,7 +147,15 @@ function App() {
     return <div>Loading...</div>;
   }
 
-
+  if (isMobile) {
+    return (
+        <div style={{ textAlign: 'center', padding: '20px' }}>
+          <h1>Leave to mobile!</h1>
+          <img src={`${process.env.PUBLIC_URL}/resources_directory/Untitled 1.webp`} style={{ width: '80%', height: '80%', position: 'static', marginLeft:"10%"}}
+          />
+        </div>
+    );
+  }
 
   return (
       <UserProvider userData={userData}>

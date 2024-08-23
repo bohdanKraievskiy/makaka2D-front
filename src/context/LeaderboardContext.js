@@ -22,7 +22,7 @@ export const LeaderboardProvider = ({ children }) => {
                 setLeaderboard(leaderboardData.board);
                 setCount(leaderboardData.count);
                 setUserStats(leaderboardData.me);
-                setFriendsStats(leaderboardData.friends_stats)
+                setFriendsStats(leaderboardData.friends_stats);
                 console.log(leaderboardData.friends_stats)
 
             }

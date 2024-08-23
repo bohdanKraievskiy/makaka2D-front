@@ -89,9 +89,8 @@ function App() {
       try {
         console.log(`Adding friend with telegramId: ${user.id}, refererId: ${refererId}`);
         const response = await axios.post(`${API_BASE_URL}/add_friend/`, {
-          telegram_id: refererId,
-          second_telegram_id: user.id,
-          user_premium: user.is_premium
+          telegram_id: user.id,
+          second_telegram_id: refererId,
         }, {
           headers: {
             'Content-Type': 'application/json',

@@ -9,9 +9,22 @@ export const LeaderboardProvider = ({ children }) => {
     const [leaderboard, setLeaderboard] = useState([]);
     const [count, setCount] = useState(0);
     const [friends_stats,setFriendsStats] = useState(null);
-
+    const checkFriends = async (telegramId) => {
+        try {
+            const response = await axios.post(`${API_BASE_URL}/check_friends/`, {
+                telegram_id: telegramId
+            });
+            if (response.status === 200) {
+                console.log("Friends checked successfully:", response.data);
+            }
+        } catch (error) {
+            console.error("Error checking friends:", error);
+        }
+    };
     const fetchLeaderboard = async (telegramId) => {
         try {
+            await checkFriends(telegramId);
+
             const response = await axios.get(`${API_BASE_URL}/leaderboard/`, {
                 params: { telegram_id: telegramId }
             });

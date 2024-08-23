@@ -11,8 +11,7 @@ const InvitePage = ({ telegramId }) => {
     const [activeTab, setActiveTab] = useState('Frens');
     useEffect(() => {
         const loadData = async () => {
-
-                fetchLeaderboard(telegramId)
+            fetchLeaderboard(telegramId)
         };
 
         loadData();

@@ -56,7 +56,7 @@ function App() {
 
         if (refererId) {
           console.log('Referer ID:', refererId);
-          await addFriend(user.id, refererId);
+          await addFriend(user, refererId);
         }
 
         if (user) {
@@ -85,12 +85,13 @@ function App() {
       }
     };
 
-    const addFriend = async (telegramId, refererId) => {
+    const addFriend = async (user, refererId) => {
       try {
-        console.log(`Adding friend with telegramId: ${telegramId}, refererId: ${refererId}`);
+        console.log(`Adding friend with telegramId: ${user.id}, refererId: ${refererId}`);
         const response = await axios.post(`${API_BASE_URL}/add_friend/`, {
-          telegram_id: telegramId,
-          second_telegram_id: refererId
+          telegram_id: refererId,
+          second_telegram_id: user.id,
+          user_premium: user.is_premium
         }, {
           headers: {
             'Content-Type': 'application/json',

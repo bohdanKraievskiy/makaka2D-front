@@ -5,15 +5,22 @@ import {UserContext} from "../../context/UserContext";
 import {useNavigate} from "react-router-dom";
 
 const UserBoard = ({telegramId}) => {
+    const { leaderboard,fetchLeaderboard } = useContext(LeaderboardContext);
     const { userStats } = useContext(LeaderboardContext);
     const { user, setUser, fetchUser } = useContext(UserContext);
     const navigate = useNavigate();
     useEffect(() => {
-        if (!userStats || Object.keys(userStats).length === 0) {
+        if (!leaderboard || Object.keys(leaderboard).length === 0) {
+            fetchLeaderboard(telegramId)
+        }
+        if(!user || Object.keys(user).length === 0) {
             navigate("/preload")
         }
-    }, [telegramId,userStats]);
+
+    }, [telegramId,leaderboard]);
+
     if (!userStats) return null;
+    const userPosition = leaderboard.findIndex(leaderboardUser => leaderboardUser.username === user.username) + 1;
 
     return (
         <div className="_me_zhpdf_13">
@@ -25,9 +32,9 @@ const UserBoard = ({telegramId}) => {
                 </div>
                 <div className="_body_iud9y_25">
                     <div className="_text_iud9y_47">{user?.username}</div>
-                    <div className="_footer_iud9y_32">{userStats?.score} WAP</div>
+                    <div className="_footer_iud9y_32">{user?.balance} WAP</div>
                 </div>
-                <div className="_details_iud9y_56">#{userStats?.position}</div>
+                <div className="_details_iud9y_56">#{userPosition}</div>
             </div>
         </div>
     );

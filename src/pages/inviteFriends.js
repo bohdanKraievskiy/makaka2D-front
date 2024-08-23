@@ -275,7 +275,7 @@ const InvitePage = ({ telegramId }) => {
                             alt="Mascote"
                         />
                     </div>
-                    <div className="_title_1x19s_5 _exclusive_font" style={{display:"flex",flexDirection:"row",marginTop:"5%", textAlign:"center",alignItems:"center",fontSize:"8vw"}}>
+                    <div className="_title_1x19s_5 _exclusive_font" style={{display:"flex",flexDirection:"row",marginTop:"5%", textAlign:"center",alignItems:"center",fontSize:"8vw",placeItems:"center",justifyContent:"center"}}>
                     <div  >INVITE FRENS TO EARN</div>&nbsp;<div className="_title_1x19s_5" style={{color:"#F7C605",fontSize:"8vw"}}> $WAP</div>
                     </div>
                     <div className="box_rectangle10">
@@ -296,7 +296,7 @@ const InvitePage = ({ telegramId }) => {
                             className={`slider_if819 ${activeTab === 'Prime' ? 'slider_if819-active' : ''}`}
                             onClick={() => handleTabChange('Prime')}
                         >
-                            $ PRIME
+                            $ WAP
                         </div>
                     </div>
                     {activeTab === 'Frens' ? renderFriendsList() : renderPrimeList()}

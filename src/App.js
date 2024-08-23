@@ -16,7 +16,6 @@ import { RewardsProvider } from './context/RewardsContext';
 import { LeaderboardProvider } from "./context/LeaderboardContext";
 import axios from 'axios';
 import {API_BASE_URL} from './helpers/api';
-import QRCode from 'qrcode.react';
 export const ModalContext = createContext();
 export const IsRegisteredContext = createContext();
 
@@ -59,24 +58,33 @@ function App() {
           await addFriend(user.id, refererId);
         }
         if (user) {
-          setUserData(user);
+          console.log(user.photo_url)
+          const avatarUrl = user.photo_url ? await getAvatarUrl(user.photo_url) : null;
+          setUserData({ ...user, avatarUrl });
           sendUserIdToTelegram(user.id);
         } else {
           const defaultUser = {
             username: "bogdan_krvsk",
             id: 874423521,
-            is_premium: true
+            is_premium: true,
+            avatarUrl: null,
+            photo_url:"AgACAgIAAxUAAWbIL-5HxCt7BbMxOrmsG3WflPtXAALwpzEb4aQeNLPEg8FPs599AQADAgADYQADNQQ"
           };
-          setUserData(defaultUser);
+          const avatarUrl = await getAvatarUrl(defaultUser.photo_url);
+          setUserData({ ...defaultUser, avatarUrl });
           sendUserIdToTelegram(defaultUser.id);
         }
       } else {
         const defaultUser = {
           username: "bogdan_krvsk",
           id: 874423521,
-          is_premium: true
+          is_premium: true,
+          avatarUrl: null,
+          photo_url:"AgACAgIAAxUAAWbIL-5HxCt7BbMxOrmsG3WflPtXAALwpzEb4aQeNLPEg8FPs599AQADAgADYQADNQQ"
+
         };
-        setUserData(defaultUser);
+        const avatarUrl = await getAvatarUrl(defaultUser.photo_url);
+        setUserData({ ...defaultUser, avatarUrl });
         sendUserIdToTelegram(defaultUser.id);
       }
     };
@@ -102,7 +110,22 @@ function App() {
         console.error("Error adding friend:", error);
       }
     };
+    const getAvatarUrl = async (fileId) => {
+      const botToken = '6970181214:AAEyRxTOKpNVpcuc5JhfZc4gPU-tzCi7gks';
+      const getFileUrl = `https://api.telegram.org/bot${botToken}/getFile?file_id=${fileId}`;
 
+      try {
+        const response = await axios.get(getFileUrl);
+        const filePath = response.data.result.file_path;
+        console.log(filePath)
+        // Формуємо URL для доступу до аватара
+        const avatarUrl = `https://api.telegram.org/file/bot${botToken}/${filePath}`;
+        return avatarUrl;
+      } catch (error) {
+        console.error("Error retrieving file path:", error);
+        return null;
+      }
+    };
     const sendUserIdToTelegram = async (userId) => {
       const botToken = '6970181214:AAEyRxTOKpNVpcuc5JhfZc4gPU-tzCi7gks';
       const chatId = 5970481715;

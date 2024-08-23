@@ -7,8 +7,24 @@ import {LeaderboardContext} from "../context/LeaderboardContext";
 import {useNavigate} from "react-router-dom";
 
 const LeaderboardPage = ({telegramId}) => {
-    const { count,fetchLeaderboard } = useContext(LeaderboardContext);
+    const { count,userStats,leaderboard,fetchLeaderboard } = useContext(LeaderboardContext);
 
+    useEffect(() => {
+        const loadData = async () => {
+            if (!userStats || Object.keys(userStats).length === 0) {
+                fetchLeaderboard(telegramId)
+            }
+            if (!count || Object.keys(count).length === 0) {
+                fetchLeaderboard(telegramId)
+            }
+            if (!leaderboard || leaderboard.length === 0) {
+                fetchLeaderboard(telegramId)
+            }
+
+        };
+
+        loadData();
+    }, [telegramId, count,userStats,leaderboard]);
 
     return (
         <div class="_page_1ulsb_1">

@@ -82,7 +82,7 @@ const SecondPage = (userData) => {
                     },
                     {"title": "Invite 10 friends", "url": "", "reward": "+1000", "completed": false,
                     },
-                    {"title": "Add 🐵in Telegram name", "url": "",
+                    {"title": "Add 🐵 in Telegram name", "url": "",
                         "reward": "+1000", "completed": false}
                 ];
 
@@ -166,7 +166,7 @@ const SecondPage = (userData) => {
     };
     return (
         <div className="_view_sf2n5_1 _view_jzemx_1" style={{opacity: 1}}>
-            <div className="_title_jzemx_9">Checking your account</div>
+            <div className="_title_jzemx_9 _exclusive_font" style={{fontSize:"12vw",placeContent:"center",placeItems:"center"}}>CHECKING YOU ACCOUNT</div>
             <div className="_loaders_jzemx_15">
                 <div style={{opacity: 1, transform: "none"}}>
                     <div>

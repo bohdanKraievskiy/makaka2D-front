@@ -141,7 +141,21 @@ function App() {
     };
 
     initializeTelegramWebApp();
-  }, []);
+
+    const handleBeforeUnload = (event) => {
+      // Надсилаємо запит перед закриттям вкладки
+      navigator.sendBeacon(`${API_BASE_URL}/close_connection/`, JSON.stringify({ user_id: userData.id, is_connected: false }));
+      // Повертаємо рядок, щоб показати підтвердження (опціонально)
+      event.returnValue = 'Are you sure you want to leave?';
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    // Очистка обробника події при розмонтуванні компонента
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [userData]);
 
   if (!userData) {
     return <div>Loading...</div>;
@@ -164,9 +178,9 @@ function App() {
             <Route path="/preload" element={<PreLoad telegramId={userData.id} />} />
             <Route path="/welcome" element={<WelcomePage />} />
             <Route path="/second" element={<SecondPage userData={userData} />} />
-            <Route path="/last_check" element={<LastPage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/leaderboard" element={<LeaderboardPage />} />
+            <Route path="/last_check" element={<LastPage telegramId={userData.id}/>} />
+            <Route path="/home" element={<HomePage telegramId={userData.id}/>} />
+            <Route path="/leaderboard" element={<LeaderboardPage telegramId={userData.id}/>} />
             <Route path="/invite" element={<InviteFriends telegramId={userData.id}/>} />
             <Route path="/game" element={<Game telegram_Id={userData.id}/>} />
             <Route path="*" element={<Navigate to="/preload" />} />

@@ -176,7 +176,7 @@ function App() {
     return <div>Loading...</div>;
   }
 
-  if (isMobile) {
+  if (!isMobile) {
     return (
         <div style={{ textAlign: 'center', padding: '20px' }}>
           <h1>Leave to mobile!</h1>

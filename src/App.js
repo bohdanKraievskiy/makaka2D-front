@@ -145,31 +145,38 @@ function App() {
 
   }, []);
 
-  window.addEventListener('beforeunload', async (event) => {
-    event.preventDefault();
+  useEffect(() => {
+    const handleBeforeUnload = (event) => {
+      event.preventDefault();
 
-    try {
-      await axios.post(`${API_BASE_URL}/update_connection_status/`, {
-        user_id: userData.id,
-        is_connected: false
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-      console.log("Connection status updated successfully.");
-    } catch (error) {
-      console.error("Error updating connection status:", error);
-    }
+      // Використовуємо sendBeacon для надійної відправки даних перед закриттям
+      if (userData) {
+        const payload = JSON.stringify({
+          user_id: userData.id,
+          is_connected: false
+        });
 
-    event.returnValue = 'Are you sure you want to leave?';
-  });
+        navigator.sendBeacon(`${API_BASE_URL}/update_connection_status/`, payload);
+        console.log("Connection status updated successfully.");
+      }
+
+      // Показуємо користувачу підтвердження перед закриттям вікна
+      event.returnValue = 'Are you sure you want to leave?';
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    // Видаляємо слухача події при розмонтуванні компонента
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [userData]);
 
   if (!userData) {
     return <div>Loading...</div>;
   }
 
-  if (!isMobile) {
+  if (isMobile) {
     return (
         <div style={{ textAlign: 'center', padding: '20px' }}>
           <h1>Leave to mobile!</h1>

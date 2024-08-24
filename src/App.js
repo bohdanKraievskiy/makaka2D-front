@@ -156,6 +156,8 @@ function App() {
 
         navigator.sendBeacon(`${API_BASE_URL}/update_connection_status/`, payload);
         console.log("Connection status updated on back button click.");
+
+        window.Telegram.WebApp.close();
       }
     };
 

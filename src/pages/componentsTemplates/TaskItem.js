@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { ModalContext } from '../../App';
 import { API_BASE_URL } from '../../helpers/api';
 
-const TaskItem = ({ title, footerText, url, index, setAnimated }) => {
+const TaskItem = ({ title, footerText, url, index, setAnimated,username_curently }) => {
     const [isChecked, setIsChecked] = useState(false);
     const [timerExpired, setTimerExpired] = useState(false);
     const { setShowModal, setModalMessage } = useContext(ModalContext);
@@ -64,7 +64,7 @@ const TaskItem = ({ title, footerText, url, index, setAnimated }) => {
                 telegram_id: telegramId,
                 task: taskTitle,
                 reward: rewardValue,
-                username:user.username
+                username:username_curently
             }, {
                 headers: {
                     'Content-Type': 'application/json',

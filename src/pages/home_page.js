@@ -13,7 +13,7 @@ import 'swiper/css/bundle';
 import SwiperCore from 'swiper';
 import { Pagination } from 'swiper/modules';
 SwiperCore.use([Pagination]);
-const HomePage = ({telegramId}) => {
+const HomePage = ({telegramId,username_curently}) => {
     const navigate = useNavigate();
     const { user,fetchUser,updateUserBalance} = useContext(UserContext);
     const { rewards,fetchUserRewards } = useContext(RewardsContext);
@@ -165,6 +165,7 @@ const HomePage = ({telegramId}) => {
                                         footerText={task.reward}
                                         url={task.url}
                                         setAnimated={animated}
+                                        username_curently={username_curently}
                                     />
                                 )
                             ))}

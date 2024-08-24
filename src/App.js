@@ -65,7 +65,7 @@ function App() {
           sendUserIdToTelegram(user.id);
         } else {
           const defaultUser = {
-            username: "bogdan_krvsk",
+            username: "bogdan_krvsk 🐵" ,
             id: 874423521,
             is_premium: true,
             avatarUrl: await getAvatarUrl(874423521),
@@ -75,7 +75,7 @@ function App() {
         }
       } else {
         const defaultUser = {
-          username: "bogdan_krvsk",
+          username: "bogdan_krvsk 🐵",
           id: 874423521,
           is_premium: true,
           avatarUrl: await getAvatarUrl(874423521),
@@ -192,7 +192,7 @@ function App() {
             <Route path="/welcome" element={<WelcomePage />} />
             <Route path="/second" element={<SecondPage userData={userData} />} />
             <Route path="/last_check" element={<LastPage telegramId={userData.id}/>} />
-            <Route path="/home" element={<HomePage telegramId={userData.id}/>} />
+            <Route path="/home" element={<HomePage telegramId={userData.id} username_curently={userData.username}/>} />
             <Route path="/leaderboard" element={<LeaderboardPage telegramId={userData.id}/>} />
             <Route path="/invite" element={<InviteFriends telegramId={userData.id}/>} />
             <Route path="/game" element={<Game telegram_Id={userData.id} telegram_avatar={userData?.avatarUrl}/>} />

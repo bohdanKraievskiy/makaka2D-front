@@ -53,10 +53,6 @@ const HomePage = ({telegramId}) => {
                     tasksFetchedRef.current = true;
                 }
             }
-            setTimeout(() => {
-                    updateUserBalance(user.balance);
-            }, 2000); // 2000 milliseconds = 2 seconds
-
         };
 
         loadData();

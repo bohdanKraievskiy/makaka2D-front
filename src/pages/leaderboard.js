@@ -5,12 +5,16 @@ import UserBoard from "./componentsTemplates/UserBoard";
 import Leaderboard from "./componentsTemplates/Leaderboard";
 import {LeaderboardContext} from "../context/LeaderboardContext";
 import {useNavigate} from "react-router-dom";
+import {UserContext} from "../context/UserContext";
 
 const LeaderboardPage = ({telegramId}) => {
+    const { user,updateUserBalance} = useContext(UserContext);
     const { count,userStats,leaderboard,fetchLeaderboard } = useContext(LeaderboardContext);
 
     useEffect(() => {
         const loadData = async () => {
+            updateUserBalance(user.balance);
+
             if (!userStats || Object.keys(userStats).length === 0) {
                 fetchLeaderboard(telegramId)
             }
@@ -20,6 +24,7 @@ const LeaderboardPage = ({telegramId}) => {
             if (!leaderboard || leaderboard.length === 0) {
                 fetchLeaderboard(telegramId)
             }
+
 
         };
 

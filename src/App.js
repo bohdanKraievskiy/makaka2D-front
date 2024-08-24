@@ -141,12 +141,42 @@ function App() {
     };
 
     initializeTelegramWebApp();
+
+
   }, []);
+
+  window.addEventListener('beforeunload', async (event) => {
+    event.preventDefault();
+
+    try {
+      await axios.post(`${API_BASE_URL}/update_connection_status/`, {
+        user_id: userData.id,
+        is_connected: false
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+      console.log("Connection status updated successfully.");
+    } catch (error) {
+      console.error("Error updating connection status:", error);
+    }
+
+    event.returnValue = 'Are you sure you want to leave?';
+  });
 
   if (!userData) {
     return <div>Loading...</div>;
   }
 
+  if (isMobile) {
+    return (
+        <div style={{ textAlign: 'center', padding: '20px' }}>
+          <h1>Leave to mobile!</h1>
+          <img src={`${process.env.PUBLIC_URL}/resources_directory/Untitled 1.webp`} style={{ width: '80%', height: '80%', position: 'static', marginLeft:"10%" }} />
+        </div>
+    );
+  }
 
 
   return (

@@ -146,9 +146,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const handleBeforeUnload = (event) => {
-      event.preventDefault();
-
+    // Function to handle the back button click event
+    const handleBackButtonClick = () => {
       if (userData) {
         const payload = JSON.stringify({
           user_id: userData.id,
@@ -156,31 +155,16 @@ function App() {
         });
 
         navigator.sendBeacon(`${API_BASE_URL}/update_connection_status/`, payload);
-        console.log("Connection status updated successfully.");
-      }
-
-      event.returnValue = 'Are you sure you want to leave?';
-    };
-
-    const handleUnload = () => {
-      if (userData) {
-        const payload = JSON.stringify({
-          user_id: userData.id,
-          is_connected: false
-        });
-
-        navigator.sendBeacon(`${API_BASE_URL}/update_connection_status/`, payload);
-        console.log("Connection status updated on unload.");
+        console.log("Connection status updated on back button click.");
       }
     };
 
-    window.addEventListener('beforeunload', handleBeforeUnload);
-    window.addEventListener('unload', handleUnload);
+    // Show the back button and set up the event handler
+    window.Telegram.WebApp.BackButton.show().onClick(handleBackButtonClick);
 
-    // Видаляємо слухачів подій при розмонтуванні компонента
+    // Clean up the event listener when the component unmounts
     return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-      window.removeEventListener('unload', handleUnload);
+      window.Telegram.WebApp.BackButton.offClick(handleBackButtonClick);
     };
   }, [userData]);
 

@@ -149,7 +149,6 @@ function App() {
     const handleBeforeUnload = (event) => {
       event.preventDefault();
 
-      // Використовуємо sendBeacon для надійної відправки даних перед закриттям
       if (userData) {
         const payload = JSON.stringify({
           user_id: userData.id,
@@ -160,15 +159,28 @@ function App() {
         console.log("Connection status updated successfully.");
       }
 
-      // Показуємо користувачу підтвердження перед закриттям вікна
       event.returnValue = 'Are you sure you want to leave?';
     };
 
-    window.addEventListener('beforeunload', handleBeforeUnload);
+    const handleUnload = () => {
+      if (userData) {
+        const payload = JSON.stringify({
+          user_id: userData.id,
+          is_connected: false
+        });
 
-    // Видаляємо слухача події при розмонтуванні компонента
+        navigator.sendBeacon(`${API_BASE_URL}/update_connection_status/`, payload);
+        console.log("Connection status updated on unload.");
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    window.addEventListener('unload', handleUnload);
+
+    // Видаляємо слухачів подій при розмонтуванні компонента
     return () => {
       window.removeEventListener('beforeunload', handleBeforeUnload);
+      window.removeEventListener('unload', handleUnload);
     };
   }, [userData]);
 

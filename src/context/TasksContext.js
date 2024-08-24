@@ -6,12 +6,16 @@ export const TasksContext = createContext();
 
 export const TasksProvider = ({ children }) => {
     const [tasks, setTasks] = useState([
-        {"title": "Follow OnlyUP on X", "url": "https://t.me/video_save_kyuubi", "reward": "+1000", "completed": false},
-        {"title": "Join our telegram chat", "url": "https://t.me/video_save_kyuubi", "reward": "+1000", "completed": false},
-        {"title": "OnlyUp Community", "url": "https://t.me/video_save_kyuubi", "reward": "+1000", "completed": false},
-        {"title": "OnlyUp on X like and tweet", "url": "https://x.com/onlyup1b/status/1820518292827902366?s=52&t=002GowCIMLy2LH0C0Gkt6w", "reward": "+1000", "completed": false },
-        {"title": "New post on X like, retweet and comment", "url": "https://x.com/onlyup1b/status/1823697112627818729?s=52&t=002GowCIMLy2LH0C0Gkt6w",
-            "reward": "+5000", "completed": false}
+        {"title": "Subscribe to PRIME channel", "url": "https://t.me/WeArePrimeNews", "reward": "+1000",
+            "completed": false},
+        {"title": "Subscribe to PRIME X", "url": "https://x.com/WeArePrimeOnly",
+            "reward": "+1000", "completed": false},
+        {"title": "Invite 5 friends", "url": "", "reward": "+5000", "completed": false,
+        },
+        {"title": "Invite 10 friends", "url": "", "reward": "+10000", "completed": false,
+        },
+        {"title": "Add 🐵 in Telegram name", "url": "",
+            "reward": "+1000", "completed": false}
     ]);
     const completeTask = (index) => {
         setTasks(tasks.map((task, i) => i === index ? { ...task, completed: true } : task));

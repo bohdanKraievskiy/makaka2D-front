@@ -78,9 +78,9 @@ const SecondPage = (userData) => {
                         "completed": false},
                     {"title": "Subscribe to PRIME X", "url": "https://x.com/WeArePrimeOnly",
                         "reward": "+1000", "completed": false},
-                    {"title": "Invite 5 friends", "url": "", "reward": "+1000", "completed": false,
+                    {"title": "Invite 5 friends", "url": "", "reward": "+5000", "completed": false,
                     },
-                    {"title": "Invite 10 friends", "url": "", "reward": "+1000", "completed": false,
+                    {"title": "Invite 10 friends", "url": "", "reward": "+10000", "completed": false,
                     },
                     {"title": "Add 🐵 in Telegram name", "url": "",
                         "reward": "+1000", "completed": false}

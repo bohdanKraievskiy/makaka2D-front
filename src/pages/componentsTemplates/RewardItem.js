@@ -11,7 +11,7 @@ const RewardItem = ({ text, details }) => {
             <div className="_body_n07eh_28">
                 <div className="_text_n07eh_42">{text}</div>
             </div>
-            <div className="_details_n07eh_51">{details}</div>
+            <div className="_details_n07eh_51" style={{color:" rgb(247, 198, 5)"}}>{details}</div>
         </div>
     );
 };

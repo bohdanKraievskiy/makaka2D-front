@@ -175,8 +175,9 @@ const TaskItem = ({ title, footerText, url, index, setAnimated }) => {
         return null;
     };
     const renderTitleWithHighlightedNumbers = (title) => {
-        return title.replace(/(\d+)/g, (match) => `<span style="color: rgb(247, 198, 5)";">${match}</span>`);
+        return title.replace(/(\d+|\+)/g, (match) => `<span style="color: rgb(247, 198, 5);">${match}</span>`);
     };
+
     return (
 
         <div className="_listItem_1wi4k_1">
@@ -186,9 +187,8 @@ const TaskItem = ({ title, footerText, url, index, setAnimated }) => {
             <div className="_body_1wi4k_22">
                 <div
                     className="_title_1wi4k_29"
-                    dangerouslySetInnerHTML={{__html: renderTitleWithHighlightedNumbers(title)}}
-                />
-                <div className="_footer_1wi4k_38">{footerText}</div>
+                >{title}</div>
+                <div className="_footer_1wi4k_38" dangerouslySetInnerHTML={{__html: renderTitleWithHighlightedNumbers(footerText)}}></div>
             </div>
             <div className="_after_1wi4k_45">
                 <div

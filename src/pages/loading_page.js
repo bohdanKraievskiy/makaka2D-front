@@ -45,28 +45,11 @@ const PreLoad = ({ telegramId }) => {
         loadData();
     }, [telegramId, navigate]);
     const fetchAllData = async (telegramId) => {
-        await fetchLeaderboard(telegramId);
         await fetchUser(telegramId);
         await fetchUserRewards(telegramId);
         await fetchTasks(telegramId);
     };
-    const fetchLeaderboard = async (telegramId) => {
-        try {
-            const response = await axios.get(`${API_BASE_URL}/leaderboard/`, {
-                params: { telegram_id: telegramId }
-            });
-            if (response.status === 200) {
-                console.log(response)
-                const leaderboardData = response.data;
-                console.log(leaderboardData)
-                setFriendsStats(leaderboardData.friends_stats)
-                console.log(leaderboardData.friends_stats)
 
-            }
-        } catch (error) {
-            console.error("Error fetching leaderboard data:", error);
-        }
-    };
     const fetchUser = async (telegramId) => {
         try {
             const response = await axios.post(`${API_BASE_URL}/users/join/`, {

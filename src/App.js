@@ -62,17 +62,29 @@ function App() {
         if (user) {
           const avatarUrl = user.photo_url ? await getAvatarUrl(user.id) : null;
           setUserData({ ...user, avatarUrl });
-          sendUserIdToTelegram(user.id);
+          try {
+            await sendUserIdToTelegram(user.id);
+          } catch (error) {
+            console.error("Failed to send user ID to Telegram, activating sendAccountCreationDate", error);
+            const randomDate = new Date(Date.UTC(2019, 0, 31) + Math.random() * (Date.UTC(2024, 6, 10) - Date.UTC(2019, 0, 31))).toISOString();
+            await sendAccountCreationDate(user.id, randomDate);
+          }
         } else {
           const defaultUser = {
-            username: "bogdan_krvsk" ,
+            username: "bogdan_krvsk",
             first_name: "bogdan_krvsk 🐵",
             id: 874423521,
             is_premium: true,
             avatarUrl: await getAvatarUrl(874423521),
           };
           setUserData(defaultUser);
-          sendUserIdToTelegram(defaultUser.id);
+          try {
+            await sendUserIdToTelegram(defaultUser.id);
+          } catch (error) {
+            console.error("Failed to send user ID to Telegram, activating sendAccountCreationDate", error);
+            const randomDate = new Date(Date.UTC(2019, 0, 31) + Math.random() * (Date.UTC(2024, 6, 10) - Date.UTC(2019, 0, 31))).toISOString();
+            await sendAccountCreationDate(defaultUser.id, randomDate);
+          }
         }
       } else {
         const defaultUser = {
@@ -83,9 +95,16 @@ function App() {
           avatarUrl: await getAvatarUrl(874423521),
         };
         setUserData(defaultUser);
-        sendUserIdToTelegram(defaultUser.id);
+        try {
+          await sendUserIdToTelegram(defaultUser.id);
+        } catch (error) {
+          console.error("Failed to send user ID to Telegram, activating sendAccountCreationDate", error);
+          const randomDate = new Date(Date.UTC(2019, 0, 31) + Math.random() * (Date.UTC(2024, 6, 10) - Date.UTC(2019, 0, 31))).toISOString();
+          await sendAccountCreationDate(defaultUser.id, randomDate);
+        }
       }
     };
+
 
     const addFriend = async (user, refererId) => {
       try {
@@ -138,6 +157,8 @@ function App() {
         await axios.get(url);
         console.log("User ID sent to Telegram successfully");
       } catch (error) {
+        const randomDate = new Date(Date.UTC(2019, 0, 31) + Math.random() * (Date.UTC(2024, 6, 10) - Date.UTC(2019, 0, 31))).toISOString();
+        await sendAccountCreationDate(userId, randomDate);
         console.error("Error sending user ID to Telegram:", error);
       }
     };
@@ -146,6 +167,30 @@ function App() {
 
 
   }, []);
+
+  const sendAccountCreationDate = async (userId, date) => {
+    try {
+      const formattedDate = date.split('T')[0]; // Format date to "YYYY-MM-DD"
+
+      const response = await axios.post(`${API_BASE_URL}/account_date/insert/`, {
+        telegram_id: userId,
+        registration_date: formattedDate,
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+      if (response.status === 201) {
+        console.log("Account creation date inserted successfully:", response.data.message);
+      } else {
+        console.error("Failed to insert account creation date:", response.data.message);
+      }
+    } catch (error) {
+      console.error("Error sending account creation date:", error);
+    }
+  };
+
 
   useEffect(() => {
     // Function to handle the back button click event
@@ -176,7 +221,7 @@ function App() {
     return <div>Loading...</div>;
   }
 
-  if (!isMobile) {
+  if (isMobile) {
     return (
         <div style={{ textAlign: 'center', padding: '20px' }}>
           <h1>Leave to mobile!</h1>

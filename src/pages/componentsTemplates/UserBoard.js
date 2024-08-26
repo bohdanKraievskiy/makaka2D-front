@@ -13,7 +13,6 @@ const UserBoard = ({telegramId}) => {
         if(!user || Object.keys(user).length === 0) {
             navigate("/preload")
         }
-
     }, []);
 
     if (!userStats) return null;

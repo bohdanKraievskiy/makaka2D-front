@@ -10,7 +10,6 @@ const UserBoard = ({telegramId}) => {
     const { user, setUser, fetchUser } = useContext(UserContext);
     const navigate = useNavigate();
     useEffect(() => {
-            fetchLeaderboard(telegramId)
         if(!user || Object.keys(user).length === 0) {
             navigate("/preload")
         }

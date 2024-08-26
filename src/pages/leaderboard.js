@@ -1,5 +1,5 @@
 // src/components/LastPage.js
-import React, {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useRef} from "react";
 import "../Styles/mainStyles.css"; // Додайте CSS для стилізації
 import UserBoard from "./componentsTemplates/UserBoard";
 import Leaderboard from "./componentsTemplates/Leaderboard";
@@ -10,21 +10,14 @@ import {UserContext} from "../context/UserContext";
 const LeaderboardPage = ({telegramId}) => {
     const { user,updateUserBalance} = useContext(UserContext);
     const { count,userStats,leaderboard,fetchLeaderboard } = useContext(LeaderboardContext);
-
+    const hasFetchedLeaderboard = useRef(false);
     useEffect(() => {
         const loadData = async () => {
             updateUserBalance(user.balance);
-
-            if (!userStats || Object.keys(userStats).length === 0) {
-                fetchLeaderboard(telegramId)
+            if (!hasFetchedLeaderboard.current && (!leaderboard || leaderboard.length === 0)) {
+                await fetchLeaderboard(telegramId);
+                hasFetchedLeaderboard.current = true;
             }
-            if (!count || Object.keys(count).length === 0) {
-                fetchLeaderboard(telegramId)
-            }
-            if (!leaderboard || leaderboard.length === 0) {
-                fetchLeaderboard(telegramId)
-            }
-
 
         };
 

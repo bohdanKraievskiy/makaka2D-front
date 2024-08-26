@@ -13,7 +13,6 @@ const LeaderboardPage = ({telegramId}) => {
     const hasFetchedLeaderboard = useRef(false);
     useEffect(() => {
         const loadData = async () => {
-            updateUserBalance(user.balance);
             if (!hasFetchedLeaderboard.current && (!leaderboard || leaderboard.length === 0)) {
                 await fetchLeaderboard(telegramId);
                 hasFetchedLeaderboard.current = true;

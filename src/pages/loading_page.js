@@ -45,8 +45,10 @@ const PreLoad = ({ telegramId }) => {
         loadData();
     }, [telegramId, navigate]);
     const fetchAllData = async (telegramId) => {
+        await fetchUser(telegramId)
         await fetchUserRewards(telegramId);
         await fetchTasks(telegramId);
+
     };
 
     const fetchUser = async (telegramId) => {
@@ -76,6 +78,8 @@ const PreLoad = ({ telegramId }) => {
             if (response.status === 200 && response.data.status === "success") {
                 setRewards(response.data.reward);
 
+            } else{
+                navigate("/welcome");
             }
         } catch (error) {
             console.error("Failed to fetch user rewards:", error);

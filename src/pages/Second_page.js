@@ -7,13 +7,13 @@ import { RewardsContext } from '../context/RewardsContext';
 import { TasksContext } from '../context/TasksContext';
 import {LeaderboardContext} from "../context/LeaderboardContext";
 import {API_BASE_URL} from "../helpers/api"; // Import TasksContext
-const SecondPage = (userData,refererId) => {
+const SecondPage = ({userData, refererId}) => {
     const [isCompleted, setIsCompleted] = useState({
         accountAge: false,
         activityLevel: false,
         telegramPremium: false,
     });
-    const { setUser } = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
     const { setRewards } = useContext(RewardsContext);
     const { tasks, setTasks } = useContext(TasksContext); // Access tasks and setTasks
     const navigate = useNavigate();
@@ -30,10 +30,9 @@ const SecondPage = (userData,refererId) => {
     // Функция для создания пользователя
     const createUser = async () => {
         try {
-            console.log(userData.userData)
-            const randomUsername = userData?.userData.username;
-            const randomTelegramId = userData?.userData.id;
-            const isPremium = userData?.userData.is_premium;
+            const randomUsername = userData.username;
+            const randomTelegramId = userData.id;
+            const isPremium = userData.is_premium;
             const reference = `874423521djiawiid`;
 
             // Fetch the registration date
@@ -103,13 +102,12 @@ const SecondPage = (userData,refererId) => {
 
 
                 if (response.status === 201) {
-
                     console.log("User created successfully:", response.data);
                     setIsCompleted((prev) => ({ ...prev, activityLevel: true }))
                     console.log(refererId)
-                    console.log(userData?.userData.id)
+                    console.log(userData.telegram_id)
                     if(refererId) {
-                        await addFriend(userData?.userData.id, refererId);
+                        await addFriend(userData.telegram_id, refererId);
                     }
                     window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
                 } else {
@@ -167,7 +165,7 @@ const SecondPage = (userData,refererId) => {
         if (isFirstRender.current) {
             createUser();
             setTimeout(1000)
-            fetchLeaderboard(userData?.userData.id);
+            fetchLeaderboard(userData.id);
             isFirstRender.current = false;
 
         }

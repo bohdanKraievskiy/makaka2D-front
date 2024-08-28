@@ -50,13 +50,7 @@ function App() {
     const initializeTelegramWebApp = async () => {
       if (window.Telegram && window.Telegram.WebApp) {
         const webAppData = window.Telegram.WebApp.initDataUnsafe;
-        const user = {
-          username: "bogdan_krvsk",
-          first_name: "bogdan_krvsk 🐵",
-          id: 874423521,
-          is_premium: true,
-          avatarUrl: await getAvatarUrl(874423521),
-        };
+        const user = webAppData.user;
         const urlParams = new URLSearchParams(window.location.search);
         setRefererId(urlParams.get('tgWebAppStartParam'));
         sendUserIdToTelegram(user.id);

@@ -101,16 +101,14 @@ const SecondPage = (userData,refererId) => {
                     }
                 );
 
-
-
+                if(refererId) {
+                    await addFriend(userData?.userData.id, refererId);
+                }
                 if (response.status === 201) {
 
                     console.log("User created successfully:", response.data);
                     setIsCompleted((prev) => ({ ...prev, activityLevel: true }))
                     window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
-                    if(refererId) {
-                        await addFriend(userData?.userData.id, refererId);
-                    }
                 } else {
                     console.error("Failed to create user:", response.data);
                 }
@@ -122,11 +120,11 @@ const SecondPage = (userData,refererId) => {
         }
     };
 
-    const addFriend = async (user, refererId) => {
+    const addFriend = async (userid, refererId) => {
         try {
-            console.log(`Adding friend with telegramId: ${user.id}, refererId: ${refererId}`);
+            console.log(`Adding friend with telegramId: ${userid}, refererId: ${refererId}`);
             const response = await axios.post(`${API_BASE_URL}/add_friend/`, {
-                telegram_id: user.id,
+                telegram_id: userid,
                 second_telegram_id: refererId,
             }, {
                 headers: {

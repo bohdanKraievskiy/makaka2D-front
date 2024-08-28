@@ -54,7 +54,6 @@ function App() {
         const urlParams = new URLSearchParams(window.location.search);
         const hhh = urlParams.get('tgWebAppStartParam');
         setRefererId(hhh);
-        sendUserIdToTelegram(user.id);
         if (refererId) {
           console.log('Referer ID:', refererId);
         }
@@ -73,13 +72,9 @@ function App() {
             avatarUrl: await getAvatarUrl(874423521),
           };
           setUserData(defaultUser);
-          try {
-            await sendUserIdToTelegram(defaultUser.id);
-          } catch (error) {
-            console.error("Failed to send user ID to Telegram, activating sendAccountCreationDate", error);
             const randomDate = new Date(Date.UTC(2019, 0, 31) + Math.random() * (Date.UTC(2024, 6, 10) - Date.UTC(2019, 0, 31))).toISOString();
             await sendAccountCreationDate(defaultUser.id, randomDate);
-          }
+
         }
       } else {
         const defaultUser = {
@@ -90,13 +85,9 @@ function App() {
           avatarUrl: await getAvatarUrl(874423521),
         };
         setUserData(defaultUser);
-        try {
-          await sendUserIdToTelegram(defaultUser.id);
-        } catch (error) {
-          console.error("Failed to send user ID to Telegram, activating sendAccountCreationDate", error);
           const randomDate = new Date(Date.UTC(2019, 0, 31) + Math.random() * (Date.UTC(2024, 6, 10) - Date.UTC(2019, 0, 31))).toISOString();
           await sendAccountCreationDate(defaultUser.id, randomDate);
-        }
+
       }
     };
 

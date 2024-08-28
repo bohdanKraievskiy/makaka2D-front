@@ -45,7 +45,7 @@ const PreLoad = ({ telegramId }) => {
         loadData();
     }, [telegramId, navigate]);
     const fetchAllData = async (telegramId) => {
-        await fetchUser(telegramId)
+        await fetchUser(telegramId);
         await fetchUserRewards(telegramId);
         await fetchTasks(telegramId);
 

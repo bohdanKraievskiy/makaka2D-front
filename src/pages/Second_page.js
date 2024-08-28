@@ -106,6 +106,8 @@ const SecondPage = (userData,refererId) => {
 
                     console.log("User created successfully:", response.data);
                     setIsCompleted((prev) => ({ ...prev, activityLevel: true }))
+                    console.log(refererId)
+                    console.log(userData?.userData.id)
                     if(refererId) {
                         await addFriend(userData?.userData.id, refererId);
                     }

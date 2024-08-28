@@ -7,7 +7,7 @@ import { RewardsContext } from '../context/RewardsContext';
 import { TasksContext } from '../context/TasksContext';
 import {LeaderboardContext} from "../context/LeaderboardContext";
 import {API_BASE_URL} from "../helpers/api"; // Import TasksContext
-const SecondPage = (userData) => {
+const SecondPage = (userData,refererId) => {
     const [isCompleted, setIsCompleted] = useState({
         accountAge: false,
         activityLevel: false,
@@ -100,10 +100,17 @@ const SecondPage = (userData) => {
                         }
                     }
                 );
+
+
+
                 if (response.status === 201) {
+
                     console.log("User created successfully:", response.data);
                     setIsCompleted((prev) => ({ ...prev, activityLevel: true }))
                     window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
+                    if(refererId) {
+                        await addFriend(userData?.userData.id, refererId);
+                    }
                 } else {
                     console.error("Failed to create user:", response.data);
                 }
@@ -112,6 +119,28 @@ const SecondPage = (userData) => {
             }
         } catch (error) {
             console.error("Error creating user:", error);
+        }
+    };
+
+    const addFriend = async (user, refererId) => {
+        try {
+            console.log(`Adding friend with telegramId: ${user.id}, refererId: ${refererId}`);
+            const response = await axios.post(`${API_BASE_URL}/add_friend/`, {
+                telegram_id: user.id,
+                second_telegram_id: refererId,
+            }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+
+            if (response.status === 200) {
+                console.log("Friend added successfully:", response.data.message);
+            } else {
+                console.error("Failed to add friend:", response.data.message);
+            }
+        } catch (error) {
+            console.error("Error adding friend:", error);
         }
     };
 

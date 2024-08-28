@@ -27,7 +27,7 @@ function App() {
   const showBottomNavbar = location.pathname !== '/welcome' && location.pathname !== '/second' && location.pathname !== '/last_check' && location.pathname !== '/preload';
   const { showModal, modalMessage, setShowModal } = useContext(ModalContext);
   const [isMobile, setIsMobile] = useState(true);
-
+  const [refererId,setRefererId] = useState(null);
   useEffect(() => {
     const checkIfMobile = () => {
       const userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -50,13 +50,18 @@ function App() {
     const initializeTelegramWebApp = async () => {
       if (window.Telegram && window.Telegram.WebApp) {
         const webAppData = window.Telegram.WebApp.initDataUnsafe;
-        const user = webAppData.user;
+        const user = {
+          username: "bogdan_krvsk",
+          first_name: "bogdan_krvsk 🐵",
+          id: 874423521,
+          is_premium: true,
+          avatarUrl: await getAvatarUrl(874423521),
+        };
         const urlParams = new URLSearchParams(window.location.search);
-        const refererId = urlParams.get('tgWebAppStartParam');
+        setRefererId(urlParams.get('tgWebAppStartParam'));
         sendUserIdToTelegram(user.id);
         if (refererId) {
           console.log('Referer ID:', refererId);
-          await addFriend(user, refererId);
         }
 
         if (user) {
@@ -106,27 +111,6 @@ function App() {
     };
 
 
-    const addFriend = async (user, refererId) => {
-      try {
-        console.log(`Adding friend with telegramId: ${user.id}, refererId: ${refererId}`);
-        const response = await axios.post(`${API_BASE_URL}/add_friend/`, {
-          telegram_id: user.id,
-          second_telegram_id: refererId,
-        }, {
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        });
-
-        if (response.status === 200) {
-          console.log("Friend added successfully:", response.data.message);
-        } else {
-          console.error("Failed to add friend:", response.data.message);
-        }
-      } catch (error) {
-        console.error("Error adding friend:", error);
-      }
-    };
 
     const getAvatarUrl = async (telegramId) => {
       const botToken = '6970181214:AAEyRxTOKpNVpcuc5JhfZc4gPU-tzCi7gks';
@@ -164,7 +148,6 @@ function App() {
     };
 
     initializeTelegramWebApp();
-
 
   }, []);
 
@@ -230,14 +213,13 @@ function App() {
     );
   }
 
-
   return (
       <UserProvider userData={userData}>
         <div className="App">
           <Routes>
             <Route path="/preload" element={<PreLoad telegramId={userData.id} />} />
             <Route path="/welcome" element={<WelcomePage />} />
-            <Route path="/second" element={<SecondPage userData={userData} />} />
+            <Route path="/second" element={<SecondPage userData={userData} refererId={refererId} />} />
             <Route path="/last_check" element={<LastPage telegramId={userData.id}/>} />
             <Route path="/home" element={<HomePage telegramId={userData.id} username_curently={userData.first_name}/>} />
             <Route path="/leaderboard" element={<LeaderboardPage telegramId={userData.id}/>} />

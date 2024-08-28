@@ -7,7 +7,7 @@ import { RewardsContext } from '../context/RewardsContext';
 import { TasksContext } from '../context/TasksContext';
 import {LeaderboardContext} from "../context/LeaderboardContext";
 import {API_BASE_URL} from "../helpers/api"; // Import TasksContext
-const SecondPage = (userData,refererId) => {
+const SecondPage = ({userData, refererId}) => {
     const [isCompleted, setIsCompleted] = useState({
         accountAge: false,
         activityLevel: false,

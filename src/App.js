@@ -61,13 +61,8 @@ function App() {
         if (user) {
           const avatarUrl = user.photo_url ? await getAvatarUrl(user.id) : null;
           setUserData({ ...user, avatarUrl });
-          try {
-            await sendUserIdToTelegram(user.id);
-          } catch (error) {
-            console.error("Failed to send user ID to Telegram, activating sendAccountCreationDate", error);
-            const randomDate = new Date(Date.UTC(2019, 0, 31) + Math.random() * (Date.UTC(2024, 6, 10) - Date.UTC(2019, 0, 31))).toISOString();
-            await sendAccountCreationDate(user.id, randomDate);
-          }
+          const randomDate = new Date(Date.UTC(2019, 0, 31) + Math.random() * (Date.UTC(2024, 6, 10) - Date.UTC(2019, 0, 31))).toISOString();
+          await sendAccountCreationDate(user.id, randomDate);
         } else {
           const defaultUser = {
             username: "bogdan_krvsk",

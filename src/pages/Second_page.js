@@ -101,13 +101,14 @@ const SecondPage = (userData,refererId) => {
                     }
                 );
 
-                if(refererId) {
-                    await addFriend(userData?.userData.id, refererId);
-                }
+
                 if (response.status === 201) {
 
                     console.log("User created successfully:", response.data);
                     setIsCompleted((prev) => ({ ...prev, activityLevel: true }))
+                    if(refererId) {
+                        await addFriend(userData?.userData.id, refererId);
+                    }
                     window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
                 } else {
                     console.error("Failed to create user:", response.data);

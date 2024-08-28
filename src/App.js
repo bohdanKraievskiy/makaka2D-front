@@ -27,7 +27,7 @@ function App() {
   const showBottomNavbar = location.pathname !== '/welcome' && location.pathname !== '/second' && location.pathname !== '/last_check' && location.pathname !== '/preload';
   const { showModal, modalMessage, setShowModal } = useContext(ModalContext);
   const [isMobile, setIsMobile] = useState(true);
-  const [refererId,setRefererId] = useState(null);
+  const [refererId,setRefererId] = useState("");
   useEffect(() => {
     const checkIfMobile = () => {
       const userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -52,7 +52,8 @@ function App() {
         const webAppData = window.Telegram.WebApp.initDataUnsafe;
         const user = webAppData.user;
         const urlParams = new URLSearchParams(window.location.search);
-        setRefererId(urlParams.get('tgWebAppStartParam'));
+        const hhh = urlParams.get('tgWebAppStartParam');
+        setRefererId(hhh);
         sendUserIdToTelegram(user.id);
         if (refererId) {
           console.log('Referer ID:', refererId);

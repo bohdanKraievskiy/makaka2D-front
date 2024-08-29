@@ -106,7 +106,7 @@ const HomePage = ({telegramId,username_curently}) => {
                 </div>
                 <div className="_view_sf2n5_1 _view_1vo1r_1" style={{opacity: 1}}>
                     <div className="_mascote_94k9d_1 _centered_94k9d_13"
-                         style={{marginTop: "20%", alignItems: "center"}}>
+                         style={{marginTop: "5%", alignItems: "center"}}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="1906" height="676" viewBox="0 0 1906 676"
                              fill="none" className="_glass_94k9d_29">
                             <path

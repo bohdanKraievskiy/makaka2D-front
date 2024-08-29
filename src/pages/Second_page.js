@@ -84,6 +84,8 @@ const SecondPage = ({userData, refererId}) => {
                     {"title": "Invite 2 friends", "url": "", "reward": "+2000", "completed": false,
                     },
                     {"title": "Add 🐵 in Telegram name", "url": "",
+                        "reward": "+1000", "completed": false},
+                    {"title": "Retweet the tweet", "url": "https://x.com/weareprimehome/status/1828133113287057539?s=46&t=REGizFxkKmoHaJ7j2DeBGQ",
                         "reward": "+1000", "completed": false}
                 ];
 

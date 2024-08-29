@@ -1603,9 +1603,7 @@ button.swiper-pagination-bullet {
     stroke: #fff
 }
 
-._view_1vo1r_1 {
-    padding-top: 80px
-}
+
 
 ._title_1vo1r_5 {
     text-align: center;
@@ -1627,9 +1625,9 @@ button.swiper-pagination-bullet {
 }
 
 ._replay_1vo1r_24 {
+        position: relative;
     height: 134px;
     width: 100%;
-    position: absolute;
     left: 0;
     top: 0;
     right: 0;
@@ -1657,7 +1655,7 @@ button.swiper-pagination-bullet {
     z-index: 90;
     width: 100%;
     min-width: 100%;
-    z-index: 1001;
+    z-index: 1;
     cursor: pointer
 }
 

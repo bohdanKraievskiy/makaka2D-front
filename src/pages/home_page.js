@@ -128,7 +128,7 @@ const HomePage = ({telegramId,username_curently}) => {
                                 <>&nbsp;&nbsp;</>
                             </div>
                             <button onClick={handleGoToScoreTON} className="_button_1pxmk_91 _upper_menu_text"> Withdraw Upcoming</button>
-                            <div className="_footer_ruller_7yda" style={{textAlign:"center",fontWeight:500,fontSize:"4vw",marginTop:"15px",lineHeight:1}}>Conditions: To allow you to claim your $TON BONUS rewars you need to  complete all the tasks</div>
+                            <div className="_footer_ruller_7yda" style={{textAlign:"center",fontWeight:500,fontSize:"4vw",marginTop:"15px",lineHeight:1}}>Conditions: To allow you to claim your $TON BONUS rewards you need to  complete all the tasks</div>
                             </div>
                     </div>
                 </div>

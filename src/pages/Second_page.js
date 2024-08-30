@@ -84,7 +84,7 @@ const SecondPage = ({userData, refererId}) => {
                     },
                     {"title": "Add 🐵 in Telegram name", "url": "",
                         "reward": "+1000", "completed": false},
-                    {"title": "Invite 1 premium friends","ton":"0.001", "url": "", "reward": "+2000", "completed": false,
+                    {"title": "Invite 1 premium friends","ton":"0.01", "url": "", "reward": "+2000", "completed": false,
                     },
                 ];
 

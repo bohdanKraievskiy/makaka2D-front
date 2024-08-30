@@ -216,7 +216,7 @@ const TaskItem = ({ title, footerText, ton, url, index, setAnimated,username_cur
                 {ton ? ( <div className="_footer_conteiner">
                         <div style={{color:"rgb(247, 198, 5)",marginTop:-2.5,textAlign:"center",placeContent:"center"}}>&nbsp;+&nbsp;</div>
                     <div className="_footer_1wi4k_38 _ton_text"
-                    >{ton}</div></div>
+                    >{ton} $TON</div></div>
                     ) : (<></>
                     )}
                 </div>

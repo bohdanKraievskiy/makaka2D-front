@@ -246,7 +246,7 @@ const HomePage = ({telegramId,username_curently}) => {
                                                         text="Home for Telegram Monkey"
                                                         buttonText="Join"
                                                         url="https://t.me/WeArePrimeNews"
-                                                        ton="0.002"
+                                                        ton="0.009"
                                                     />
                                                 </SwiperSlide>
                                             </Swiper>

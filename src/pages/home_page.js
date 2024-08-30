@@ -128,7 +128,7 @@ const HomePage = ({telegramId,username_curently}) => {
                                 <>&nbsp;&nbsp;</>
                             </div>
                             <button onClick={handleGoToScoreTON} className="_button_1pxmk_91 _upper_menu_text"> Withdraw Upcoming</button>
-                            <div className="_footer_ruller_7yda" style={{textAlign:"center",fontWeight:500,fontSize:"5vw",marginTop:"15px",lineHeight:1}}>Conditions: To allow you to claim your $TON BONUS rewars you need to  complete all the tasks</div>
+                            <div className="_footer_ruller_7yda" style={{textAlign:"center",fontWeight:500,fontSize:"4vw",marginTop:"15px",lineHeight:1}}>Conditions: To allow you to claim your $TON BONUS rewars you need to  complete all the tasks</div>
                             </div>
                     </div>
                 </div>
@@ -189,7 +189,7 @@ const HomePage = ({telegramId,username_curently}) => {
                     <div className="_body_1wi4k_22" style={{alignItems: "center", gap: "2px", padding: "5px"}}>
                         <div style={{fontWeight: 600, fontSize: "5.6vw"}}>Bonus</div>
                         <div style={{fontWeight: 500}}>$TON earned from Tasks</div>
-                        <div style={{display: "flex", flexDirection: "row", fontWeight: 500}}>
+                        <div style={{display: "flex", flexDirection: "row", fontWeight: 500,alignItems:"center",textAlign:"center"}}>
                             <div style={{
                                 color: "#0cc0df",
                                 fontSize: "5vw",fontWeight:900

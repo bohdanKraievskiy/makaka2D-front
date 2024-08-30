@@ -510,13 +510,14 @@
     text-decoration: none;
 }
 ._button_1pxmk_91{
-    font-size: 3vw;
+    width: 72px;
+    font-size: 14px;
     font-weight: bold;
     background-color: rgba(255, 255, 255, 0.2);
     border: 1px solid rgba(0, 0, 0, 0.2);
     color: white;
-    border-radius: 15px;
-    height: 25px;
+    border-radius: 9999px;
+    height: 36px;
 }
 ._clide_ton{
     position: absolute;

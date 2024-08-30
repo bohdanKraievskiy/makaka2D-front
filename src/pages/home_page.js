@@ -89,11 +89,11 @@ const HomePage = ({telegramId,username_curently}) => {
 
 
                         <div className="_body_1wi4k_22" style={{alignItems: "center", gap: "8px", padding: "5px"}}>
-                            <div style={{fontWeight: 500,marginTop:"20px", fontSize: "5vw"}}>YOUR $TON BONUS BALANCE</div>
+                            <div style={{fontWeight: 500,marginTop:"20px", fontSize: "8vw"}} className="_exclusive_font">YOUR $TON BONUS BALANCE</div>
                             <div style={{display: "flex", flexDirection: "row", fontWeight: 500}}>
                                 <div style={{
                                     color: "#0cc0df",
-                                    fontSize: "10vw",fontWeight:900
+                                    fontSize: "8vw",fontWeight:900
                                 }}>{user.wallet == null ? 0 : user.wallet} &nbsp;</div>
                                 <svg
                                     version="1.1"
@@ -102,9 +102,9 @@ const HomePage = ({telegramId,username_curently}) => {
                                     xmlnsXlink="http://www.w3.org/1999/xlink"
                                     x="0px"
                                     y="0px"
-                                    width="50"
-                                    height="50"
-                                    viewBox="0 0 76 46"
+                                    width="40"
+                                    height="40"
+                                    viewBox="0 0 56 56"
                                     style={{enableBackground: "new 0 0 56 56"}}
                                     xmlSpace="preserve"
                                 >
@@ -128,7 +128,7 @@ const HomePage = ({telegramId,username_curently}) => {
                                 <>&nbsp;&nbsp;</>
                             </div>
                             <button onClick={handleGoToScoreTON} className="_button_1pxmk_91 _upper_menu_text"> Withdraw Upcoming</button>
-                            <div className="_footer_ruller_7yda" style={{textAlign:"center",fontSize:"6vw",marginTop:"15px",lineHeight:1}}>Conditions: To allow you to claim your $TON BONUS rewars you need to  complete all the tasks</div>
+                            <div className="_footer_ruller_7yda" style={{textAlign:"center",fontWeight:500,fontSize:"5vw",marginTop:"15px",lineHeight:1}}>Conditions: To allow you to claim your $TON BONUS rewars you need to  complete all the tasks</div>
                             </div>
                     </div>
                 </div>
@@ -187,12 +187,12 @@ const HomePage = ({telegramId,username_curently}) => {
                     </div>
                     <div className="_separator_1x19s_86" style={{width: "80%", marginLeft: "10%"}}></div>
                     <div className="_body_1wi4k_22" style={{alignItems: "center", gap: "2px", padding: "5px"}}>
-                        <div style={{fontWeight: 500, fontSize: "5vw"}}>Bonus</div>
+                        <div style={{fontWeight: 600, fontSize: "5.6vw"}}>Bonus</div>
                         <div style={{fontWeight: 500}}>$TON earned from Tasks</div>
                         <div style={{display: "flex", flexDirection: "row", fontWeight: 500}}>
                             <div style={{
                                 color: "#0cc0df",
-                                fontSize: "4vw"
+                                fontSize: "5vw",fontWeight:900
                             }}>{user.wallet == null ? 0 : user.wallet} &nbsp;</div>
                             <svg
                                 version="1.1"
@@ -201,8 +201,8 @@ const HomePage = ({telegramId,username_curently}) => {
                                 xmlnsXlink="http://www.w3.org/1999/xlink"
                                 x="0px"
                                 y="0px"
-                                width="20"
-                                height="20"
+                                width="24"
+                                height="24"
                                 viewBox="0 0 56 56"
                                 style={{enableBackground: "new 0 0 56 56"}}
                                 xmlSpace="preserve"

@@ -510,13 +510,13 @@
     text-decoration: none;
 }
 ._button_1pxmk_91{
-    font-size: 2vw;
+    font-size: 3vw;
     font-weight: bold;
     background-color: rgba(255, 255, 255, 0.2);
     border: 1px solid rgba(0, 0, 0, 0.2);
     color: white;
     border-radius: 15px;
-    height: 20px;
+    height: 25px;
 }
 ._clide_ton{
     position: absolute;
@@ -567,8 +567,8 @@
 ._upper_menu_text{
     opacity: 0.6;
     border-radius: 30px;
-    width: 100%;
-    font-size: 6vw;
+    width: 80%;
+    font-size: 5vw;
     height: 42px;
 }
 ._footer_conteiner{

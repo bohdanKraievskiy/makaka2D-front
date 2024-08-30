@@ -502,7 +502,30 @@
     -moz-box-pack: center;
     justify-content: center
 }
-
+.community-slide a {
+    padding: 10px 20px;
+    background: black !important;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+._button_1pxmk_91{
+    font-size: 2vw;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: white;
+    border-radius: 15px;
+    height: 20px;
+}
+._clide_ton{
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    display: flex;
+    flex-direction: row;
+    font-weight: 700;
+}
 ._body_1wi4k_22 {
     display: -webkit-box;
     display: -webkit-flex;
@@ -532,6 +555,21 @@
     font-weight: 590;
     line-height: 20px;
     color: white;
+}
+._upper_menu_text{
+    opacity: 0.6;
+    border-radius: 30px;
+    width: 100%;
+    font-size: 6vw;
+    height: 42px;
+}
+._footer_conteiner{
+    display: flex;
+    flex-direction: row;
+}
+
+._ton_text{
+    color: #0cc0df;
 }
 
 ._after_1wi4k_45 {

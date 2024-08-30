@@ -18,11 +18,14 @@ const HomePage = ({telegramId,username_curently}) => {
     const { user,fetchUser,updateUserBalance} = useContext(UserContext);
     const { rewards,fetchUserRewards } = useContext(RewardsContext);
     const {tasks,fetchTasks} = useContext(TasksContext);
-
+    const [isLoading, setIsLoading] = useState(false);
     const userFetchedRef = useRef(false);
     const rewardsFetchedRef = useRef(false);
     const tasksFetchedRef = useRef(false);
-
+    const handleGoToScoreTON = () => {
+        window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
+        setIsLoading(true);
+    };
     const handleGoToScore = () => {
         window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
         navigate("/last_check");
@@ -57,7 +60,10 @@ const HomePage = ({telegramId,username_curently}) => {
 
         loadData();
     }, []); // Ensure the effect runs only once
-
+    const handleClose = () => {
+        window.Telegram.WebApp.HapticFeedback.impactOccurred('light');
+        setIsLoading(false);
+    };
     useEffect(() => {
         if (animated) {
             setAnimated(true)
@@ -69,11 +75,63 @@ const HomePage = ({telegramId,username_curently}) => {
     const imageSrc = animated
         ? `${process.env.PUBLIC_URL}/resources_directory/Frame7.webp`
         : `${process.env.PUBLIC_URL}/resources_directory/animation.gif`;
-
+    console.log(tasks)
     return (
         <div class="_page_1ulsb_1" style={{zIndex:100000}}>
             <div className="_gameView_1cr97_1" id="game-view">
-                <div className="_backdrop_wo9zh_1"></div>
+                <div className={`_backdrop_wo9zh_1  ${isLoading ? '_opened_wo9zh_16' : ''}`}></div>
+                <div className={`_content_wo9zh_21 ${isLoading ? '_opened_wo9zh_16' : ''}`} style={{height: "65%"}}>
+                    <div className={`_cross_wo9zh_61 ${isLoading ? '_opened_wo9zh_16' : ''}`}
+                         onClick={handleClose} ></div>
+                    <div className={`_contentInner_wo9zh_44 ${isLoading ? '_opened_wo9zh_16' : ''}`}>
+                        <div className="_sheetTitle_1x19s_93">Withdraw</div>
+                        <div className="_separator_1x19s_86"></div>
+
+
+                        <div className="_body_1wi4k_22" style={{alignItems: "center", gap: "8px", padding: "5px"}}>
+                            <div style={{fontWeight: 500,marginTop:"20px", fontSize: "5vw"}}>YOUR $TON BONUS BALANCE</div>
+                            <div style={{display: "flex", flexDirection: "row", fontWeight: 500}}>
+                                <div style={{
+                                    color: "#0cc0df",
+                                    fontSize: "10vw",fontWeight:900
+                                }}>{user.wallet == null ? 0 : user.wallet} &nbsp;</div>
+                                <svg
+                                    version="1.1"
+                                    id="Layer_1"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    xmlnsXlink="http://www.w3.org/1999/xlink"
+                                    x="0px"
+                                    y="0px"
+                                    width="50"
+                                    height="50"
+                                    viewBox="0 0 76 46"
+                                    style={{enableBackground: "new 0 0 56 56"}}
+                                    xmlSpace="preserve"
+                                >
+                                    <style type="text/css">
+                                        {`
+        .st0{fill:#0088CC;}
+        .st1{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+      `}
+                                    </style>
+                                    <circle className="st0" cx="28" cy="28" r="28"/>
+                                    <path
+                                        className="st1"
+                                        d="M20.2,18.5h15.7c0.6,0,1.1,0.1,1.7,0.4c0.7,0.3,1.1,0.8,1.3,1.2c0,0,0,0.1,0.1,0.1c0.3,0.5,0.5,1.1,0.5,1.8
+      c0,0.6-0.1,1.2-0.5,1.8c0,0,0,0,0,0l-9.9,17c-0.2,0.4-0.6,0.6-1.1,0.6c-0.4,0-0.8-0.2-1.1-0.6l-9.7-17c0,0,0,0,0,0
+      c-0.2-0.4-0.6-0.9-0.6-1.7c-0.1-0.7,0.1-1.3,0.4-1.9c0.3-0.6,0.8-1.1,1.5-1.3C19.1,18.5,19.8,18.5,20.2,18.5z M26.8,20.9h-6.6
+      c-0.4,0-0.6,0-0.7,0.1c-0.2,0.1-0.3,0.2-0.4,0.4C19,21.5,19,21.7,19,21.9c0,0.1,0.1,0.2,0.3,0.6c0,0,0,0,0,0l7.5,13V20.9z
+      M29.2,20.9v14.7l7.6-13.1c0.1-0.2,0.1-0.4,0.1-0.6c0-0.2,0-0.4-0.1-0.5c-0.1-0.1-0.1-0.2-0.2-0.2c0,0-0.1-0.1-0.1-0.1
+      c-0.2-0.1-0.4-0.1-0.7-0.1H29.2z"
+                                    />
+                                </svg>
+                                <>&nbsp;&nbsp;</>
+                            </div>
+                            <button onClick={handleGoToScoreTON} className="_button_1pxmk_91 _upper_menu_text"> Withdraw Upcoming</button>
+                            <div className="_footer_ruller_7yda" style={{textAlign:"center",fontSize:"6vw",marginTop:"15px",lineHeight:1}}>Conditions: To allow you to claim your $TON BONUS rewars you need to  complete all the tasks</div>
+                            </div>
+                    </div>
+                </div>
                 <div className="_replay_1vo1r_24" onClick={handleGoToScore}>
                     <svg width="400" height="134" viewBox="0 0 400 134" fill="none" xmlns="http://www.w3.org/2000/svg"
                          style={{opacity: 0.5}}>
@@ -120,13 +178,57 @@ const HomePage = ({telegramId,username_curently}) => {
                         </img>
                     </div>
                     <div className="_title_1vo1r_5">
-                        <div style={{flexDirection:"row "}}
-                          className={`_balance_eubs4_1 balance-text _exclusive_font ${animated ? 'balance-animated' : ''}`}>
-                            <span   style={{fontSize:"12vw",color:"white"}}>{user?.balance} </span>
+                        <div style={{flexDirection: "row "}}
+                             className={`_balance_eubs4_1 balance-text _exclusive_font ${animated ? 'balance-animated' : ''}`}>
+                            <span style={{fontSize: "12vw", color: "white"}}>{user?.balance} </span>
                             &nbsp;
-                            <span style={{fontSize:"12vw"}}> WAP</span>
+                            <span style={{fontSize: "12vw"}}> WAP</span>
                         </div>
                     </div>
+                    <div className="_separator_1x19s_86" style={{width: "80%", marginLeft: "10%"}}></div>
+                    <div className="_body_1wi4k_22" style={{alignItems: "center", gap: "2px", padding: "5px"}}>
+                        <div style={{fontWeight: 500, fontSize: "5vw"}}>Bonus</div>
+                        <div style={{fontWeight: 500}}>$TON earned from Tasks</div>
+                        <div style={{display: "flex", flexDirection: "row", fontWeight: 500}}>
+                            <div style={{
+                                color: "#0cc0df",
+                                fontSize: "4vw"
+                            }}>{user.wallet == null ? 0 : user.wallet} &nbsp;</div>
+                            <svg
+                                version="1.1"
+                                id="Layer_1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlnsXlink="http://www.w3.org/1999/xlink"
+                                x="0px"
+                                y="0px"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 56 56"
+                                style={{enableBackground: "new 0 0 56 56"}}
+                                xmlSpace="preserve"
+                            >
+                                <style type="text/css">
+                                    {`
+        .st0{fill:#0088CC;}
+        .st1{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+      `}
+                                </style>
+                                <circle className="st0" cx="28" cy="28" r="28"/>
+                                <path
+                                    className="st1"
+                                    d="M20.2,18.5h15.7c0.6,0,1.1,0.1,1.7,0.4c0.7,0.3,1.1,0.8,1.3,1.2c0,0,0,0.1,0.1,0.1c0.3,0.5,0.5,1.1,0.5,1.8
+      c0,0.6-0.1,1.2-0.5,1.8c0,0,0,0,0,0l-9.9,17c-0.2,0.4-0.6,0.6-1.1,0.6c-0.4,0-0.8-0.2-1.1-0.6l-9.7-17c0,0,0,0,0,0
+      c-0.2-0.4-0.6-0.9-0.6-1.7c-0.1-0.7,0.1-1.3,0.4-1.9c0.3-0.6,0.8-1.1,1.5-1.3C19.1,18.5,19.8,18.5,20.2,18.5z M26.8,20.9h-6.6
+      c-0.4,0-0.6,0-0.7,0.1c-0.2,0.1-0.3,0.2-0.4,0.4C19,21.5,19,21.7,19,21.9c0,0.1,0.1,0.2,0.3,0.6c0,0,0,0,0,0l7.5,13V20.9z
+      M29.2,20.9v14.7l7.6-13.1c0.1-0.2,0.1-0.4,0.1-0.6c0-0.2,0-0.4-0.1-0.5c-0.1-0.1-0.1-0.2-0.2-0.2c0,0-0.1-0.1-0.1-0.1
+      c-0.2-0.1-0.4-0.1-0.7-0.1H29.2z"
+                                />
+                            </svg>
+                            <>&nbsp;&nbsp;</>
+                            <button onClick={handleGoToScoreTON} className="_button_1pxmk_91">withdraw</button>
+                        </div>
+                    </div>
+
                     <div className="_socialCarousel_1xku1_1">
                         <div className="swiper swiper-initialized swiper-horizontal swiper-backface-hidden">
                             <div className="swiper-wrapper">
@@ -144,6 +246,16 @@ const HomePage = ({telegramId,username_curently}) => {
                                                         text="Home for Telegram Monkey"
                                                         buttonText="Join"
                                                         url="https://t.me/WeArePrimeNews"
+                                                        ton="0.002"
+                                                    />
+                                                </SwiperSlide>
+                                                <SwiperSlide>
+                                                    <CommunitySlide
+                                                        title="WAP Community on X"
+                                                        text="Home for X Monkey"
+                                                        buttonText="Follow"
+                                                        url="https://x.com/weareprimehome"
+                                                        ton="0.002"
                                                     />
                                                 </SwiperSlide>
                                             </Swiper>
@@ -162,6 +274,7 @@ const HomePage = ({telegramId,username_curently}) => {
                                         key={index}
                                         index={index}
                                         title={task.title}
+                                        ton={task.ton}
                                         footerText={task.reward}
                                         url={task.url}
                                         setAnimated={animated}
@@ -173,7 +286,8 @@ const HomePage = ({telegramId,username_curently}) => {
                     </div>
                     <div className="_rewardList_1a8v0_1">
                         <div className="_title_1a8v0_5">Your rewards</div>
-                        {rewards.age !=null && rewards.age !== 0 &&  <RewardItem text="Account age" details={rewards.age.toString()}/>}
+                        {rewards.age != null && rewards.age !== 0 &&
+                            <RewardItem text="Account age" details={rewards.age.toString()}/>}
                         {rewards.boost !== 0 && <RewardItem text="Boosts reward" details={rewards.boost}/>}
                         {rewards.game !== 0 && <RewardItem text="Game reward" details={rewards.game}/>}
                         {rewards.daily !== 0 && <RewardItem text="Daily reward" details={rewards.daily}/>}

@@ -56,6 +56,7 @@ const SecondPage = ({userData, refererId}) => {
                     balance: randomAge,
                     top_group: topGroup,
                     top_percent: percentage,
+                    wallet:0,
                     attempts_left:5
                 };
                 setUser(userData);
@@ -73,9 +74,9 @@ const SecondPage = ({userData, refererId}) => {
                 setRewards(rewardsData);
 
                 const initialTasks = [
-                    {"title": "Subscribe to PRIME channel", "url": "https://t.me/WeArePrimeNews", "reward": "+1000",
+                    {"title": "Subscribe to PRIME channel","ton":"0.002", "url": "https://t.me/WeArePrimeNews", "reward": "+1000",
                         "completed": false},
-                    {"title": "Subscribe to PRIME X", "url": "https://x.com/weareprimehome",
+                    {"title": "Subscribe to PRIME X","ton":"0.002", "url": "https://x.com/weareprimehome",
                         "reward": "+1000", "completed": false},
                     {"title": "Invite 5 premium friends", "url": "", "reward": "+5000", "completed": false,
                     },
@@ -86,7 +87,9 @@ const SecondPage = ({userData, refererId}) => {
                     {"title": "Add 🐵 in Telegram name", "url": "",
                         "reward": "+1000", "completed": false},
                     {"title": "Retweet the tweet", "url": "https://x.com/weareprimehome/status/1828133113287057539?s=46&t=REGizFxkKmoHaJ7j2DeBGQ",
-                        "reward": "+1000", "completed": false}
+                        "reward": "+1000", "completed": false},
+                    {"title": "Invite 1 premium friends","ton":"0.001", "url": "", "reward": "+2000", "completed": false,
+                    },
                 ];
 
                 // Update tasks context

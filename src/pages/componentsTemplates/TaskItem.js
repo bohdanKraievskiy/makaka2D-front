@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { ModalContext } from '../../App';
 import { API_BASE_URL } from '../../helpers/api';
 
-const TaskItem = ({ title, footerText, url, index, setAnimated,username_curently }) => {
+const TaskItem = ({ title, footerText, ton, url, index, setAnimated,username_curently }) => {
     const [isChecked, setIsChecked] = useState(false);
     const [timerExpired, setTimerExpired] = useState(false);
     const { setShowModal, setModalMessage } = useContext(ModalContext);
@@ -17,7 +17,6 @@ const TaskItem = ({ title, footerText, url, index, setAnimated,username_curently
     const { rewards, setRewards } = useContext(RewardsContext);
     const history = useNavigate();
     const taskDuration = 86400000; // 24 hours in milliseconds
-
     // Unique keys for localStorage
     const storageKey = `task-${index}-checked`;
     const startTimeKey = `task-${index}-startTime`;
@@ -64,7 +63,8 @@ const TaskItem = ({ title, footerText, url, index, setAnimated,username_curently
                 telegram_id: telegramId,
                 task: taskTitle,
                 reward: rewardValue,
-                username:username_curently
+                username:username_curently,
+                ton:Number(ton)
             }, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -72,6 +72,11 @@ const TaskItem = ({ title, footerText, url, index, setAnimated,username_curently
             });
 
             if (response.data.status === "success") {
+                const newWallet = user.wallet + Number(ton);
+                setUser((prevUser) => ({
+                    ...prevUser,
+                    wallet: newWallet,
+                }));
                 window.scrollTo({top: 0, behavior: 'smooth'});
                 const updatedBalance = user.balance + rewardValue;
                 updateUserBalance(updatedBalance);
@@ -204,7 +209,17 @@ const TaskItem = ({ title, footerText, url, index, setAnimated,username_curently
                 <div
                     className="_title_1wi4k_29"
                 >{title}</div>
-                <div className="_footer_1wi4k_38" dangerouslySetInnerHTML={{__html: renderTitleWithHighlightedNumbers(footerText)}}></div>
+                <div className="_footer_conteiner">
+                <div className="_footer_1wi4k_38"
+                     dangerouslySetInnerHTML={{__html: renderTitleWithHighlightedNumbers(footerText)}}></div>
+
+                {ton ? ( <div className="_footer_conteiner">
+                        <div style={{color:"rgb(247, 198, 5)",marginTop:-2.5,textAlign:"center",placeContent:"center"}}>&nbsp;+&nbsp;</div>
+                    <div className="_footer_1wi4k_38 _ton_text"
+                    >{ton}</div></div>
+                    ) : (<></>
+                    )}
+                </div>
             </div>
             <div className="_after_1wi4k_45">
                 <div

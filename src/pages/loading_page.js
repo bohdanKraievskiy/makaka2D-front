@@ -48,7 +48,6 @@ const PreLoad = ({ telegramId }) => {
         await fetchUser(telegramId);
         await fetchUserRewards(telegramId);
         await fetchTasks(telegramId);
-
     };
 
     const fetchUser = async (telegramId) => {

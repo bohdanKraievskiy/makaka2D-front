@@ -249,15 +249,6 @@ const HomePage = ({telegramId,username_curently}) => {
                                                         ton="0.002"
                                                     />
                                                 </SwiperSlide>
-                                                <SwiperSlide>
-                                                    <CommunitySlide
-                                                        title="WAP Community on X"
-                                                        text="Home for X Monkey"
-                                                        buttonText="Follow"
-                                                        url="https://x.com/weareprimehome"
-                                                        ton="0.002"
-                                                    />
-                                                </SwiperSlide>
                                             </Swiper>
                                         </div>
                                     </div>

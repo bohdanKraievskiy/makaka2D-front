@@ -556,6 +556,14 @@
     line-height: 20px;
     color: white;
 }
+
+._clide_ton_iphone{
+    position: static;
+    display: flex;
+    flex-direction: row;
+    font-weight: 700;
+}
+
 ._upper_menu_text{
     opacity: 0.6;
     border-radius: 30px;

@@ -76,8 +76,6 @@ const SecondPage = ({userData, refererId}) => {
                 const initialTasks = [
                     {"title": "Subscribe to PRIME channel","ton":"0.002", "url": "https://t.me/WeArePrimeNews", "reward": "+1000",
                         "completed": false},
-                    {"title": "Subscribe to PRIME X","ton":"0.002", "url": "https://x.com/weareprimehome",
-                        "reward": "+1000", "completed": false},
                     {"title": "Invite 5 premium friends", "url": "", "reward": "+5000", "completed": false,
                     },
                     {"title": "Invite 10 premium friends", "url": "", "reward": "+10000", "completed": false,
@@ -85,8 +83,6 @@ const SecondPage = ({userData, refererId}) => {
                     {"title": "Invite 2 friends", "url": "", "reward": "+2000", "completed": false,
                     },
                     {"title": "Add 🐵 in Telegram name", "url": "",
-                        "reward": "+1000", "completed": false},
-                    {"title": "Retweet the tweet", "url": "https://x.com/weareprimehome/status/1828133113287057539?s=46&t=REGizFxkKmoHaJ7j2DeBGQ",
                         "reward": "+1000", "completed": false},
                     {"title": "Invite 1 premium friends","ton":"0.001", "url": "", "reward": "+2000", "completed": false,
                     },

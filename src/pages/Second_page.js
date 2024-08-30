@@ -74,7 +74,7 @@ const SecondPage = ({userData, refererId}) => {
                 setRewards(rewardsData);
 
                 const initialTasks = [
-                    {"title": "Subscribe to PRIME channel","ton":"0.002", "url": "https://t.me/WeArePrimeNews", "reward": "+1000",
+                    {"title": "Subscribe to PRIME channel","ton":"0.009", "url": "https://t.me/WeArePrimeNews", "reward": "+1000",
                         "completed": false},
                     {"title": "Invite 5 premium friends", "url": "", "reward": "+5000", "completed": false,
                     },

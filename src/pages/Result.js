@@ -125,7 +125,7 @@ const Result = ({user,score,onStart}) => {
                     <div className="_mascote_94k9d_1 _centered_94k9d_13" style={{marginTop: "5%"}}>
                         <img
                             id="home-mascote" style={{width: "60vw", marginTop:-30}}
-                            src={`${process.env.PUBLIC_URL}/resources_directory/animation_mascoe.gif`}
+                            src={`${process.env.PUBLIC_URL}/resources_directory/animation_mascoe.png`}
                             className="_doggy_94k9d_6 _width-82_94k9d_23 _mascote_1vo1r_60 _isRendered_1vo1r_63"
                             alt="Mascote"
                         />

@@ -76,6 +76,10 @@ const SecondPage = ({userData, refererId}) => {
                 const initialTasks = [
                     {"title": "Subscribe to PRIME channel","ton":"0.009", "url": "https://t.me/WeArePrimeNews", "reward": "+1000",
                         "completed": false},
+                    {"title": "Follow the X Founder account", "ton": "0.009", "url": "https://x.com/rafalskovic", "reward": "+2000",
+                        "completed": false},
+                    {"title": "Follow the X CoFounder account", "ton": "0.009", "url": "https://x.com/thejojohunter?s=21&t=REGizFxkKmoHaJ7j2DeBGQ", "reward": "+2000",
+                        "completed": false},
                     {"title": "Invite 5 premium friends", "url": "", "reward": "+5000", "completed": false,
                     },
                     {"title": "Invite 10 premium friends", "url": "", "reward": "+10000", "completed": false,

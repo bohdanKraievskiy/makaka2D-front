@@ -74,7 +74,7 @@ const HomePage = ({telegramId,username_curently}) => {
 
     const imageSrc = animated
         ? `${process.env.PUBLIC_URL}/resources_directory/Frame7.webp`
-        : `${process.env.PUBLIC_URL}/resources_directory/animation.gif`;
+        : `${process.env.PUBLIC_URL}/resources_directory/IMG_2429.webp`;
     console.log(tasks)
     return (
         <div class="_page_1ulsb_1" style={{zIndex:100000}}>

@@ -94,7 +94,7 @@ const LastPage = ({telegramId}) => {
                             <div className="_valueWrap_mgd6s_42">
                                 <div className="_value_mgd6s_42">
                                     <img
-                                        src={`${process.env.PUBLIC_URL}/resources_directory/animation.gif`}
+                                        src={`${process.env.PUBLIC_URL}/resources_directory/IMG_2429.webp`}
                                         width="237" height="242"
                                     />
                                 </div>

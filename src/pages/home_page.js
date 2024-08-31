@@ -189,11 +189,20 @@ const HomePage = ({telegramId,username_curently}) => {
                     <div className="_body_1wi4k_22" style={{alignItems: "center", gap: "2px", padding: "5px"}}>
                         <div style={{fontWeight: 600, fontSize: "5.6vw"}}>Bonus</div>
                         <div style={{fontWeight: 500}}>$TON earned from Tasks</div>
-                        <div style={{display: "flex", flexDirection: "row", fontWeight: 500,alignItems:"center",textAlign:"center"}}>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            fontWeight: 500,
+                            alignItems: "center",
+                            textAlign: "center"
+                        }}>
                             <div style={{
                                 color: "#0cc0df",
-                                fontSize: "5vw",fontWeight:900
-                            }}>{user.wallet == null ? 0 : user.wallet} &nbsp;</div>
+                                fontSize: "5vw",
+                                fontWeight: 900
+                            }}>
+                                {user.wallet == null ? 0 : Number(user.wallet).toFixed(3)} &nbsp;
+                            </div>
                             <svg
                                 version="1.1"
                                 id="Layer_1"

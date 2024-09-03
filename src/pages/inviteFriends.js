@@ -282,7 +282,7 @@ const InvitePage = ({ telegramId }) => {
                     <div className="_mascote_94k9d_1 _centered_94k9d_13">
                         <img style={{width:"101vw",marginTop:"-10%",marginLeft:"-5%",maxWidth:1000}}
                             id="home-mascote"
-                            src={`${process.env.PUBLIC_URL}/resources_directory/download (1).webp`}
+                            src={`${process.env.PUBLIC_URL}/resources_directory/download (1).gif`}
                             className="_doggy_94k9d_6 _width-82_94k9d_23 _mascote_1vo1r_60 _isRendered_1vo1r_63"
                             alt="Mascote"
                         />

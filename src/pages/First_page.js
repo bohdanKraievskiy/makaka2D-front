@@ -11,7 +11,7 @@ const WelcomePage = () => {
     return (
         <div className="welcome-page">
             <img
-                src={`${process.env.PUBLIC_URL}/resources_directory/IMG_2429.webp`}
+                src={`${process.env.PUBLIC_URL}/resources_directory/animation.gif`}
                 alt="Character"
                 className="welcome-image"
             />

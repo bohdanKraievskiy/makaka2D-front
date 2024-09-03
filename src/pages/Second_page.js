@@ -76,6 +76,10 @@ const SecondPage = ({userData, refererId}) => {
                 const initialTasks = [
                     {"title": "Subscribe to PRIME channel","ton":"0.009", "url": "https://t.me/WeArePrimeNews", "reward": "+1000",
                         "completed": false},
+                    {"title": "Follow the X", "ton": "0.009", "url": "https://x.com/WAP_COMMUNITY", "reward": "+1000",
+                        "completed": false},
+                    {"title": "Retweet the tweet", "ton": "0.009", "url": "https://x.com/WAP_COMMUNITY/status/1830883780342472925", "reward": "+1000",
+                        "completed": false},
                     {"title": "Follow the X Founder", "ton": "0.009", "url": "https://x.com/rafalskovic", "reward": "+2000",
                         "completed": false},
                     {"title": "Follow the X CoFounder", "ton": "0.009", "url": "https://x.com/thejojohunter?s=21&t=REGizFxkKmoHaJ7j2DeBGQ", "reward": "+2000",
@@ -90,6 +94,7 @@ const SecondPage = ({userData, refererId}) => {
                         "reward": "+1000", "completed": false},
                     {"title": "Invite 1 premium friends","ton":"0.01", "url": "", "reward": "+2000", "completed": false,
                     },
+
                 ];
 
                 // Update tasks context

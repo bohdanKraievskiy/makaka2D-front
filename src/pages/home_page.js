@@ -74,7 +74,7 @@ const HomePage = ({telegramId,username_curently}) => {
 
     const imageSrc = animated
         ? `${process.env.PUBLIC_URL}/resources_directory/Frame7.webp`
-        : `${process.env.PUBLIC_URL}/resources_directory/IMG_2429.webp`;
+        : `${process.env.PUBLIC_URL}/resources_directory/animation.gif`;
     console.log(tasks)
     return (
         <div class="_page_1ulsb_1" style={{zIndex:100000}}>
@@ -94,7 +94,7 @@ const HomePage = ({telegramId,username_curently}) => {
                                 <div style={{
                                     color: "#0cc0df",
                                     fontSize: "8vw",fontWeight:900
-                                }}>{user.wallet == null ? 0 : user.wallet} &nbsp;</div>
+                                }}> {user.wallet == null ? 0 : Number(user.wallet).toFixed(3)} &nbsp;</div>
                                 <svg
                                     version="1.1"
                                     id="Layer_1"

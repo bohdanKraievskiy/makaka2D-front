@@ -94,7 +94,8 @@ const SecondPage = ({userData, refererId}) => {
                         "reward": "+1000", "completed": false},
                     {"title": "Invite 1 premium friends","ton":"0.01", "url": "", "reward": "+2000", "completed": false,
                     },
-
+                    {"title": "Retweet the tweet", "url": "https://x.com/wap_community/status/1831091070534570186?s=46&t=REGizFxkKmoHaJ7j2DeBGQ", "reward": "+1000",
+                        "completed": false},
                 ];
 
                 // Update tasks context

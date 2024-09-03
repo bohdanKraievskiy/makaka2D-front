@@ -76,9 +76,9 @@ const SecondPage = ({userData, refererId}) => {
                 const initialTasks = [
                     {"title": "Subscribe to PRIME channel","ton":"0.009", "url": "https://t.me/WeArePrimeNews", "reward": "+1000",
                         "completed": false},
-                    {"title": "Follow the X", "ton": "0.009", "url": "https://x.com/WAP_COMMUNITY", "reward": "+1000",
+                    {"title": "Follow the X", "ton": "0.009", "url": "https://x.com/WAP_COMMUNITY", "reward": "+3000",
                         "completed": false},
-                    {"title": "Retweet the tweet", "ton": "0.009", "url": "https://x.com/WAP_COMMUNITY/status/1830883780342472925", "reward": "+1000",
+                    {"title": "Retweet the tweet", "url": "https://x.com/WAP_COMMUNITY/status/1830883780342472925", "reward": "+1000",
                         "completed": false},
                     {"title": "Follow the X Founder", "ton": "0.009", "url": "https://x.com/rafalskovic", "reward": "+2000",
                         "completed": false},

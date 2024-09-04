@@ -7,7 +7,7 @@ import { RewardsContext } from '../context/RewardsContext';
 import { TasksContext } from '../context/TasksContext';
 import {LeaderboardContext} from "../context/LeaderboardContext";
 import {API_BASE_URL} from "../helpers/api"; // Import TasksContext
-const SecondPage = ({userData, refererId}) => {
+const SecondPage = ({userData, refererId, reg_date}) => {
     const [isCompleted, setIsCompleted] = useState({
         accountAge: false,
         activityLevel: false,
@@ -34,13 +34,10 @@ const SecondPage = ({userData, refererId}) => {
             const randomTelegramId = userData.id;
             const isPremium = userData.is_premium;
             const reference = `874423521djiawiid`;
+            const registrationResponse = reg_date;
 
-            // Fetch the registration date
-                const registrationResponse = await axios.get(`${API_BASE_URL}/account_date/`,{
-                    params: { telegram_id: randomTelegramId }
-                });
-            if (registrationResponse.status === 200) {
-                const registrationDateStr = registrationResponse.data.account_date.registration_date;
+            if (registrationResponse === reg_date) {
+                const registrationDateStr = reg_date;
                 const registrationDate = new Date(registrationDateStr);
                 const currentDate = new Date();
                 const diffTime = Math.abs(currentDate - registrationDate);

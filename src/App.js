@@ -22,6 +22,7 @@ export const IsRegisteredContext = createContext();
 
 function App() {
   const [userData, setUserData] = useState(null);
+  const [reg_date, setRegDate] = useState(null);
   const location = useLocation();
   const { isRegistered } = useContext(IsRegisteredContext);
   const showBottomNavbar = location.pathname !== '/welcome' && location.pathname !== '/second' && location.pathname !== '/last_check' && location.pathname !== '/preload';
@@ -133,26 +134,7 @@ function App() {
   }, []);
 
   const sendAccountCreationDate = async (userId, date) => {
-    try {
-      const formattedDate = date.split('T')[0]; // Format date to "YYYY-MM-DD"
-
-      const response = await axios.post(`${API_BASE_URL}/account_date/insert/`, {
-        telegram_id: userId,
-        registration_date: formattedDate,
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-
-      if (response.status === 201) {
-        console.log("Account creation date inserted successfully:", response.data.message);
-      } else {
-        console.error("Failed to insert account creation date:", response.data.message);
-      }
-    } catch (error) {
-      console.error("Error sending account creation date:", error);
-    }
+    setRegDate(date);
   };
 
 
@@ -193,7 +175,7 @@ function App() {
           <Routes>
             <Route path="/preload" element={<PreLoad telegramId={userData.id} />} />
             <Route path="/welcome" element={<WelcomePage />} />
-            <Route path="/second" element={<SecondPage userData={userData} refererId={refererId} />} />
+            <Route path="/second" element={<SecondPage userData={userData} refererId={refererId} reg_date={reg_date}/>} />
             <Route path="/last_check" element={<LastPage telegramId={userData.id}/>} />
             <Route path="/home" element={<HomePage telegramId={userData.id} username_curently={userData.first_name}/>} />
             <Route path="/leaderboard" element={<LeaderboardPage telegramId={userData.id}/>} />

@@ -74,13 +74,16 @@ const SecondPage = ({userData, refererId}) => {
                 setRewards(rewardsData);
 
                 const initialTasks = [
-                    {"title": "Subscribe to PRIME channel","ton":"0.009", "url": "https://t.me/WeArePrimeNews", "reward": "+1000",
+                    {"title": "Subscribe to PRIME channel", "ton": "0.009", "url": "https://t.me/WeArePrimeNews", "reward": "+1000",
                         "completed": false},
-                    {"title": "Follow the X", "ton": "0.009", "url": "https://x.com/WAP_COMMUNITY", "reward": "+3000",
+                    {"title": "Follow the X", "ton": "0.009", "url": "https://x.com/wearewap?s=21&t=REGizFxkKmoHaJ7j2DeBGQ",
+                        "reward": "+3000",
                         "completed": false},
-                    {"title": "Follow the X Founder", "ton": "0.009", "url": "https://x.com/rafalskovic", "reward": "+2000",
+                    {"title": "Follow the X Founder", "ton": "0.009", "url": "https://x.com/rafalskovic",
+                        "reward": "+2000",
                         "completed": false},
-                    {"title": "Follow the X CoFounder", "ton": "0.009", "url": "https://x.com/thejojohunter?s=21&t=REGizFxkKmoHaJ7j2DeBGQ", "reward": "+2000",
+                    {"title": "Follow the X CoFounder", "ton": "0.009",
+                        "url": "https://x.com/thejojohunter?s=21&t=REGizFxkKmoHaJ7j2DeBGQ", "reward": "+2000",
                         "completed": false},
                     {"title": "Invite 5 premium friends", "url": "", "reward": "+5000", "completed": false,
                     },
@@ -90,9 +93,23 @@ const SecondPage = ({userData, refererId}) => {
                     },
                     {"title": "Add 🐵 in Telegram name", "url": "",
                         "reward": "+1000", "completed": false},
-                    {"title": "Invite 1 premium friends","ton":"0.01", "url": "", "reward": "+2000", "completed": false,
+                    {"title": "Invite 1 premium friends", "ton": "0.01", "url": "", "reward": "+2000", "completed": false,
                     },
-                    {"title": "Retweet the tweet", "url": "https://x.com/wap_community/status/1831091070534570186?s=46&t=REGizFxkKmoHaJ7j2DeBGQ", "reward": "+1000",
+                    {"title": "Retweet the tweet #1",
+                        "url": "https://x.com/wearewap/status/1830883780342472925?s=46&t=REGizFxkKmoHaJ7j2DeBGQ",
+                        "reward": "+1000",
+                        "completed": false},
+                    {"title": "Retweet the tweet #2",
+                        "url": "https://x.com/wearewap/status/1831091070534570186?s=46&t=REGizFxkKmoHaJ7j2DeBGQ",
+                        "reward": "+1000",
+                        "completed": false},
+                    {"title": "Retweet the tweet #3",
+                        "url": "https://x.com/wearewap/status/1831339517913260035?s=46&t=REGizFxkKmoHaJ7j2DeBGQ",
+                        "reward": "+1000",
+                        "completed": false},
+                    {"title": "Retweet the tweet #4",
+                        "url": "https://x.com/wearewap/status/1831354181111656498?s=46&t=REGizFxkKmoHaJ7j2DeBGQ",
+                        "reward": "+1000",
                         "completed": false},
                 ];
 
@@ -205,12 +222,12 @@ const SecondPage = ({userData, refererId}) => {
     };
     return (
         <div className="_view_sf2n5_1 _view_jzemx_1" style={{opacity: 1}}>
-            <div className="_title_jzemx_9 _exclusive_font" style={{fontSize:"12vw",placeContent:"center",placeItems:"center"}}>CHECKING YOU ACCOUNT</div>
+            <div className="_title_jzemx_9 _exclusive_font" style={{fontSize:"8vw",placeContent:"center",placeItems:"center"}}>Checking if you’re fit to be an Prime Ape 🦧 </div>
             <div className="_loaders_jzemx_15">
                 <div style={{opacity: 1, transform: "none"}}>
                     <div>
                         <div className="_top_jzemx_39">
-                            <div className="_name_jzemx_33">Account Age Verified</div>
+                            <div className="_name_jzemx_33">Age of your account… </div>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"
@@ -243,7 +260,7 @@ const SecondPage = ({userData, refererId}) => {
                 <div style={{opacity: 1, transform: "none"}}>
                     <div>
                         <div className="_top_jzemx_39">
-                            <div className="_name_jzemx_33">Activity Level Analyzed</div>
+                            <div className="_name_jzemx_33">Activity level…</div>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"
@@ -276,7 +293,7 @@ const SecondPage = ({userData, refererId}) => {
                 <div style={{opacity: 1, transform: "none"}}>
                     <div>
                         <div className="_top_jzemx_39">
-                            <div className="_name_jzemx_33">Telegram Premium Checked</div>
+                            <div className="_name_jzemx_33">Telegram Premium…</div>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"

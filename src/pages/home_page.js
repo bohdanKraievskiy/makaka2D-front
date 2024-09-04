@@ -34,10 +34,7 @@ const HomePage = ({telegramId,username_curently}) => {
     useEffect(() => {
         const loadData = async () => {
             // Check if user data is already fetched
-            if (!userFetchedRef.current) {
-                await fetchUser(telegramId);
-                userFetchedRef.current = true;
-            }
+
 
             // Check if rewards data is already fetched
             if (!rewardsFetchedRef.current) {

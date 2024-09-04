@@ -17,6 +17,12 @@ const UserBoard = ({telegramId}) => {
 
     if (!userStats) return null;
     const userPosition = leaderboard.findIndex(leaderboardUser => leaderboardUser.username === user.username) + 1;
+    const formatNumber = (number) => {
+        return new Intl.NumberFormat('en-US', {
+            style: 'decimal',
+            maximumFractionDigits: 2 // Кількість знаків після коми, за потребою змініть
+        }).format(number);
+    };
 
     return (
         <div className="_me_zhpdf_13">
@@ -28,9 +34,9 @@ const UserBoard = ({telegramId}) => {
                 </div>
                 <div className="_body_iud9y_25">
                     <div className="_text_iud9y_47">{user?.username}</div>
-                    <div className="_footer_iud9y_32">{user?.balance} WAP</div>
+                    <div className="_footer_iud9y_32">{formatNumber(user?.balance)} WAP</div>
                 </div>
-                <div className="_details_iud9y_56">#{userStats.position}</div>
+                <div className="_details_iud9y_56">#{formatNumber(userStats.position)}</div>
             </div>
         </div>
     );

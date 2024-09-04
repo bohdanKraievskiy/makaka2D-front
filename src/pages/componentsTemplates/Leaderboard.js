@@ -7,6 +7,12 @@ const Leaderboard = () => {
 
     // Limit to top 500 participants
     const topLeaderboard = leaderboard.slice(0, 500);
+    const formatNumber = (number) => {
+        return new Intl.NumberFormat('en-US', {
+            style: 'decimal',
+            maximumFractionDigits: 2 // Кількість знаків після коми, за потребою змініть
+        }).format(number);
+    };
 
     return (
         <>
@@ -19,7 +25,7 @@ const Leaderboard = () => {
                     </div>
                     <div className="_body_iud9y_25">
                         <div className="_text_iud9y_47">{user.username}</div>
-                        <div className="_footer_iud9y_32">{user.score} WAP</div>
+                        <div className="_footer_iud9y_32">{formatNumber(user.score)} WAP</div>
                     </div>
                     <div className="_details_iud9y_56"><span className="_medal_iud9y_66">#{index + 1}</span></div>
                 </div>

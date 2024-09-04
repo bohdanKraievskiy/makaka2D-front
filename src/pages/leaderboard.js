@@ -22,6 +22,12 @@ const LeaderboardPage = ({telegramId}) => {
 
         loadData();
     }, []);
+    const formatNumber = (number) => {
+        return new Intl.NumberFormat('en-US', {
+            style: 'decimal',
+            maximumFractionDigits: 2 // Кількість знаків після коми, за потребою змініть
+        }).format(number);
+    };
 
     return (
         <div class="_page_1ulsb_1">
@@ -29,7 +35,7 @@ const LeaderboardPage = ({telegramId}) => {
                 <div className="_view_sf2n5_1 _view_zhpdf_1" style={{opacity: 1}}>
                     <div className="_title_zhpdf_5 _exclusive_font" style={{fontSize:"11vw"}}>WAP OF FAME</div>
                     <UserBoard telegramId={telegramId}/>
-                    <div className="_boardTitle_zhpdf_23">{count?.toString()} holders</div>
+                    <div className="_boardTitle_zhpdf_23">{formatNumber(count?.toString())} holders</div>
                     <Leaderboard/>
                 </div>
             </div>

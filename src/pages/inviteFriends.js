@@ -8,12 +8,12 @@ const InvitePage = ({ telegramId }) => {
     const navigate = useNavigate();
     const [copyMessage, setCopyMessage] = useState(false);
     const { friends_stats,fetchLeaderboard } = useContext(LeaderboardContext);
+    const topfriends_stats = friends_stats?.slice(0, 10);
     const [activeTab, setActiveTab] = useState('Frens');
     useEffect(() => {
         const loadData = async () => {
             fetchLeaderboard(telegramId)
         };
-
         loadData();
     }, []);
     // Determine if the device is an iPhone
@@ -50,7 +50,7 @@ const InvitePage = ({ telegramId }) => {
     };
 
     const renderFriendsList = () => {
-        return friends_stats?.map((friend, index) => (
+        return topfriends_stats?.map((friend, index) => (
 
             <div key={index} className="_item_iud9y_1">
                 <div className="_media_iud9y_8">
@@ -77,7 +77,7 @@ const InvitePage = ({ telegramId }) => {
     };
 
     const renderPrimeList = () => {
-        return friends_stats.map((friend, index) => {
+        return topfriends_stats.map((friend, index) => {
             // Преобразуем дату в нужный формат
             const date = new Date(friend.date_added);
             const formattedDate = `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')} ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}:${String(date.getSeconds()).padStart(2, '0')}`;

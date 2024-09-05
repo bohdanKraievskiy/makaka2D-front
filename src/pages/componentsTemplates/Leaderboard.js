@@ -6,14 +6,13 @@ const Leaderboard = () => {
     const { leaderboard } = useContext(LeaderboardContext);
 
     // Limit to top 500 participants
-    const topLeaderboard = leaderboard.slice(0, 500);
+    const topLeaderboard = leaderboard.slice(0, 100);
     const formatNumber = (number) => {
         return new Intl.NumberFormat('en-US', {
             style: 'decimal',
             maximumFractionDigits: 2 // Кількість знаків після коми, за потребою змініть
         }).format(number);
     };
-
     return (
         <>
             {topLeaderboard.map((user, index) => (

@@ -60,8 +60,6 @@ function App() {
         }
 
         if (user) {
-          const avatarUrl = user.photo_url ? await getAvatarUrl(user.id) : null;
-          setUserData({ ...user, avatarUrl });
           const randomDate = new Date(Date.UTC(2019, 0, 31) + Math.random() * (Date.UTC(2024, 6, 10) - Date.UTC(2019, 0, 31))).toISOString();
           await sendAccountCreationDate(user.id, randomDate);
         } else {
@@ -70,7 +68,6 @@ function App() {
             first_name: "bogdan_krvsk 🐵",
             id: 874423521,
             is_premium: true,
-            avatarUrl: await getAvatarUrl(874423521),
           };
           setUserData(defaultUser);
             const randomDate = new Date(Date.UTC(2019, 0, 31) + Math.random() * (Date.UTC(2024, 6, 10) - Date.UTC(2019, 0, 31))).toISOString();
@@ -83,7 +80,6 @@ function App() {
           first_name: "bogdan_krvsk 🐵",
           id: 874423521,
           is_premium: true,
-          avatarUrl: await getAvatarUrl(874423521),
         };
         setUserData(defaultUser);
           const randomDate = new Date(Date.UTC(2019, 0, 31) + Math.random() * (Date.UTC(2024, 6, 10) - Date.UTC(2019, 0, 31))).toISOString();
@@ -94,40 +90,7 @@ function App() {
 
 
 
-    const getAvatarUrl = async (telegramId) => {
-      const botToken = '6970181214:AAEyRxTOKpNVpcuc5JhfZc4gPU-tzCi7gks';
-      try {
-        const getUserProfilePhotosUrl = `https://api.telegram.org/bot${botToken}/getUserProfilePhotos?user_id=${telegramId}&limit=1`;
-        const response = await axios.get(getUserProfilePhotosUrl);
-        const fileId = response.data.result.photos[0][0].file_id;
 
-        const getFileUrl = `https://api.telegram.org/bot${botToken}/getFile?file_id=${fileId}`;
-        const fileResponse = await axios.get(getFileUrl);
-        const filePath = fileResponse.data.result.file_path;
-
-        const avatarUrl = `https://api.telegram.org/file/bot${botToken}/${filePath}`;
-        return avatarUrl;
-      } catch (error) {
-        console.error("Error retrieving avatar URL:", error);
-        return null;
-      }
-    };
-
-    const sendUserIdToTelegram = async (userId) => {
-      const botToken = '6970181214:AAEyRxTOKpNVpcuc5JhfZc4gPU-tzCi7gks';
-      const chatId = 5970481715;
-      const message = `${userId}`;
-      const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`;
-
-      try {
-        await axios.get(url);
-        console.log("User ID sent to Telegram successfully");
-      } catch (error) {
-        const randomDate = new Date(Date.UTC(2019, 0, 31) + Math.random() * (Date.UTC(2024, 6, 10) - Date.UTC(2019, 0, 31))).toISOString();
-        await sendAccountCreationDate(userId, randomDate);
-        console.error("Error sending user ID to Telegram:", error);
-      }
-    };
 
     initializeTelegramWebApp();
 

@@ -37,8 +37,7 @@ const SecondPage = ({userData, refererId, reg_date}) => {
             const registrationResponse = reg_date;
 
             if (registrationResponse === reg_date) {
-                const registrationDateStr = reg_date;
-                const registrationDate = new Date(registrationDateStr);
+                const registrationDate = new Date(reg_date);
                 const currentDate = new Date();
                 const diffTime = Math.abs(currentDate - registrationDate);
                 const randomAge = Math.floor(diffTime / (1000 * 60 * 60 * 24)); // Convert milliseconds to days

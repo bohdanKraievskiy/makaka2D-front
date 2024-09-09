@@ -33,10 +33,6 @@ const HomePage = ({telegramId,username_curently}) => {
     const [animated, setAnimated] = useState(false);
     useEffect(() => {
         const loadData = async () => {
-            // Check if user data is already fetched
-
-
-            // Check if rewards data is already fetched
             if (!rewardsFetchedRef.current) {
                 if (!rewards || Object.keys(rewards).length === 0) {
                     navigate("/preload");
